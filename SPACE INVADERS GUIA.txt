@@ -1,0 +1,4 @@
+Variables:
+
+fnp: Fin del programa (Usada para bucle total del programa)
+scr: Score (Puntuacion del jugador)
