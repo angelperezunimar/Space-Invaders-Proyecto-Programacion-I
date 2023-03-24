@@ -8,9 +8,17 @@
 
 program untitled;
 
-uses crt;
-var i : byte;
+uses CRT, DOS;
+var
+	scr: integer;
+	fnp: integer;
+	
+	
+	
+	
 
+	
+	
 BEGIN
 	
 	
