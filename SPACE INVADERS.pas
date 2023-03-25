@@ -10,13 +10,13 @@ program untitled;
 {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
 uses CRT, DOS;
 var
-	scr: integer;
-	fnp: integer;
+scr,fnp,opciones,dificultades:integer;
+nickname:string;
 //funcion para la validacion del nombre y apellido
 procedure validacion;
 var
-p1,p2,nickname:string;
-c1,c2,codigo1,codigo2,auxiliar1,auxiliar2:integer;
+p1,p2:string;
+c1,c2,codigo1,codigo2:integer;
 begin
 c1:=0;
 c2:=0;
@@ -30,12 +30,9 @@ repeat
 	readln (p2);
 	val(p2,c2,codigo2);
 until codigo2 > 0;
-
-writeln ('Ingrese su nombre de usuario, puede usar caracteres y numeres:');
-readln (nickname);
 writeln;
 
-readln();
+
 end;
 	
 
@@ -43,7 +40,33 @@ end;
 	
 BEGIN
  writeln ('Bienvenido a SPACE INVADERS A.A.S');
- validacion;
+ writeln ('presione [enter] para continuar');
+ readln();
+ writeln('MENU');
+ writeln; 
+ writeln('1-JUGAR');
+ writeln('2-CERRAR JUEGO');
+ readln (opciones);
+ case opciones of
+	1:
+	begin
+		validacion;
+		writeln ('Ingrese su nombre de usuario, puede usar caracteres y numeres:');
+		readln (nickname);
+		writeln('¡Bienvenido! ',nickname, ' Eliga el nivel de dificultad para la partida: [1] [2] [3]');
+		readln (dificultades);
+			case dificultades of
+			1: writeln ('usted ha eligido el nivel facil');
+			2: writeln ('usted ha elegido el nivel normal');
+			3: writeln ('usted ha elegido el nivel de dificultad dificil');
+			end;
+		
+	end;
+ end;
+
+ 
+ 
+ 
  
  
  

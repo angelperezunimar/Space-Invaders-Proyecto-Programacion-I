@@ -2,3 +2,5 @@ Variables:
 
 fnp: Fin del programa (Usada para bucle total del programa)
 scr: Score (Puntuacion del jugador)
+opciones: Primer conjunto de opciones para el jugador: Jugar o cerrar el juego.
+nickname: nombre de usuario.
