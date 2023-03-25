@@ -42,7 +42,7 @@ BEGIN
  writeln('MENU');
  writeln; 
  writeln('1-JUGAR');
- writeln ('2-instrucciones');
+ writeln ('2-INTRUCCIONES');
  writeln('3-CERRAR JUEGO');
  readln (opciones);
  case opciones of
@@ -72,9 +72,9 @@ BEGIN
 	2: 
 	begin
 		writeln ('A constinuacion se muestran las intrucciones del juego: ');
-		writeln ('Su objetivo es eliminar oleadas de alienígenas con un cañón láser y obtener la mayor cantidad de puntos posible');
+		writeln ('Su objetivo es eliminar oleadas de alienigenas con un canon laser y obtener la mayor cantidad de puntos posible');
 		writeln ('Se utilizan las flechas direcionales <-- y --> (izquierda y derecha) para mover la nave');
-		writeln ('Se utiliza la barra espaciadora para disparar el cañon laser');
+		writeln ('Se utiliza la barra espaciadora para disparar el canon laser');
 		writeln ('Con la tecla [p] se pausa el juego');
 	end;// end del la segunda opcion  del primer case
 	3: writeln ('hasta la proxima, vuelva pronto pronto para mas diversion!');
