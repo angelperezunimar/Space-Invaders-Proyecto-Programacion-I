@@ -17,6 +17,8 @@ procedure validacion;
 var
 p1,p2:string;
 c1,c2,codigo1,codigo2:integer;
+const 
+selfiri = 13; {profe me gusta usar constantes ;D}
 begin
 c1:=0;
 c2:=0;
@@ -34,10 +36,7 @@ writeln;
 
 
 end;
-	
 
-		
-	
 BEGIN
  writeln ('Bienvenido a SPACE INVADERS A.A.S');
  writeln ('presione [enter] para continuar');
@@ -56,9 +55,18 @@ BEGIN
 		writeln('¡Bienvenido! ',nickname, ' Eliga el nivel de dificultad para la partida: [1] [2] [3]');
 		readln (dificultades);
 			case dificultades of
-			1: writeln ('usted ha eligido el nivel facil');
-			2: writeln ('usted ha elegido el nivel normal');
-			3: writeln ('usted ha elegido el nivel de dificultad dificil');
+			1: 
+			begin
+				writeln ('usted ha eligido el nivel facil');
+			end;
+			2:
+			begin
+				writeln ('usted ha elegido el nivel normal');
+			end;
+			3:
+			begin 
+				writeln ('usted ha elegido el nivel de dificultad dificil');
+			end;
 			end;
 		
 	end;
