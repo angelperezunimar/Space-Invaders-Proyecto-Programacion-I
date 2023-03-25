@@ -4,8 +4,6 @@
 
 // Realizado por: Angel Pérez, Abdl Taktak y Samuel Marcano //
 
-
-
 program untitled;
 {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
 uses CRT, DOS;
@@ -44,7 +42,8 @@ BEGIN
  writeln('MENU');
  writeln; 
  writeln('1-JUGAR');
- writeln('2-CERRAR JUEGO');
+ writeln ('2-instrucciones');
+ writeln('3-CERRAR JUEGO');
  readln (opciones);
  case opciones of
 	1:
@@ -55,22 +54,32 @@ BEGIN
 		writeln('¡Bienvenido! ',nickname, ' Eliga el nivel de dificultad para la partida: [1] [2] [3]');
 		readln (dificultades);
 			case dificultades of
-			1: 
-			begin
-				writeln ('usted ha eligido el nivel facil');
-			end;
-			2:
-			begin
-				writeln ('usted ha elegido el nivel normal');
-			end;
-			3:
-			begin 
-				writeln ('usted ha elegido el nivel de dificultad dificil');
-			end;
-			end;
+				1: 
+					begin
+						writeln ('usted ha eligido el nivel facil');
+					end;
+				2:
+					begin
+						writeln ('usted ha elegido el nivel normal');
+					end;
+				3:
+					begin 
+						writeln ('usted ha elegido el nivel de dificultad dificil');
+					end;
+			end; //end del segundo case
 		
-	end;
- end;
+	end; //end de la primera opcion del primer case
+	2: 
+	begin
+		writeln ('A constinuacion se muestran las intrucciones del juego: ');
+		writeln ('Su objetivo es eliminar oleadas de alienígenas con un cañón láser y obtener la mayor cantidad de puntos posible');
+		writeln ('Se utilizan las flechas direcionales <-- y --> (izquierda y derecha) para mover la nave');
+		writeln ('Se utiliza la barra espaciadora para disparar el cañon laser');
+		writeln ('Con la tecla [p] se pausa el juego');
+	end;// end del la segunda opcion  del primer case
+	3: writeln ('hasta la proxima, vuelva pronto pronto para mas diversion!');
+
+ end; //end del primer case
 
  
  
@@ -80,5 +89,5 @@ BEGIN
  
 	
 	
-END.
+END.//end final del cuerpo
 
