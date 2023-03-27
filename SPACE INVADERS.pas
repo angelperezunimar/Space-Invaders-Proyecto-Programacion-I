@@ -10,11 +10,11 @@ uses CRT;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
 
-scr,fnp,opciones,dificultades:integer;
+scr,fnp,opciones,dificultades,bx,by:integer;
 nickname:string;
 ppx,ppy,apx,apy:integer;
 aliens: array[1..10, 1..10] of string;
-balas: array[1..5,1..5] of string;
+
 
 //funcion para mostrar al jugador en pantalla
 
@@ -27,32 +27,54 @@ end;
 procedure MPlayer;
 
 begin
-
 if keypressed then
     begin
       case readkey of
 		#75:
 			begin
 				gotoxy(ppx,ppy);
-				writeln('    ');
+				writeln('      ');
 				ppx := ppx - 1;
 				if ppx < 1 then
 				  ppx := 1;
-			  
 			end;
+			
 		#77:
 			begin
 			gotoxy(ppx,ppy);
-				writeln('    ');
+				writeln('       ');
 				ppx := ppx + 1;
 				if ppx > 77 then
-				  ppx := 77;
-			
+				  ppx := 77;			
 			end;
-
 		end;
 	end;
 end;
+
+procedure BPlayer;
+
+begin
+if keypressed then
+begin
+	if readkey = #32 then // barra espaciadora
+	begin
+		bx := ppx;
+        by := ppy - 1;
+        while (by > 1)  do
+        begin
+          gotoxy(bx, by);
+          writeln('   ');
+          by := by - 1;
+          gotoxy(bx, by);
+          writeln('  |');
+          delay(50);
+        end;
+        
+	end;
+	
+end;
+end;
+
 //funcion para la validacion del nombre y apellido
 
 procedure validacion;
@@ -84,6 +106,7 @@ begin
 repeat
 DPlayer;
 MPlayer;
+BPlayer;
 until false;
 end;
 
@@ -105,7 +128,7 @@ BEGIN
 	ppx := 40;
 	ppy := 24;
 		validacion;
-		writeln ('Ingrese su nombre de usuario, puede usar caracteres y numeres:');
+		writeln ('Ingrese su nombre de usuario, puede usar caracteres y numeros:');
 		readln (nickname);
 		writeln('¡Bienvenido! ',nickname, ' Eliga el nivel de dificultad para la partida: [1] [2] [3]');
 		readln (dificultades);
@@ -136,7 +159,7 @@ BEGIN
 	end; //end de la primera opcion del primer case
 	2: 
 	begin
-		writeln ('A constinuacion se muestran las intrucciones del juego: ');
+		writeln ('A continuacion se muestran las intrucciones del juego: ');
 		writeln ('Su objetivo es eliminar oleadas de alienigenas con un canon laser y obtener la mayor cantidad de puntos posible');
 		writeln ('Se utilizan las letras <== y ==> (izquierda y derecha) para mover la nave');
 		writeln ('Se utiliza la barra espaciadora para disparar el canon laser');
