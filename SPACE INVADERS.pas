@@ -5,17 +5,23 @@
 // Realizado por: Angel Pérez, Abdl Taktak y Samuel Marcano //
 
 program SpaceInvaders;
+
 uses CRT;
+
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
+
 scr,fnp,opciones,dificultades:integer;
 nickname:string;
 ppx,ppy,apx,apy:integer;
+aliens: array[1..10, 1..10] of string;
+balas: array[1..5,1..5] of string;
 
 //funcion para mostrar al jugador en pantalla
+
 procedure DPlayer;
 begin
 gotoxy(ppx,ppy);
-write('A');
+write('<|A|>');
 end;
 
 
@@ -46,6 +52,9 @@ writeln;
 end;
 
 BEGIN
+ppx:= 40;
+ppx:= 24;
+
  writeln ('Bienvenido a SPACE INVADERS A.A.S');
  writeln ('presione [enter] para continuar');
  readln();
@@ -67,6 +76,13 @@ BEGIN
 				1: 
 					begin
 						writeln ('usted ha eligido el nivel facil');
+						writeln ('Presione [Enter] para empezar');
+						readln();
+						clrscr;
+						//repeat
+						DPlayer;
+						readln;
+						//until false;
 					end;
 				2:
 					begin
