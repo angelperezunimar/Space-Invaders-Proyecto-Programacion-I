@@ -11,3 +11,4 @@ apy: Posicion y del alien
 
 Procedures:
 DPlayer: "DisplayPlayer" muestra al jugador en pantalla
+MPlayer: "MovePlayer" mueve al jugador en las posiciones de X

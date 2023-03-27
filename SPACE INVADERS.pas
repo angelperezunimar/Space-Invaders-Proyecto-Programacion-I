@@ -24,9 +24,35 @@ gotoxy(ppx,ppy);
 write('<|A|>');
 end;
 
+procedure MPlayer;
 
+begin
 
+if keypressed then
+    begin
+      case readkey of
+		#75:
+			begin
+				gotoxy(ppx,ppy);
+				writeln('    ');
+				ppx := ppx - 1;
+				if ppx < 1 then
+				  ppx := 1;
+			  
+			end;
+		#77:
+			begin
+			gotoxy(ppx,ppy);
+				writeln('    ');
+				ppx := ppx + 1;
+				if ppx > 77 then
+				  ppx := 77;
+			
+			end;
 
+		end;
+	end;
+end;
 //funcion para la validacion del nombre y apellido
 
 procedure validacion;
@@ -55,7 +81,10 @@ end;
 procedure juego;
 
 begin
+repeat
 DPlayer;
+MPlayer;
+until false;
 end;
 
 BEGIN
@@ -109,7 +138,7 @@ BEGIN
 	begin
 		writeln ('A constinuacion se muestran las intrucciones del juego: ');
 		writeln ('Su objetivo es eliminar oleadas de alienigenas con un canon laser y obtener la mayor cantidad de puntos posible');
-		writeln ('Se utilizan las flechas direcionales <-- y --> (izquierda y derecha) para mover la nave');
+		writeln ('Se utilizan las letras <== y ==> (izquierda y derecha) para mover la nave');
 		writeln ('Se utiliza la barra espaciadora para disparar el canon laser');
 		writeln ('Con la tecla [p] se pausa el juego');
 	end;// end del la segunda opcion  del primer case
