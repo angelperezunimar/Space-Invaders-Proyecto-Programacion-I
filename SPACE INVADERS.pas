@@ -51,9 +51,15 @@ until codigo2 > 0;
 writeln;
 end;
 
+
+procedure juego;
+
+begin
+DPlayer;
+end;
+
 BEGIN
-ppx:= 40;
-ppx:= 24;
+
 
  writeln ('Bienvenido a SPACE INVADERS A.A.S');
  writeln ('presione [enter] para continuar');
@@ -67,6 +73,8 @@ ppx:= 24;
  case opciones of
 	1:
 	begin
+	ppx := 40;
+	ppy := 24;
 		validacion;
 		writeln ('Ingrese su nombre de usuario, puede usar caracteres y numeres:');
 		readln (nickname);
@@ -74,13 +82,15 @@ ppx:= 24;
 		readln (dificultades);
 			case dificultades of
 				1: 
+				// Durante el desarrollo de la logica se usara todo este case para hacer pruebas sobre el funcionamiento
 					begin
+					
 						writeln ('usted ha eligido el nivel facil');
 						writeln ('Presione [Enter] para empezar');
 						readln();
 						clrscr;
 						//repeat
-						DPlayer;
+						juego;
 						readln;
 						//until false;
 					end;
