@@ -4,3 +4,10 @@ fnp: Fin del programa (Usada para bucle total del programa)
 scr: Score (Puntuacion del jugador)
 opciones: Primer conjunto de opciones para el jugador: Jugar o cerrar el juego.
 nickname: nombre de usuario.
+ppx: Posicion x del jugador
+ppy: Posicion y del jugador
+apx: Posicion x del alien
+apy: Posicion y del alien
+
+Procedures:
+DPlayer: "DisplayPlayer" muestra al jugador en pantalla

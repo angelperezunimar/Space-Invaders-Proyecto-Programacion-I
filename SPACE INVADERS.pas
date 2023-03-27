@@ -5,10 +5,21 @@
 // Realizado por: Angel Pérez, Abdl Taktak y Samuel Marcano //
 
 program SpaceInvaders;
-uses CRT, DOS;
+uses CRT;
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
 scr,fnp,opciones,dificultades:integer;
 nickname:string;
+ppx,ppy,apx,apy:integer;
+
+//funcion para mostrar al jugador en pantalla
+procedure DPlayer;
+begin
+gotoxy(ppx,ppy);
+write('A');
+end;
+
+
+
 
 //funcion para la validacion del nombre y apellido
 
