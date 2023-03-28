@@ -17,5 +17,6 @@ Procedures:
 DPlayer: "DisplayPlayer" muestra al jugador en pantalla
 MPlayer: "MovePlayer" mueve al jugador en las posiciones de X
 BPlayer: "BulletPlayer" Dibuja el disparo del jugador
+MBullet: Mueve el disparo del jugador
 
 

@@ -14,6 +14,7 @@ scr,fnp,opciones,dificultades,bx,by:integer;
 nickname:string;
 ppx,ppy,apx,apy:integer;
 aliens: array[1..10, 1..10] of string;
+sprites: array[1..10] of string;
 
 
 //funcion para mostrar al jugador en pantalla
@@ -21,7 +22,7 @@ aliens: array[1..10, 1..10] of string;
 procedure DPlayer;
 begin
 gotoxy(ppx,ppy);
-write('<|A|>');
+write(sprites[1]);
 end;
 
 procedure MPlayer;
@@ -53,16 +54,9 @@ if keypressed then
 	end;
 end;
 
-procedure BPlayer;
-
+procedure MBullet;
 begin
-//if keypressed then
-begin
-	if readkey = #32 then // barra espaciadora
-	begin
-		bx := ppx;
-        by := ppy - 1;
-        while (by > 1)  do
+while (by > 1)  do
         begin
           gotoxy(bx, by);
           writeln('   ');
@@ -70,8 +64,21 @@ begin
           gotoxy(bx, by);
           writeln('  |');
           delay(50);
+          
         end;
-        
+        gotoxy(bx, by);
+		writeln('    ');
+end;
+
+procedure BPlayer;
+begin
+//if keypressed then
+begin
+	if readkey = #32 then // barra espaciadora
+	begin
+		bx := ppx;
+        by := ppy - 1;
+        MBullet;
 	end;
 	
 end;
@@ -113,7 +120,7 @@ until false;
 end;
 
 BEGIN
-
+sprites[1]:= '<|A|>';
 
  writeln ('Bienvenido a SPACE INVADERS A.A.S');
  writeln ('presione [enter] para continuar');
