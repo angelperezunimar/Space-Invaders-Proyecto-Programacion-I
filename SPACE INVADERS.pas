@@ -13,7 +13,7 @@ var {Empieza la declaracion de variables, cada una tiene una funcion especifica 
 scr,fnp,opciones,dificultades,bx,by:integer;
 nickname:string;
 ppx,ppy,apx,apy:integer;
-aliens: array[1..10, 1..10] of string;
+aliens: array[1..10, 1..10] of boolean;
 sprites: array[1..10] of string;
 BActivo: boolean;
 
