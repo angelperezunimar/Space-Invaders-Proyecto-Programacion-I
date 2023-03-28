@@ -15,15 +15,17 @@ nickname:string;
 ppx,ppy,apx,apy:integer;
 aliens: array[1..10, 1..10] of string;
 sprites: array[1..10] of string;
+BActivo: boolean;
 
-
-//funcion para mostrar al jugador en pantalla
+//Procedimiento para mostrar al jugador en pantalla
 
 procedure DPlayer;
 begin
 gotoxy(ppx,ppy);
 write(sprites[1]);
-end;
+end; //end final del procedimiento
+
+//Procedimiento para el movimiento del jugador en pantalla 
 
 procedure MPlayer;
 
@@ -39,7 +41,7 @@ if keypressed then
 				if ppx < 1 then
 				  ppx := 1;
 				  DPlayer;
-			end;
+			end;//end del case #75
 			
 		#77:
 			begin
@@ -49,42 +51,48 @@ if keypressed then
 				if ppx > 77 then
 				  ppx := 77;		
 				  DPlayer;	
-			end;
-		end;
-	end;
-end;
+			end;//end del case #77
+		end;//end del case
+	end; //end del if
+end; //end final del procedimiento
+
+//Procedimiento para el movimiento del jugador en pantalla 
 
 procedure MBullet;
 begin
-while (by > 1)  do
+while (BActivo and (by > 1))  do
         begin
+		  delay(50);
           gotoxy(bx, by);
           writeln('   ');
           by := by - 1;
           gotoxy(bx, by);
           writeln('  |');
-          delay(50);
-          
-        end;
+          MPlayer;
+        end; //end del while
+        BActivo := False;
         gotoxy(bx, by);
 		writeln('    ');
-end;
+end; //end final del procedimiento
+
+//Procedimiento para el movimiento del jugador en pantalla 
 
 procedure BPlayer;
 begin
-//if keypressed then
-begin
+BActivo := False;
 	if readkey = #32 then // barra espaciadora
 	begin
 		bx := ppx;
         by := ppy - 1;
+        BActivo := True;
+        writeln('|');
         MBullet;
-	end;
+        
+	end;//end del if
 	
-end;
-end;
+end;//end final del procedimiento
 
-//funcion para la validacion del nombre y apellido
+//Procedimiento para la validacion del nombre y apellido
 
 procedure validacion;
 var
@@ -106,8 +114,9 @@ repeat
 	val(p2,c2,codigo2);
 until codigo2 > 0;
 writeln;
-end;
+end;//end final del procedimiento
 
+//Procedimiento para la ejecucion del juego completo estructurado
 
 procedure juego;
 
@@ -117,7 +126,7 @@ DPlayer;
 MPlayer;
 BPlayer;
 until false;
-end;
+end;//end final del procedimiento
 
 BEGIN
 sprites[1]:= '<|A|>';
