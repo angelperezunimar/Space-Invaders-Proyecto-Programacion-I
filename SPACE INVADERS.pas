@@ -37,6 +37,7 @@ if keypressed then
 				ppx := ppx - 1;
 				if ppx < 1 then
 				  ppx := 1;
+				  DPlayer;
 			end;
 			
 		#77:
@@ -45,7 +46,8 @@ if keypressed then
 				writeln('       ');
 				ppx := ppx + 1;
 				if ppx > 77 then
-				  ppx := 77;			
+				  ppx := 77;		
+				  DPlayer;	
 			end;
 		end;
 	end;
@@ -54,7 +56,7 @@ end;
 procedure BPlayer;
 
 begin
-if keypressed then
+//if keypressed then
 begin
 	if readkey = #32 then // barra espaciadora
 	begin
