@@ -10,13 +10,13 @@ uses CRT;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
 
-scr,fnp,opciones,dificultades,bx,by:integer;
+scr,fnp,opciones,dificultades,bx,by,ppx,ppy:integer;
 nickname:string;
-ppx,ppy,apx,apy:integer;
-aliens: array[1..10, 1..10] of boolean;
+aliens: array[1..10, 1..10] of string;
 sprites: array[1..10] of string;
 BActivo: boolean;
-
+apy: array[1..10, 1..10] of integer;
+apx: array[1..10, 1..10] of integer;
 //Procedimiento para mostrar al jugador en pantalla
 
 procedure DPlayer;
