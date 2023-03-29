@@ -129,8 +129,10 @@ repeat
 	val (p1,c1,codigo1);
 until codigo1>0;
 repeat
+	repeat
 	writeln('introduzca su apellido');
 	readln (p2);
+	until p2 <> '';
 	val(p2,c2,codigo2);
 until codigo2 > 0;
 writeln;
