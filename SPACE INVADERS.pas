@@ -172,6 +172,8 @@ BEGIN
 		writeln ('Ingrese su nombre de usuario, puede usar caracteres y numeros:');
 		readln (nickname);
 		until nickname <> '';
+		repeat
+		begin
 		writeln('¡Bienvenido! ',nickname, ' Eliga el nivel de dificultad para la partida: [1] [2] [3]');
 		readln (dificultades);
 			case dificultades of
@@ -197,7 +199,8 @@ BEGIN
 						writeln ('usted ha elegido el nivel de dificultad dificil');
 					end;
 			end; //end del segundo case
-		
+		end;
+		until (dificultades=1) or (dificultades=2) or (dificultades=3);
 	end; //end de la primera opcion del primer case
 	2: 
 	begin
