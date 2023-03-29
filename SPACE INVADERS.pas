@@ -10,23 +10,21 @@ uses CRT;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
 
-scr,fnp,opciones,dificultades,bx,by,ppx,ppy:integer;
+scr,fnp,opciones,dificultades,bx,by,ppx,ppy,dir:integer;
 nickname:string;
-aliens: array[1..10, 1..10] of string;
-sprites: array[1..10] of string;
+aliens: array[1..6] of boolean;
 BActivo: boolean;
-apy: array[1..10, 1..10] of integer;
-apx: array[1..10, 1..10] of integer;
-//Procedimiento para mostrar al jugador en pantalla
+apy: array[1..6] of integer;
+apx: array[1..6] of integer;
 
+//Procedimiento para mostrar al jugador en pantalla
 procedure DPlayer;
 begin
 gotoxy(ppx,ppy);
-write(sprites[1]);
+write('<|A|>');
 end; //end final del procedimiento
 
 //Procedimiento para el movimiento del jugador en pantalla 
-
 procedure MPlayer;
 
 begin
@@ -56,8 +54,26 @@ if keypressed then
 	end; //end del if
 end; //end final del procedimiento
 
-//Procedimiento para el movimiento del jugador en pantalla 
+//Procedimiento para mover aliens
+procedure DAliens;
+i,j: integer;
+Begin
 
+
+
+end;
+
+//Procedimiento para mover aliens
+procedure MAliens;
+var
+  
+begin
+ 
+	
+ 
+end; //end del procedimiento
+
+//Procedimiento para el movimiento del jugador en pantalla 
 procedure MBullet;
 begin
 while (BActivo and (by > 1))  do
@@ -76,7 +92,6 @@ while (BActivo and (by > 1))  do
 end; //end final del procedimiento
 
 //Procedimiento para el movimiento del jugador en pantalla 
-
 procedure BPlayer;
 begin
 BActivo := False;
@@ -93,7 +108,6 @@ BActivo := False;
 end;//end final del procedimiento
 
 //Procedimiento para la validacion del nombre y apellido
-
 procedure validacion;
 var
 p1,p2:string;
@@ -117,7 +131,6 @@ writeln;
 end;//end final del procedimiento
 
 //Procedimiento para la ejecucion del juego completo estructurado
-
 procedure juego;
 
 begin
@@ -125,11 +138,12 @@ repeat
 DPlayer;
 MPlayer;
 BPlayer;
+MAliens;
 until false;
 end;//end final del procedimiento
 
+// Comienzo del cuerpo del programa
 BEGIN
-sprites[1]:= '<|A|>';
 
  writeln ('Bienvenido a SPACE INVADERS A.A.S');
  writeln ('presione [enter] para continuar');

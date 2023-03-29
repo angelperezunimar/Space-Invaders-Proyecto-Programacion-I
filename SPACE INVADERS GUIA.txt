@@ -10,6 +10,8 @@ apx: Posicion x del alien
 apy: Posicion y del alien
 bx: Posicion x de la bala
 by: Posicion y de la bala
+dir: direccion del alien
+aliens: valores de vida de los aliens
 
 
 
@@ -17,6 +19,7 @@ Procedures:
 DPlayer: "DisplayPlayer" muestra al jugador en pantalla
 MPlayer: "MovePlayer" mueve al jugador en las posiciones de X
 BPlayer: "BulletPlayer" Dibuja el disparo del jugador
-MBullet: Mueve el disparo del jugador
-
+MBullet: "MoveBullet" Mueve el disparo del jugador
+MAliens: "MoveAliens" mueve a los aliens
+DPlayer: "DisplayAliens" muestra a los aliens en pantalla
 
