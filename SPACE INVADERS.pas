@@ -122,8 +122,10 @@ begin
 c1:=0;
 c2:=0;
 repeat
+	repeat
 	writeln ('introduzca su nombre:');
 	readln(p1);
+	until p1 <> '';
 	val (p1,c1,codigo1);
 until codigo1>0;
 repeat
