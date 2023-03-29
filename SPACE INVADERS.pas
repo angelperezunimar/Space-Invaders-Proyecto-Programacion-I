@@ -56,19 +56,23 @@ end; //end final del procedimiento
 
 //Procedimiento para mover aliens
 procedure DAliens;
-i,j: integer;
+var i: integer;
 Begin
 
+	for i:= 1 to 6 do
+	begin
+		
+		gotoxy(apx[i], apy[i]);
+		writeln('');
 
+	end;
 
 end;
 
 //Procedimiento para mover aliens
 procedure MAliens;
-var
-  
 begin
- 
+
 	
  
 end; //end del procedimiento
