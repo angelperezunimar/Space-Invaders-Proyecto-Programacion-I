@@ -168,8 +168,10 @@ BEGIN
 	ppx := 40;
 	ppy := 24;
 		validacion;
+		repeat
 		writeln ('Ingrese su nombre de usuario, puede usar caracteres y numeros:');
 		readln (nickname);
+		until nickname <> '';
 		writeln('¡Bienvenido! ',nickname, ' Eliga el nivel de dificultad para la partida: [1] [2] [3]');
 		readln (dificultades);
 			case dificultades of
