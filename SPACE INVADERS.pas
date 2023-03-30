@@ -8,8 +8,11 @@ program SpaceInvaders;
 
 uses CRT;
 
-var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
+const
+APantalla = 24;
+LPantalla = 77;
 
+var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
 scr,fnp,opciones,dificultades,bx,by,ppx,ppy,dir:integer;
 nickname:string;
 aliens: array[1..6] of boolean;
@@ -26,7 +29,6 @@ end; //end final del procedimiento
 
 //Procedimiento para el movimiento del jugador en pantalla 
 procedure MPlayer;
-
 begin
 if keypressed then
     begin
@@ -46,8 +48,8 @@ if keypressed then
 			gotoxy(ppx,ppy);
 				writeln('       ');
 				ppx := ppx + 1;
-				if ppx > 77 then
-				  ppx := 77;		
+				if ppx > (LPantalla - 6) then
+				  ppx := 71;		
 				  DPlayer;	
 			end;//end del case #77
 		end;//end del case
@@ -216,3 +218,14 @@ BEGIN
 
 
 END.//end final del cuerpo
+
+
+
+[=I.<>.I=]
+
+I-/.-.\-I
+
+| <> /''|''\<>|               --|=(+)|\|/|(+)=|--
+   /\     ;\,,|,,/;     /\            
+ /    \               /    \
+__              __
