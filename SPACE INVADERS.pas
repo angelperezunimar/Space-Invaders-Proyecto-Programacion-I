@@ -199,14 +199,14 @@ c1:=0;
 c2:=0;
 repeat
 	repeat
-	writeln ('introduzca su nombre:');
+	write ('///introduzca su nombre:');
 	readln(p1);
 	until p1 <> '';
 	val (p1,c1,codigo1);
 until codigo1>0;
 repeat
 	repeat
-	writeln('introduzca su apellido');
+	write('////introduzca su apellido:');
 	readln (p2);
 	until p2 <> '';
 	val(p2,c2,codigo2);
@@ -249,24 +249,36 @@ randomize;
 	rdm[6]:= random(2);
 		if  rdm[6] = 1 then dir:= 1;
 		if  rdm[6] = 0 then dir:= -1;
-	
- writeln ('Bienvenido a SPACE INVADERS A.A.S');
- writeln ('presione [enter] para continuar');
+	textcolor(5);
+ gotoxy(43,1);writeln('//||=============================||\\ ');
+ gotoxy(45,2);writeln ('Bienvenido a SPACE INVADERS A.A.S ');
+ gotoxy(43,3);writeln('\\||=============================||//  ');
+  writeln ('---------------------------------');
+ writeln ('-Presione [enter] para continuar-');
+ writeln ('---------------------------------');
  readln();
- writeln('MENU');
+ clrscr;
+ gotoxy(53,1);writeln('//====\\ ');
+ gotoxy(54,2);writeln('=MENU=');
+ gotoxy(53,3);writeln('\\====// ');
  writeln; 
- writeln('1-JUGAR');
- writeln ('2-INTRUCCIONES');
- writeln('3-CERRAR JUEGO');
+ gotoxy(40,5);writeln ('---------------------------------');
+ gotoxy(50,6);writeln('1-JUGAR');
+ gotoxy(40,7);writeln ('---------------------------------');
+ gotoxy(50,8);writeln ('2-INTRUCCIONES');
+ gotoxy(40,9);writeln ('---------------------------------');
+ gotoxy(50,10); writeln('3-CERRAR JUEGO');
+ gotoxy(40,11);writeln ('---------------------------------');
  readln (opciones);
  case opciones of
 	1:
 	begin
+	clrscr;
 	ppx := 40;
 	ppy := 24;
 		validacion;
 		repeat
-		writeln ('Ingrese su nombre de usuario, puede usar caracteres y numeros:');
+		writeln ('///Ingrese su nombre de usuario, puede usar caracteres y numeros:');
 		readln (nickname);
 		until nickname <> '';
 		repeat
@@ -303,11 +315,18 @@ randomize;
 	end; //end de la primera opcion del primer case
 	2: 
 	begin
-		writeln ('A continuacion se muestran las intrucciones del juego: ');
-		writeln ('Su objetivo es eliminar oleadas de alienigenas con un canon laser y obtener la mayor cantidad de puntos posible');
-		writeln ('Se utilizan las letras <== y ==> (izquierda y derecha) para mover la nave');
-		writeln ('Se utiliza la barra espaciadora para disparar el canon laser');
-		writeln ('Con la tecla [p] se pausa el juego');
+	clrscr;
+	    gotoxy(37,1);writeln ('-------------------------------------------------------');
+		gotoxy(38,2);writeln ('A continuacion se muestran las intrucciones del juego ');
+		gotoxy(37,3);writeln ('-------------------------------------------------------');
+		gotoxy(8,7);writeln ('Su objetivo es eliminar oleadas de alienigenas con un canon laser y obtener la mayor cantidad de puntos posible');
+		gotoxy(37,1);writeln ('---------------------------------------------------------------------------------------------------------------');
+		gotoxy(8,9);writeln ('Se utilizan las letras <== y ==> (izquierda y derecha) para mover la nave');
+		gotoxy(37,1);writeln ('---------------------------------------------------------------------------------------------------------------');
+		gotoxy(8,11);writeln ('Se utiliza la barra espaciadora para disparar el canon laser');
+		gotoxy(37,1);writeln ('---------------------------------------------------------------------------------------------------------------');
+		gotoxy(8,13);writeln ('Con la tecla [p] se pausa el juego');
+		gotoxy(37,1);writeln ('---------------------------------------------------------------------------------------------------------------');
 	end;// end del la segunda opcion  del primer case
 	3: writeln ('hasta la proxima, vuelva pronto pronto para mas diversion!');
 
