@@ -6,7 +6,7 @@
 
 program SpaceInvaders;
 
-uses CRT;
+uses CRT;       //Profe hoy nos reunimos, mi pc anda obstusa  <== Samuel
 
 const
 APantalla = 24;
@@ -357,9 +357,9 @@ randomize;
 		gotoxy(91,2);writeln('Alien Boss');
 		gotoxy(90,3);writeln('//========\\ ');
 		gotoxy(87,5);writeln('    |<>/´|´\<>| ');	
-		gotoxy(87,5);writeln('--|=(+)|\|/|(+)=|--');	
-		gotoxy(87,6);writeln('  /\  ;\,|,/;  /\');	
-		gotoxy(87,7);writeln(' /  \         /  \');
+		gotoxy(87,6);writeln('--|=(+)|\|/|(+)=|--');	
+		gotoxy(87,7);writeln('  /\  ;\,|,/;  /\');	
+		gotoxy(87,8);writeln(' /  \         /  \');
 			
 		
 		
