@@ -13,7 +13,7 @@ APantalla = 24;
 LPantalla = 77;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
-scr,fnp,opciones,dificultades,bx,by,ppx,ppy,dir,l,aliensb:integer;
+scr,fnp,opciones,dificultades,bx,by,ppx,ppy,dir,l,aliensb, repit:integer;
 nickname:string;
 aliens: array[1..6] of boolean;
 BActivo: boolean;
@@ -262,6 +262,7 @@ randomize;
  writeln ('---------------------------------');
  readln();
  clrscr;
+ repeat
  gotoxy(53,1);writeln('//====\\ ');
  gotoxy(54,2);writeln('=MENU=');
  gotoxy(53,3);writeln('\\====// ');
@@ -274,6 +275,7 @@ randomize;
  gotoxy(50,10); writeln('3-CERRAR JUEGO');
  gotoxy(40,11);writeln ('---------------------------------');
  readln (opciones);
+ until (opciones=1) or (opciones=2) or (opciones=3);
  case opciones of
 	1:
 	begin
@@ -339,6 +341,8 @@ randomize;
 		gotoxy(5,20);writeln ('-------------------------------------------------------');
 		gotoxy(5,21);writeln('///Para cerrar el programa presione 3');
 		gotoxy(5,22);writeln ('-------------------------------------------------------');
+	
+	
 		readln(aliensb);
 		case aliensb of 
 		1:
@@ -364,7 +368,7 @@ randomize;
 		
 		
 		end;
-		end;
+		end; //end case aliensb
 	end;// end del la segunda opcion  del primer case
 	3: writeln ('hasta la proxima, vuelva pronto pronto para mas diversion!');
 
