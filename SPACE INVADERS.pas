@@ -13,7 +13,7 @@ APantalla = 24;
 LPantalla = 77;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
-scr,fnp,opciones,dificultades,bx,by,ppx,ppy,dir,l:integer;
+scr,fnp,opciones,dificultades,bx,by,ppx,ppy,dir,l,aliensb:integer;
 nickname:string;
 aliens: array[1..6] of boolean;
 BActivo: boolean;
@@ -319,14 +319,47 @@ randomize;
 	    gotoxy(37,1);writeln ('-------------------------------------------------------');
 		gotoxy(38,2);writeln ('A continuacion se muestran las intrucciones del juego ');
 		gotoxy(37,3);writeln ('-------------------------------------------------------');
-		gotoxy(8,7);writeln ('Su objetivo es eliminar oleadas de alienigenas con un canon laser y obtener la mayor cantidad de puntos posible');
-		gotoxy(37,1);writeln ('---------------------------------------------------------------------------------------------------------------');
-		gotoxy(8,9);writeln ('Se utilizan las letras <== y ==> (izquierda y derecha) para mover la nave');
-		gotoxy(37,1);writeln ('---------------------------------------------------------------------------------------------------------------');
-		gotoxy(8,11);writeln ('Se utiliza la barra espaciadora para disparar el canon laser');
-		gotoxy(37,1);writeln ('---------------------------------------------------------------------------------------------------------------');
-		gotoxy(8,13);writeln ('Con la tecla [p] se pausa el juego');
-		gotoxy(37,1);writeln ('---------------------------------------------------------------------------------------------------------------');
+		gotoxy(8,7);writeln ('/Su objetivo es eliminar oleadas de alienigenas con un canon laser y obtener la mayor cantidad de puntos posible');
+		gotoxy(8,8);writeln ('---------------------------------------------------------------------------------------------------------------');
+		gotoxy(8,9);writeln ('//Se utilizan las letras <== y ==> (izquierda y derecha) para mover la nave');
+		gotoxy(8,10);writeln ('---------------------------------------------------------------------------------------------------------------');
+		gotoxy(8,11);writeln ('///Se utiliza la barra espaciadora para disparar el canon laser');
+		gotoxy(8,12);writeln ('---------------------------------------------------------------------------------------------------------------');
+		gotoxy(8,13);writeln ('////Con la tecla [p] se pausa el juego');
+		gotoxy(8,14);writeln ('---------------------------------------------------------------------------------------------------------------');
+	    gotoxy(1,15);writeln ('=======================================================================================================================');
+		gotoxy(5,16);writeln ('-------------------------------------------------------');
+		gotoxy(5,17);writeln('/Para saber sobre los aliens presione 1');
+		gotoxy(5,18);writeln ('-------------------------------------------------------');
+		gotoxy(5,19);writeln('//Para volver al menu presione 2');
+		gotoxy(5,20);writeln ('-------------------------------------------------------');
+		gotoxy(5,21);writeln('///Para cerrar el programa presione 3');
+		gotoxy(5,22);writeln ('-------------------------------------------------------');
+		readln(aliensb);
+		case aliensb of 
+		1:
+			begin
+		clrscr;
+		gotoxy(10,1);writeln('//========\\ ');
+		gotoxy(10,2);writeln('Alien basico');
+		gotoxy(10,3);writeln('//========\\ ');
+		gotoxy(10,5);writeln('I-/.-.\-I');
+		gotoxy(50,1);writeln('//==========\\ ');
+		gotoxy(50,2);writeln(' Alien Medio');
+		gotoxy(50,3);writeln('//==========\\ ');
+		gotoxy(50,5);writeln('[=I.<>.I=]');
+		gotoxy(90,1);writeln('//=========\\ ');
+		gotoxy(90,2);writeln('Alien Boss');
+		gotoxy(90,3);writeln('//=========\\ ');
+		gotoxy(90,5);writeln('    |<>/´|´\<>| ');	
+		gotoxy(90,5);writeln('--|=(+)|\|/|(+)=|--');	
+		gotoxy(90,6);writeln('  /\  ;\,|,/;  /\');	
+		gotoxy(90,7);writeln(' /  \         /  \');
+			
+		
+		
+		end;
+		end;
 	end;// end del la segunda opcion  del primer case
 	3: writeln ('hasta la proxima, vuelva pronto pronto para mas diversion!');
 
