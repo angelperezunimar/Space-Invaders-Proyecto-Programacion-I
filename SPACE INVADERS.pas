@@ -234,6 +234,7 @@ end;//end final del procedimiento
 
 // Comienzo del cuerpo del programa
 BEGIN
+
 randomize;
 	rdm[1]:= random(2);
 		if  rdm[1] = 1 then dir:= 1;
@@ -257,13 +258,14 @@ randomize;
  gotoxy(43,1);writeln('//||=============================||\\ ');
  gotoxy(45,2);writeln ('Bienvenido a SPACE INVADERS A.A.S ');
  gotoxy(43,3);writeln('\\||=============================||//  ');
-  writeln ('---------------------------------');
+ writeln ('---------------------------------');
  writeln ('-Presione [enter] para continuar-');
  writeln ('---------------------------------');
  readln();
  clrscr;
-
+repeat
  repeat
+ clrscr;
  gotoxy(53,1);writeln('//====\\ ');
  gotoxy(54,2);writeln('=MENU=');
  gotoxy(53,3);writeln('\\====// ');
@@ -342,7 +344,7 @@ randomize;
 		gotoxy(5,20);writeln ('-------------------------------------------------------');
 		gotoxy(5,21);writeln('///Para cerrar el programa presione 3');
 		gotoxy(5,22);writeln ('-------------------------------------------------------');
-		
+		readln(aliensb);
 		case aliensb of 
 		1:
 			begin
@@ -364,9 +366,8 @@ randomize;
 		gotoxy(87,7);writeln('  /\  ;\,|,/;  /\');	
 		gotoxy(87,8);writeln(' /  \         /  \');
 		end;// end de la opcion unoh
-		2: 
+		2:
 		begin
-		writeln ('');
 		end; //end de l opcion doh
 		end; //end case aliensb
 		
@@ -375,7 +376,7 @@ randomize;
 
  end; //end del primer case
 
-
+until aliensb <> 2;
 
 END.//end final del cuerpo
 
