@@ -75,18 +75,18 @@ Begin
 			gotoxy(apx[i], apy[i] + 2);
 			writeln('  /\  ;\,|,/;  /\');
 			gotoxy(apx[i], apy[i] + 3);
-			writeln(' /  \         /  \');
+			write(' /  \         /  \');
 			gotoxy(apx[i], apy[i] + 4);
 		end;
 		
 		if (aliens[i] = true) and (i >= 2) and (i < 4) then
 		begin
-			writeln('[=I.<>.I=]');
+			write('[=I.<>.I=]');
 		end;
 		
 		if (aliens[i] = true) and (i >= 4) then
 		begin
-			writeln('I-/.-.\-I');
+			write('I-/.-.\-I');
 		end;
 
 
@@ -103,12 +103,24 @@ begin
 	
 	if dir = 1 then
 	begin
-	
+	gotoxy(apx[i],apy[i]);
+	writeln('                     ');
+	writeln('                      ');
+	writeln('                     ');
+	writeln('                     ');
+	write('                     ');
+	apx[i] := apx[i] + 1;
 	end;
 	
 	if dir = -1 then
 	begin
-	
+	gotoxy(apx[i],apy[i]);
+	writeln('                     ');
+	writeln('                      ');
+	writeln('                     ');
+	writeln('                     ');
+	write('                     ');
+	apx[i]:= apx[i] - 1;
 	end;
 	
 	
@@ -218,15 +230,26 @@ end;//end final del procedimiento
 
 // Comienzo del cuerpo del programa
 BEGIN
-for l:= 1 to 6 do
-begin
 randomize;
-	rdm[l]:= random(2);
-	if  rdm[l] = 1 then dir:= 1;
+	rdm[1]:= random(2);
+		if  rdm[1] = 1 then dir:= 1;
+		if  rdm[1] = 0 then dir:= -1;
+	rdm[2]:= random(2);
+		if  rdm[2] = 1 then dir:= 1;
+		if  rdm[2] = 0 then dir:= -1;
+	rdm[3]:= random(2);
+		if  rdm[3] = 1 then dir:= 1;
+		if  rdm[3] = 0 then dir:= -1;
+	rdm[4]:= random(2);
+		if  rdm[4] = 1 then dir:= 1;
+		if  rdm[4] = 0 then dir:= -1;
+	rdm[5]:= random(2);
+		if  rdm[5] = 1 then dir:= 1;
+		if  rdm[5] = 0 then dir:= -1;
+	rdm[6]:= random(2);
+		if  rdm[6] = 1 then dir:= 1;
+		if  rdm[6] = 0 then dir:= -1;
 	
-	if  rdm[l] = 0 then dir:= -1;
-end;
-
  writeln ('Bienvenido a SPACE INVADERS A.A.S');
  writeln ('presione [enter] para continuar');
  readln();
