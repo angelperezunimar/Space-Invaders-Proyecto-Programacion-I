@@ -65,7 +65,29 @@ Begin
 	begin
 		
 		gotoxy(apx[i], apy[i]);
-		writeln('');
+		
+		if (aliens[i] = true) and (i = 1) then
+		begin
+			writeln('   |<> /´|´\<>| ');
+			gotoxy(apx[i], apy[i] + 1);
+			writeln('--|=(+)|\|/|(+)=|--');
+			gotoxy(apx[i], apy[i] + 2);
+			writeln('  /\  ;\,|,/;  /\');
+			gotoxy(apx[i], apy[i] + 3);
+			writeln(' /  \         /  \');
+			gotoxy(apx[i], apy[i] + 4);
+		end;
+		
+		if (aliens[i] = true) and (i >= 2) and (i < 4) then
+		begin
+			writeln('[=I.<>.I=]');
+		end;
+		
+		if (aliens[i] = true) and (i >= 4) then
+		begin
+			writeln('I-/.-.\-I');
+		end;
+
 
 	end;
 
@@ -145,7 +167,9 @@ procedure juego;
 
 begin
 repeat
+
 DPlayer;
+DAliens;
 MPlayer;
 BPlayer;
 MAliens;
@@ -182,7 +206,9 @@ BEGIN
 				1: 
 				// Durante el desarrollo de la logica se usara todo este case para hacer pruebas sobre el funcionamiento
 					begin
-					
+					apx[1] := 40; apy[1] := 1; aliens[1] := true;
+					apx[2] := 40; apy[2] := 7; aliens[2] := true;
+					apx[4] := 40; apy[4] := 9; aliens[4] := true;
 						writeln ('usted ha eligido el nivel facil');
 						writeln ('Presione [Enter] para empezar');
 						readln();
@@ -225,7 +251,8 @@ END.//end final del cuerpo
 
 I-/.-.\-I
 
-| <> /''|''\<>|               --|=(+)|\|/|(+)=|--
-   /\     ;\,,|,,/;     /\            
- /    \               /    \
-__              __
+       
+         |<> /´|´\<>|               
+      --|=(+)|\|/|(+)=|--
+        /\  ;\,|,/;  /\            
+       /  \         /  \

@@ -14,6 +14,10 @@ dir: direccion del alien
 aliens: valores de vida de los aliens
 
 
+Constantes:
+APantalla: "AlturaPantalla" Alto de pantalla de Juego
+LPantalla: "LargoPantalla" Largo de pantalla de Juego
+
 
 Procedures:
 DPlayer: "DisplayPlayer" muestra al jugador en pantalla
