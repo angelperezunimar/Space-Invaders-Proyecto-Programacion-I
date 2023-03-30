@@ -13,12 +13,13 @@ APantalla = 24;
 LPantalla = 77;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
-scr,fnp,opciones,dificultades,bx,by,ppx,ppy,dir:integer;
+scr,fnp,opciones,dificultades,bx,by,ppx,ppy,dir,l:integer;
 nickname:string;
 aliens: array[1..6] of boolean;
 BActivo: boolean;
 apy: array[1..6] of integer;
 apx: array[1..6] of integer;
+rdm: array[1..6] of integer;
 
 //Procedimiento para mostrar al jugador en pantalla
 procedure DPlayer;
@@ -68,7 +69,7 @@ Begin
 		
 		if (aliens[i] = true) and (i = 1) then
 		begin
-			writeln('   |<> /´|´\<>| ');
+			writeln('    |<>/´|´\<>| ');
 			gotoxy(apx[i], apy[i] + 1);
 			writeln('--|=(+)|\|/|(+)=|--');
 			gotoxy(apx[i], apy[i] + 2);
@@ -95,9 +96,48 @@ end;
 
 //Procedimiento para mover aliens
 procedure MAliens;
+var i:integer;
 begin
 
+	for i:= 1 to 6 do
 	
+	if dir = 1 then
+	begin
+	
+	end;
+	
+	if dir = -1 then
+	begin
+	
+	end;
+	
+	
+	
+	if keypressed then
+    begin
+      case readkey of
+		#75:
+			begin
+				gotoxy(ppx,ppy);
+				writeln('      ');
+				ppx := ppx - 1;
+				if ppx < 1 then
+				  ppx := 1;
+				  DPlayer;
+			end;//end del case #75
+			
+		#77:
+			begin
+			gotoxy(ppx,ppy);
+				writeln('       ');
+				ppx := ppx + 1;
+				if ppx > (LPantalla - 6) then
+				  ppx := 71;		
+				  DPlayer;	
+			end;//end del case #77
+		end;//end del case
+	end; //end del if
+//end; //end final del procedimiento
  
 end; //end del procedimiento
 
@@ -178,6 +218,14 @@ end;//end final del procedimiento
 
 // Comienzo del cuerpo del programa
 BEGIN
+for l:= 1 to 6 do
+begin
+randomize;
+	rdm[l]:= random(2);
+	if  rdm[l] = 1 then dir:= 1;
+	
+	if  rdm[l] = 0 then dir:= -1;
+end;
 
  writeln ('Bienvenido a SPACE INVADERS A.A.S');
  writeln ('presione [enter] para continuar');
@@ -206,10 +254,10 @@ BEGIN
 				1: 
 				// Durante el desarrollo de la logica se usara todo este case para hacer pruebas sobre el funcionamiento
 					begin
-					apx[1] := 40; apy[1] := 1; aliens[1] := true;
-					apx[2] := 40; apy[2] := 7; aliens[2] := true;
-					apx[4] := 40; apy[4] := 9; aliens[4] := true;
-						writeln ('usted ha eligido el nivel facil');
+					apx[1] := 40; apy[1] := 3; aliens[1] := true;
+					apx[2] := 40; apy[2] := 14; aliens[2] := true;
+					apx[4] := 40; apy[4] := 18; aliens[4] := true;
+						writeln ('usted ha elegido el nivel facil');
 						writeln ('Presione [Enter] para empezar');
 						readln();
 						clrscr;
@@ -252,7 +300,7 @@ END.//end final del cuerpo
 I-/.-.\-I
 
        
-         |<> /´|´\<>|               
+          |<>/´|´\<>|               
       --|=(+)|\|/|(+)=|--
         /\  ;\,|,/;  /\            
        /  \         /  \

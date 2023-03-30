@@ -12,6 +12,7 @@ bx: Posicion x de la bala
 by: Posicion y de la bala
 dir: direccion del alien
 aliens: valores de vida de los aliens
+rdm: "Random" Arreglo de valores random para establecer direccion inicial
 
 
 Constantes:
