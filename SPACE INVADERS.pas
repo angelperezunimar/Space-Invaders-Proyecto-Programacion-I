@@ -25,6 +25,7 @@ rdm: array[1..6] of integer;
 procedure DPlayer;
 begin
 gotoxy(ppx,ppy);
+textcolor(15);
 write('<|A|>');
 end; //end final del procedimiento
 
@@ -68,7 +69,7 @@ Begin
 		gotoxy(apx[i], apy[i]);
 		
 		if (aliens[i] = true) and (i = 1) then
-		begin
+		begin textcolor(4);
 			writeln('    |<>/´|´\<>| ');
 			gotoxy(apx[i], apy[i] + 1);
 			writeln('--|=(+)|\|/|(+)=|--');
@@ -81,11 +82,13 @@ Begin
 		
 		if (aliens[i] = true) and (i >= 2) and (i < 4) then
 		begin
+		textcolor(3);
 			write('[=I.<>.I=]');
 		end;
 		
 		if (aliens[i] = true) and (i >= 4) then
 		begin
+		textcolor(2);
 			write('I-/.-.\-I');
 		end;
 
@@ -158,6 +161,7 @@ procedure MBullet;
 begin
 while (BActivo and (by > 1))  do
         begin
+        textcolor(8);
 		  delay(50);
           gotoxy(bx, by);
           writeln('   ');
@@ -340,6 +344,7 @@ randomize;
 		1:
 			begin
 		clrscr;
+		
 		gotoxy(10,1);writeln('//========\\ ');
 		gotoxy(10,2);writeln('Alien basico');
 		gotoxy(10,3);writeln('//========\\ ');
@@ -348,13 +353,13 @@ randomize;
 		gotoxy(50,2);writeln(' Alien Medio');
 		gotoxy(50,3);writeln('//==========\\ ');
 		gotoxy(50,5);writeln('[=I.<>.I=]');
-		gotoxy(90,1);writeln('//=========\\ ');
-		gotoxy(90,2);writeln('Alien Boss');
-		gotoxy(90,3);writeln('//=========\\ ');
-		gotoxy(90,5);writeln('    |<>/´|´\<>| ');	
-		gotoxy(90,5);writeln('--|=(+)|\|/|(+)=|--');	
-		gotoxy(90,6);writeln('  /\  ;\,|,/;  /\');	
-		gotoxy(90,7);writeln(' /  \         /  \');
+		gotoxy(90,1);writeln('//========\\ ');
+		gotoxy(91,2);writeln('Alien Boss');
+		gotoxy(90,3);writeln('//========\\ ');
+		gotoxy(87,5);writeln('    |<>/´|´\<>| ');	
+		gotoxy(87,5);writeln('--|=(+)|\|/|(+)=|--');	
+		gotoxy(87,6);writeln('  /\  ;\,|,/;  /\');	
+		gotoxy(87,7);writeln(' /  \         /  \');
 			
 		
 		
