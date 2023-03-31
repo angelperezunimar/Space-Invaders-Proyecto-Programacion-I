@@ -41,7 +41,7 @@ if keypressed then
 				gotoxy(ppx,ppy);
 				writeln('      ');
 				ppx := ppx - 1;
-				if ppx < 2 then
+				if ppx < 3 then
 				  ppx := 2;
 				  DPlayer;
 			end;//end del case #75
@@ -49,7 +49,7 @@ if keypressed then
 		#77:
 			begin
 			gotoxy(ppx,ppy);
-				writeln('       ');
+				writeln('      ');
 				ppx := ppx + 1;
 				if ppx > (LPantalla - 6) then
 				  ppx := (LPantalla - 5);		
