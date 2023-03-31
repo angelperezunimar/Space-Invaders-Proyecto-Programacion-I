@@ -304,9 +304,11 @@ randomize;
 		if  rdm[6] = 1 then dir[6]:= 1;
 		if  rdm[6] = 0 then dir[6]:= -1;
 	textcolor(5);
- gotoxy(43,1);writeln('//||=============================||\\ ');
- gotoxy(45,2);writeln ('Bienvenido a SPACE INVADERS A.A.S ');
- gotoxy(43,3);writeln('\\||=============================||//  ');
+ gotoxy(1,1);writeln('======================================================================================================================== ');
+ gotoxy(1,28);writeln('========================================================================================================================');
+ gotoxy(43,3);writeln('//||=============================||\\ ');
+ gotoxy(45,4);writeln ('Bienvenido a SPACE INVADERS A.A.S ');
+ gotoxy(43,5);writeln('\\||=============================||//  ');
  writeln ('---------------------------------');
  writeln ('-Presione [enter] para continuar-');
  writeln ('---------------------------------');
@@ -315,6 +317,7 @@ randomize;
 repeat
  repeat
  clrscr;
+ gotoxy(1,28);writeln('========================================================================================================================');
  gotoxy(53,1);writeln('//====\\ ');
  gotoxy(54,2);writeln('=MENU=');
  gotoxy(53,3);writeln('\\====// ');
@@ -343,16 +346,18 @@ repeat
 	ppy := 24;
 		validacion;
 		repeat
+		gotoxy(1,28);writeln('========================================================================================================================');
 		gotoxy(19,5);write ('/////Ingrese su nombre de usuario, puede usar caracteres y numeros:');
 		readln (nickname);
 		until nickname <> '';
 		repeat
 		begin
 		clrscr;
+		gotoxy(1,28);writeln('========================================================================================================================');
 		gotoxy(28,1);writeln('Bienvenido [',nickname, '] Eliga el nivel de dificultad para la partida: ');
 		gotoxy(8,3);writeln(' 1- Facil, esta es una dificultad sencila para jugadores nuevos');
-		gotoxy(10,5);writeln(' 2- Medio , este es un poco mas demandante para jugadores mas experimentados');
-		gotoxy(12,7);writeln(' 3- Extremo, alta dificultad para jugadores que buscan un reto');
+		gotoxy(10,5);writeln(' 2- Normal , este es un poco mas demandante para jugadores mas experimentados');
+		gotoxy(12,7);writeln(' 3- Dificil, alta dificultad para jugadores que buscan un reto');
 		readln (dificultades);
 			case dificultades of
 				1: 
@@ -386,6 +391,7 @@ repeat
 	2: 
 	begin
 	clrscr;
+	gotoxy(1,28);writeln('========================================================================================================================');
 	    gotoxy(37,1);writeln ('-------------------------------------------------------');
 		gotoxy(38,2);writeln ('A continuacion se muestran las intrucciones del juego ');
 		gotoxy(37,3);writeln ('-------------------------------------------------------');
