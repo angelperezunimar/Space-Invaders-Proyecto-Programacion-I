@@ -249,14 +249,14 @@ c1:=0;
 c2:=0;
 repeat
 	repeat
-	write ('///introduzca su nombre:');
+	gotoxy(15,1);write ('///introduzca su nombre:');
 	readln(p1);
 	until p1 <> '';
 	val (p1,c1,codigo1);
 until codigo1>0;
 repeat
 	repeat
-	write('////introduzca su apellido:');
+	gotoxy(17,3);write('////introduzca su apellido:');
 	readln (p2);
 	until p2 <> '';
 	val(p2,c2,codigo2);
@@ -319,6 +319,13 @@ repeat
  gotoxy(54,2);writeln('=MENU=');
  gotoxy(53,3);writeln('\\====// ');
  writeln; 
+ textcolor(15);
+ gotoxy(53,22);writeln('<|A|>');
+ textcolor(8);
+ gotoxy(55,17);writeln('|');
+ textcolor(3);
+ gotoxy(51,15);writeln('[=I.<>.I=]');
+ textcolor(5);
  gotoxy(40,5);writeln ('---------------------------------');
  gotoxy(50,6);writeln('1-JUGAR');
  gotoxy(40,7);writeln ('---------------------------------');
