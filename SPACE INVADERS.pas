@@ -71,14 +71,7 @@ Begin
 		
 		if (aliens[i] = true) and (i = 1) then
 		begin textcolor(4);
-			writeln('    |<>/´|´\<>| ');
-			gotoxy(apx[i], apy[i] + 1);
 			writeln('--|=(+)|\|/|(+)=|--');
-			gotoxy(apx[i], apy[i] + 2);
-			writeln('  /\  ;\,|,/;  /\');
-			gotoxy(apx[i], apy[i] + 3);
-			write(' /  \         /  \');
-			gotoxy(apx[i], apy[i] + 4);
 		end;
 		
 		if (aliens[i] = true) and (i >= 2) and (i < 4) then
@@ -108,30 +101,14 @@ begin
 	if dir[i] = 1 then
 	begin
 			gotoxy(apx[i],apy[i]);
-			write('           ');
-			gotoxy(apx[i] - 5,apy[i]);
 			write('                   ');
-			gotoxy(apx[i],apy[i]);
-			write('                                   ');
-			gotoxy(apx[i] - 4,apy[i]);
-			write('               ');
-			gotoxy(apx[i] - 5,apy[i]);
-			write('                ');
 			apx[i] := apx[i] + 1;
 	end;
 	
 	if dir[i] = -1 then
 	begin
 			gotoxy(apx[i],apy[i]);
-			write('           ');
-			gotoxy(apx[i] - 5,apy[i]);
 			write('                   ');
-			gotoxy(apx[i],apy[i]);
-			write('                                   ');
-			gotoxy(apx[i] - 4,apy[i]);
-			write('               ');
-			gotoxy(apx[i] - 5,apy[i]);
-			write('                ');
 			apx[i] := apx[i] - 1;
 	end;
 	end;
@@ -280,8 +257,8 @@ repeat
 				1: 
 				// Durante el desarrollo de la logica se usara todo este case para hacer pruebas sobre el funcionamiento
 					begin
-					apx[1] := 40; apy[1] := 3; aliens[1] := true;
-					apx[2] := 40; apy[2] := 14; aliens[2] := true;
+					apx[1] := 40; apy[1] := 2; aliens[1] := true;
+					apx[2] := 40; apy[2] := 9; aliens[2] := true;
 					apx[4] := 40; apy[4] := 18; aliens[4] := true;
 						writeln ('usted ha elegido el nivel facil');
 						writeln ('Presione [Enter] para empezar');
@@ -342,10 +319,8 @@ repeat
 		gotoxy(90,1);writeln('//========\\ ');
 		gotoxy(91,2);writeln('Alien Boss');
 		gotoxy(90,3);writeln('//========\\ ');
-		gotoxy(87,5);writeln('    |<>/´|´\<>| ');	
-		gotoxy(87,6);writeln('--|=(+)|\|/|(+)=|--');	
-		gotoxy(87,7);writeln('  /\  ;\,|,/;  /\');	
-		gotoxy(87,8);writeln(' /  \         /  \');
+		gotoxy(87,5);writeln('--|=(+)|\|/|(+)=|--');	
+
 		end;// end de la opcion unoh
 		2:
 		begin
