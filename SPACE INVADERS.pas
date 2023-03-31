@@ -52,7 +52,7 @@ if keypressed then
 				writeln('       ');
 				ppx := ppx + 1;
 				if ppx > (LPantalla - 6) then
-				  ppx := 71;		
+				  ppx := (LPantalla - 5);		
 				  DPlayer;	
 			end;//end del case #77
 		end;//end del case
@@ -100,16 +100,91 @@ begin
 	begin
 	if dir[i] = 1 then
 	begin
+	
+	if i = 1 then
+	begin
 			gotoxy(apx[i],apy[i]);
 			write('                   ');
 			apx[i] := apx[i] + 1;
+			if apx[i] > (LPantalla - 19) then
+			begin
+				  apx[i] := (LPantalla - 19);
+				  dir[i] := -1;
+				  apx[i] := apx[i];
+			end;	  	
+	end;
+	
+	if (i >= 2) and (i < 4) then
+	begin
+			gotoxy(apx[i],apy[i]);
+			write('                   ');
+			apx[i] := apx[i] + 1;
+			if apx[i] > (LPantalla - 10) then
+			begin
+				  apx[i] := (LPantalla - 10);
+				  dir[i] := -1;
+				  apx[i] := apx[i];
+			end;	  	
+	end;
+	
+	if i >= 4 then
+	begin
+	
+			gotoxy(apx[i],apy[i]);
+			write('                   ');
+			apx[i] := apx[i] + 1;
+			if apx[i] > (LPantalla - 10) then
+			begin
+				  apx[i] := (LPantalla - 9);
+				  dir[i] := -1;
+				  apx[i] := apx[i];
+			end;	  	
+	end;
 	end;
 	
 	if dir[i] = -1 then
 	begin
+	if i = 1 then
+	begin
+	
 			gotoxy(apx[i],apy[i]);
 			write('                   ');
 			apx[i] := apx[i] - 1;
+			if apx[i] < 1 then
+			begin
+				  apx[i] := 1;
+				  dir[i] := 1;
+				  apx[i] := apx[i];
+			end;	  	
+	end;
+	
+	if (i >= 2) and (i < 4) then
+	begin
+	
+			gotoxy(apx[i],apy[i]);
+			write('                   ');
+			apx[i] := apx[i] - 1;
+			if apx[i] < 1 then
+			begin
+				  apx[i] := 1;
+				  dir[i] := 1;
+				  apx[i] := apx[i];
+			end;	  	
+	end;
+	
+	if i >= 4 then
+	begin
+	
+			gotoxy(apx[i],apy[i]);
+			write('                   ');
+			apx[i] := apx[i] - 1;
+			if apx[i] < 1 then
+			begin
+				  apx[i] := 1;
+				  dir[i] := 1;
+				  apx[i] := apx[i];
+			end;	  	
+	end;
 	end;
 	end;
 end; //end del procedimiento
