@@ -13,13 +13,14 @@ APantalla = 24;
 LPantalla = 77;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
-scr,fnp,opciones,dificultades,bx,by,ppx,ppy,dir,l,aliensb,repit:integer;
+scr,fnp,opciones,dificultades,bx,by,ppx,ppy,l,aliensb,repit:integer;
 nickname:string;
 aliens: array[1..6] of boolean;
 BActivo: boolean;
 apy: array[1..6] of integer;
 apx: array[1..6] of integer;
 rdm: array[1..6] of integer;
+dir: array[1..6] of integer;
 
 //Procedimiento para mostrar al jugador en pantalla
 procedure DPlayer;
@@ -58,7 +59,7 @@ if keypressed then
 	end; //end del if
 end; //end final del procedimiento
 
-//Procedimiento para mover aliens
+//Procedimiento para dibujar aliens
 procedure DAliens;
 var i: integer;
 Begin
@@ -103,57 +104,37 @@ var i:integer;
 begin
 
 	for i:= 1 to 6 do
-	
-	if dir = 1 then
 	begin
-	gotoxy(apx[i],apy[i]);
-	writeln('                     ');
-	writeln('                      ');
-	writeln('                     ');
-	writeln('                     ');
-	write('                     ');
-	apx[i] := apx[i] + 1;
+	if dir[i] = 1 then
+	begin
+			gotoxy(apx[i],apy[i]);
+			write('           ');
+			gotoxy(apx[i] - 5,apy[i]);
+			write('                   ');
+			gotoxy(apx[i],apy[i]);
+			write('                                   ');
+			gotoxy(apx[i] - 4,apy[i]);
+			write('               ');
+			gotoxy(apx[i] - 5,apy[i]);
+			write('                ');
+			apx[i] := apx[i] + 1;
 	end;
 	
-	if dir = -1 then
+	if dir[i] = -1 then
 	begin
-	gotoxy(apx[i],apy[i]);
-	writeln('                     ');
-	writeln('                      ');
-	writeln('                     ');
-	writeln('                     ');
-	write('                     ');
-	apx[i]:= apx[i] - 1;
+			gotoxy(apx[i],apy[i]);
+			write('           ');
+			gotoxy(apx[i] - 5,apy[i]);
+			write('                   ');
+			gotoxy(apx[i],apy[i]);
+			write('                                   ');
+			gotoxy(apx[i] - 4,apy[i]);
+			write('               ');
+			gotoxy(apx[i] - 5,apy[i]);
+			write('                ');
+			apx[i] := apx[i] - 1;
 	end;
-	
-	
-	
-	if keypressed then
-    begin
-      case readkey of
-		#75:
-			begin
-				gotoxy(ppx,ppy);
-				writeln('      ');
-				ppx := ppx - 1;
-				if ppx < 1 then
-				  ppx := 1;
-				  DPlayer;
-			end;//end del case #75
-			
-		#77:
-			begin
-			gotoxy(ppx,ppy);
-				writeln('       ');
-				ppx := ppx + 1;
-				if ppx > (LPantalla - 6) then
-				  ppx := 71;		
-				  DPlayer;	
-			end;//end del case #77
-		end;//end del case
-	end; //end del if
-//end; //end final del procedimiento
- 
+	end;
 end; //end del procedimiento
 
 //Procedimiento para el movimiento del jugador en pantalla 
@@ -225,10 +206,11 @@ begin
 repeat
 
 DPlayer;
+MAliens;
 DAliens;
 MPlayer;
 BPlayer;
-MAliens;
+
 until false;
 end;//end final del procedimiento
 
@@ -237,23 +219,23 @@ BEGIN
 
 randomize;
 	rdm[1]:= random(2);
-		if  rdm[1] = 1 then dir:= 1;
-		if  rdm[1] = 0 then dir:= -1;
+		if  rdm[1] = 1 then dir[1]:= 1;
+		if  rdm[1] = 0 then dir[1]:= -1;
 	rdm[2]:= random(2);
-		if  rdm[2] = 1 then dir:= 1;
-		if  rdm[2] = 0 then dir:= -1;
+		if  rdm[2] = 1 then dir[2]:= 1;
+		if  rdm[2] = 0 then dir[2]:= -1;
 	rdm[3]:= random(2);
-		if  rdm[3] = 1 then dir:= 1;
-		if  rdm[3] = 0 then dir:= -1;
+		if  rdm[3] = 1 then dir[3]:= 1;
+		if  rdm[3] = 0 then dir[3]:= -1;
 	rdm[4]:= random(2);
-		if  rdm[4] = 1 then dir:= 1;
-		if  rdm[4] = 0 then dir:= -1;
+		if  rdm[4] = 1 then dir[4]:= 1;
+		if  rdm[4] = 0 then dir[4]:= -1;
 	rdm[5]:= random(2);
-		if  rdm[5] = 1 then dir:= 1;
-		if  rdm[5] = 0 then dir:= -1;
+		if  rdm[5] = 1 then dir[5]:= 1;
+		if  rdm[5] = 0 then dir[5]:= -1;
 	rdm[6]:= random(2);
-		if  rdm[6] = 1 then dir:= 1;
-		if  rdm[6] = 0 then dir:= -1;
+		if  rdm[6] = 1 then dir[6]:= 1;
+		if  rdm[6] = 0 then dir[6]:= -1;
 	textcolor(5);
  gotoxy(43,1);writeln('//||=============================||\\ ');
  gotoxy(45,2);writeln ('Bienvenido a SPACE INVADERS A.A.S ');
@@ -305,10 +287,9 @@ repeat
 						writeln ('Presione [Enter] para empezar');
 						readln();
 						clrscr;
-						//repeat
 						juego;
 						readln;
-						//until false;
+						
 					end;
 				2:
 					begin
