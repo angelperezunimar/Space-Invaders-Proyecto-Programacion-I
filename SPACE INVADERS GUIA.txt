@@ -13,7 +13,7 @@ by: Posicion y de la bala
 dir: direccion del alien
 aliens: valores de vida de los aliens
 rdm: "Random" Arreglo de valores random para establecer direccion inicial
-
+AActivo: "AliensActivo" otorga valor de true para la ejecucion del movimiento de los aliens
 
 Constantes:
 APantalla: "AlturaPantalla" Alto de pantalla de Juego

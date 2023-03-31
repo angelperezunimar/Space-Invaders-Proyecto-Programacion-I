@@ -16,7 +16,7 @@ var {Empieza la declaracion de variables, cada una tiene una funcion especifica 
 scr,fnp,opciones,dificultades,bx,by,ppx,ppy,l,aliensb,repit:integer;
 nickname:string;
 aliens: array[1..6] of boolean;
-BActivo: boolean;
+BActivo,AActivo: boolean;
 apy: array[1..6] of integer;
 apx: array[1..6] of integer;
 rdm: array[1..6] of integer;
@@ -96,6 +96,9 @@ procedure MAliens;
 var i:integer;
 begin
 
+while AActivo = true do
+begin
+delay(50);
 	for i:= 1 to 6 do
 	begin
 	if dir[i] = 1 then
@@ -186,10 +189,14 @@ begin
 			end;	  	
 	end;
 	end;
+	DAliens;
+	MPlayer;
 	end;
+	end;
+	
 end; //end del procedimiento
 
-//Procedimiento para el movimiento del jugador en pantalla 
+//Procedimiento para el movimiento de la bala en pantalla
 procedure MBullet;
 begin
 while (BActivo and (by > 1))  do
@@ -201,7 +208,7 @@ while (BActivo and (by > 1))  do
           by := by - 1;
           gotoxy(bx, by);
           writeln('  |');
-          MPlayer;
+		  MPlayer; 		
         end; //end del while
         BActivo := False;
         gotoxy(bx, by);
@@ -258,8 +265,8 @@ begin
 repeat
 
 DPlayer;
-MAliens;
 DAliens;
+MAliens;
 MPlayer;
 BPlayer;
 
@@ -332,6 +339,7 @@ repeat
 				1: 
 				// Durante el desarrollo de la logica se usara todo este case para hacer pruebas sobre el funcionamiento
 					begin
+					AActivo := true;
 					apx[1] := 40; apy[1] := 2; aliens[1] := true;
 					apx[2] := 40; apy[2] := 9; aliens[2] := true;
 					apx[4] := 40; apy[4] := 18; aliens[4] := true;
@@ -410,15 +418,3 @@ repeat
 until aliensb <> 2;
 
 END.//end final del cuerpo
-
-
-
-[=I.<>.I=]
-
-I-/.-.\-I
-
-       
-          |<>/´|´\<>|               
-      --|=(+)|\|/|(+)=|--
-        /\  ;\,|,/;  /\            
-       /  \         /  \
