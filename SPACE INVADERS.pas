@@ -49,7 +49,7 @@ if keypressed then
 		#77:
 			begin
 			gotoxy(ppx,ppy);
-				writeln('      ');
+				writeln('     ');
 				ppx := ppx + 1;
 				if ppx > (LPantalla - 6) then
 				  ppx := (LPantalla - 5);		
