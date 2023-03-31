@@ -343,23 +343,28 @@ repeat
 	ppy := 24;
 		validacion;
 		repeat
-		writeln ('///Ingrese su nombre de usuario, puede usar caracteres y numeros:');
+		gotoxy(19,5);write ('/////Ingrese su nombre de usuario, puede usar caracteres y numeros:');
 		readln (nickname);
 		until nickname <> '';
 		repeat
 		begin
-		writeln('¡Bienvenido! ',nickname, ' Eliga el nivel de dificultad para la partida: [1] [2] [3]');
+		clrscr;
+		gotoxy(28,1);writeln('Bienvenido [',nickname, '] Eliga el nivel de dificultad para la partida: ');
+		gotoxy(8,3);writeln(' 1- Facil, esta es una dificultad sencila para jugadores nuevos');
+		gotoxy(10,5);writeln(' 2- Medio , este es un poco mas demandante para jugadores mas experimentados');
+		gotoxy(12,7);writeln(' 3- Extremo, alta dificultad para jugadores que buscan un reto');
 		readln (dificultades);
 			case dificultades of
 				1: 
 				// Durante el desarrollo de la logica se usara todo este case para hacer pruebas sobre el funcionamiento
-					begin
+					begin 
+					clrscr;
 					AActivo := true;
 					apx[1] := 40; apy[1] := 2; aliens[1] := true;
 					apx[2] := 40; apy[2] := 9; aliens[2] := true;
 					apx[4] := 40; apy[4] := 18; aliens[4] := true;
-						writeln ('usted ha elegido el nivel facil');
-						writeln ('Presione [Enter] para empezar');
+						gotoxy(35,1);writeln ('Usted ha elegido el nivel facil');
+						writeln ('///Presione [Enter] para empezar');
 						readln();
 						clrscr;
 						juego;
