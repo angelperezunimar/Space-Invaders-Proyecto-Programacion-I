@@ -41,8 +41,8 @@ if keypressed then
 				gotoxy(ppx,ppy);
 				writeln('      ');
 				ppx := ppx - 1;
-				if ppx < 1 then
-				  ppx := 1;
+				if ppx < 2 then
+				  ppx := 2;
 				  DPlayer;
 			end;//end del case #75
 			
@@ -95,7 +95,7 @@ end;
 procedure MBullet;
 begin
 
-while (BActivo and (by > 1)) do
+while (BActivo and (by > 2)) do
         begin
         textcolor(8);
 		  delay(50);
@@ -110,7 +110,7 @@ while (BActivo and (by > 1)) do
         BActivo := False;
         if by = 1 then
         begin
-        gotoxy(bx, by);
+        gotoxy(bx, by + 1);
 		writeln('    ');
 		end;
 end; //end final del procedimiento
@@ -195,9 +195,9 @@ delay(50);
 			gotoxy(apx[i],apy[i]);
 			write('                   ');
 			apx[i] := apx[i] - 1;
-			if apx[i] < 1 then
+			if apx[i] < 2 then
 			begin
-				  apx[i] := 1;
+				  apx[i] := 2;
 				  dir[i] := 1;
 				  apx[i] := apx[i];
 			end;	  	
@@ -209,9 +209,9 @@ delay(50);
 			gotoxy(apx[i],apy[i]);
 			write('                   ');
 			apx[i] := apx[i] - 1;
-			if apx[i] < 1 then
+			if apx[i] < 2 then
 			begin
-				  apx[i] := 1;
+				  apx[i] := 2;
 				  dir[i] := 1;
 				  apx[i] := apx[i];
 			end;	  	
@@ -223,9 +223,9 @@ delay(50);
 			gotoxy(apx[i],apy[i]);
 			write('                   ');
 			apx[i] := apx[i] - 1;
-			if apx[i] < 1 then
+			if apx[i] < 2 then
 			begin
-				  apx[i] := 1;
+				  apx[i] := 2;
 				  dir[i] := 1;
 				  apx[i] := apx[i];
 			end;	  	
@@ -285,7 +285,7 @@ for i:=1 to LPantalla do
 begin
 gotoxy(i,1);
 writeln('-');
-gotoxy(i,APantalla);
+gotoxy(i,APantalla + 1);
 writeln('-');
 end;
 
