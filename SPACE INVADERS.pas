@@ -119,6 +119,8 @@ end; //end final del procedimiento
 procedure BPlayer;
 begin
 BActivo := False;
+if keypressed then
+begin
 	if readkey = #32 then // barra espaciadora
 	begin
 		bx := ppx;
@@ -128,7 +130,7 @@ BActivo := False;
         MBullet;
         
 	end;//end del if
-	
+	end;
 end;//end final del procedimiento
 
 //Procedimiento para mover aliens
