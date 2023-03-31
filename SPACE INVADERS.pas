@@ -94,6 +94,7 @@ end;
 //Procedimiento para el movimiento de la bala en pantalla
 procedure MBullet;
 begin
+
 while (BActivo and (by > 1)) do
         begin
         textcolor(8);
@@ -107,8 +108,11 @@ while (BActivo and (by > 1)) do
 		
         end; //end del while
         BActivo := False;
+        if by = 1 then
+        begin
         gotoxy(bx, by);
 		writeln('    ');
+		end;
 end; //end final del procedimiento
 
 //Procedimiento para el movimiento del jugador en pantalla 
@@ -225,10 +229,10 @@ delay(50);
 			end;	  	
 	end;
 	end;
-	DAliens;
-	MPlayer;
-	BPlayer;
 	end;
+	DAliens;
+	BPlayer;
+	MPlayer;
 	end;
 	
 end; //end del procedimiento
@@ -277,6 +281,8 @@ end;//end final del procedimiento
 
 // Comienzo del cuerpo del programa
 BEGIN
+
+by := 0;
 
 randomize;
 	rdm[1]:= random(2);
