@@ -91,6 +91,42 @@ Begin
 
 end;
 
+//Procedimiento para el movimiento de la bala en pantalla
+procedure MBullet;
+begin
+while (BActivo and (by > 1)) do
+        begin
+        textcolor(8);
+		  delay(50);
+          gotoxy(bx, by);
+          writeln('   ');
+          by := by - 1;
+          gotoxy(bx, by);
+          writeln('  |');
+		  MPlayer; 		
+		
+        end; //end del while
+        BActivo := False;
+        gotoxy(bx, by);
+		writeln('    ');
+end; //end final del procedimiento
+
+//Procedimiento para el movimiento del jugador en pantalla 
+procedure BPlayer;
+begin
+BActivo := False;
+	if readkey = #32 then // barra espaciadora
+	begin
+		bx := ppx;
+        by := ppy - 1;
+        BActivo := True;
+        writeln('|');
+        MBullet;
+        
+	end;//end del if
+	
+end;//end final del procedimiento
+
 //Procedimiento para mover aliens
 procedure MAliens;
 var i:integer;
@@ -191,45 +227,11 @@ delay(50);
 	end;
 	DAliens;
 	MPlayer;
+	BPlayer;
 	end;
 	end;
 	
 end; //end del procedimiento
-
-//Procedimiento para el movimiento de la bala en pantalla
-procedure MBullet;
-begin
-while (BActivo and (by > 1))  do
-        begin
-        textcolor(8);
-		  delay(50);
-          gotoxy(bx, by);
-          writeln('   ');
-          by := by - 1;
-          gotoxy(bx, by);
-          writeln('  |');
-		  MPlayer; 		
-        end; //end del while
-        BActivo := False;
-        gotoxy(bx, by);
-		writeln('    ');
-end; //end final del procedimiento
-
-//Procedimiento para el movimiento del jugador en pantalla 
-procedure BPlayer;
-begin
-BActivo := False;
-	if readkey = #32 then // barra espaciadora
-	begin
-		bx := ppx;
-        by := ppy - 1;
-        BActivo := True;
-        writeln('|');
-        MBullet;
-        
-	end;//end del if
-	
-end;//end final del procedimiento
 
 //Procedimiento para la validacion del nombre y apellido
 procedure validacion;
