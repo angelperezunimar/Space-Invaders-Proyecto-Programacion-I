@@ -266,12 +266,44 @@ until codigo2 > 0;
 writeln;
 end;//end final del procedimiento
 
+//Procedimiento para dibujar la pantalla principal
+procedure DPantalla;
+var i,j: integer;
+Begin
+textcolor(15);
+clrscr;
+
+for i:=1 to APantalla do
+begin
+gotoxy(1,i);
+writeln('|');
+gotoxy(LPantalla,i);
+writeln('|');
+end;
+
+for i:=1 to LPantalla do
+begin
+gotoxy(i,1);
+writeln('-');
+gotoxy(i,APantalla);
+writeln('-');
+end;
+
+gotoxy(LPantalla+1,1);
+writeln('SPACE INVADERS');
+gotoxy(LPantalla+1,3);
+writeln('Vidas: ',l);
+gotoxy(LPantalla+1,5);
+writeln('Nickname: ',nickname);
+
+end;
+
 //Procedimiento para la ejecucion del juego completo estructurado
 procedure juego;
 
 begin
 repeat
-
+DPantalla;
 DPlayer;
 DAliens;
 MAliens;
