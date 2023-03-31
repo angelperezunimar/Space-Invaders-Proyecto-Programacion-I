@@ -108,9 +108,9 @@ while (BActivo and (by > 2)) do
 		
         end; //end del while
         BActivo := False;
-        if by = 1 then
+        if by = 2 then
         begin
-        gotoxy(bx, by + 1);
+        gotoxy(bx,by);
 		writeln('    ');
 		end;
 end; //end final del procedimiento
