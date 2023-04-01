@@ -13,7 +13,7 @@ APantalla = 24;
 LPantalla = 77;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
-scr,fnp,opciones,dificultades,bx,by,ppx,ppy,l,aliensb,repit:integer;
+scr, fnp, opciones, dificultades, bx, by, ppx, ppy, l, aliensb, repit:integer;
 nickname:string;
 aliens: array[1..6] of boolean;
 BActivo,AActivo: boolean;
@@ -332,175 +332,182 @@ end;//end final del procedimiento
 // Comienzo del cuerpo del programa
 BEGIN
 
-by := 0;
+	by := 0;
 
-randomize;
-	rdm[1]:= random(2);
-		if  rdm[1] = 1 then dir[1]:= 1;
-		if  rdm[1] = 0 then dir[1]:= -1;
-	rdm[2]:= random(2);
-		if  rdm[2] = 1 then dir[2]:= 1;
-		if  rdm[2] = 0 then dir[2]:= -1;
-	rdm[3]:= random(2);
-		if  rdm[3] = 1 then dir[3]:= 1;
-		if  rdm[3] = 0 then dir[3]:= -1;
-	rdm[4]:= random(2);
-		if  rdm[4] = 1 then dir[4]:= 1;
-		if  rdm[4] = 0 then dir[4]:= -1;
-	rdm[5]:= random(2);
-		if  rdm[5] = 1 then dir[5]:= 1;
-		if  rdm[5] = 0 then dir[5]:= -1;
-	rdm[6]:= random(2);
-		if  rdm[6] = 1 then dir[6]:= 1;
-		if  rdm[6] = 0 then dir[6]:= -1;
-	textcolor(5);
- gotoxy(1,1);writeln('======================================================================================================================== ');
- gotoxy(1,28);writeln('========================================================================================================================');
- gotoxy(43,3);writeln('//||=============================||\\ ');
- gotoxy(45,4);writeln ('Bienvenido a SPACE INVADERS A.A.S ');
- gotoxy(43,5);writeln('\\||=============================||//  ');
- writeln ('---------------------------------');
- writeln ('-Presione [enter] para continuar-');
- writeln ('---------------------------------');
- readln();
- clrscr;
-repeat //repeat para regresar al menu principal luego de ver las instrucciones
- repeat // repeat para elegir solo las opciones jugar, instrucciones o cerrar juego
- clrscr;
- gotoxy(1,28);writeln('========================================================================================================================');
- gotoxy(53,1);writeln('//====\\ ');
- gotoxy(54,2);writeln('=MENU=');
- gotoxy(53,3);writeln('\\====// ');
- writeln; 
- textcolor(15);
- gotoxy(53,22);writeln('<|A|>');
- textcolor(8);
- gotoxy(55,17);writeln('|');
- textcolor(3);
- gotoxy(51,15);writeln('[=I.<>.I=]');
- textcolor(5);
- gotoxy(40,5);writeln ('---------------------------------');
- gotoxy(50,6);writeln('1-JUGAR');
- gotoxy(40,7);writeln ('---------------------------------');
- gotoxy(50,8);writeln ('2-INTRUCCIONES');
- gotoxy(40,9);writeln ('---------------------------------');
- gotoxy(50,10); writeln('3-CERRAR JUEGO');
- gotoxy(40,11);writeln ('---------------------------------');
- readln (opciones);
- until (opciones=1) or (opciones=2) or (opciones=3); //fin del repeat para elegir las opciones de jugar, instrucciones o cerrar juego
- case opciones of
-	1:
-	begin
-	clrscr;
-	ppx := 40;
-	ppy := 24;
-		validacion;
-		repeat
-		gotoxy(1,28);writeln('========================================================================================================================');
-		gotoxy(19,5);write ('/////Ingrese su nombre de usuario, puede usar caracteres y numeros:');
-		readln (nickname);
-		until nickname <> ''; //este repeat es para evitar romper el programa con un espacio en blanco
-		repeat //repeat para elegir algunas de las dificultades
-		begin
-		clrscr;
-		gotoxy(1,28);writeln('========================================================================================================================');
-		gotoxy(28,1);writeln('Bienvenido [',nickname, '] Eliga el nivel de dificultad para la partida: ');
-		gotoxy(8,3);writeln(' 1- Facil, esta es una dificultad sencila para jugadores nuevos');
-		gotoxy(10,5);writeln(' 2- Normal , este es un poco mas demandante para jugadores mas experimentados');
-		gotoxy(12,7);writeln(' 3- Dificil, alta dificultad para jugadores que buscan un reto');
-		readln (dificultades);
-			case dificultades of
-				1: 
-				// Durante el desarrollo de la logica se usara todo este case para hacer pruebas sobre el funcionamiento
-					begin 
-					clrscr;
-					AActivo := true;
-					apx[1] := 40; apy[1] := 2; aliens[1] := true;
-					apx[2] := 40; apy[2] := 9; aliens[2] := true;
-					apx[4] := 40; apy[4] := 18; aliens[4] := true;
-						gotoxy(35,1);writeln ('Usted ha elegido el nivel facil');
-						writeln ('///Presione [Enter] para empezar');
-						readln();
-						clrscr;
-						juego;
-						readln;
-						
-					end;
-				2:
-					begin
-						writeln ('usted ha elegido el nivel normal');
-					end;
-				3:
-					begin 
-						writeln ('usted ha elegido el nivel de dificultad dificil');
-					end;
-				
-			end; //end del segundo case
-		end; // end que engloba al repeat
-		until (dificultades=1) or (dificultades=2) or (dificultades=3 )// final del repeat para elegir la dificultad
-	end; //end de la primera opcion del primer case
-	2: 
-	begin
-	 repeat // repat para volver a las instrucciones
-	 begin
-	clrscr;
-	gotoxy(1,28);writeln('========================================================================================================================');
-	    gotoxy(37,1);writeln ('-------------------------------------------------------');
-		gotoxy(38,2);writeln ('A continuacion se muestran las intrucciones del juego ');
-		gotoxy(37,3);writeln ('-------------------------------------------------------');
-		gotoxy(8,7);writeln ('/Su objetivo es eliminar oleadas de alienigenas con un canon laser y obtener la mayor cantidad de puntos posible');
-		gotoxy(8,8);writeln ('---------------------------------------------------------------------------------------------------------------');
-		gotoxy(8,9);writeln ('//Se utilizan las letras <== y ==> (izquierda y derecha) para mover la nave');
-		gotoxy(8,10);writeln ('---------------------------------------------------------------------------------------------------------------');
-		gotoxy(8,11);writeln ('///Se utiliza la barra espaciadora para disparar el canon laser');
-		gotoxy(8,12);writeln ('---------------------------------------------------------------------------------------------------------------');
-		gotoxy(8,13);writeln ('////Con la tecla [p] se pausa el juego');
-		gotoxy(8,14);writeln ('---------------------------------------------------------------------------------------------------------------');
-	    gotoxy(1,15);writeln ('=======================================================================================================================');
-		gotoxy(5,16);writeln ('-------------------------------------------------------');
-		gotoxy(5,17);writeln('/Para saber sobre los aliens presione 1');
-		gotoxy(5,18);writeln ('-------------------------------------------------------');
-		gotoxy(5,19);writeln('//Para volver al menu presione 2');
-		gotoxy(5,20);writeln ('-------------------------------------------------------');
-		gotoxy(5,21);writeln('///Para cerrar el programa presione 3');
-		gotoxy(5,22);writeln ('-------------------------------------------------------');
-		readln(aliensb);
-		case aliensb of 
+	randomize;
+		rdm[1]:= random(2);
+			if  rdm[1] = 1 then dir[1]:= 1;
+			if  rdm[1] = 0 then dir[1]:= -1;
+		rdm[2]:= random(2);
+			if  rdm[2] = 1 then dir[2]:= 1;
+			if  rdm[2] = 0 then dir[2]:= -1;
+		rdm[3]:= random(2);
+			if  rdm[3] = 1 then dir[3]:= 1;
+			if  rdm[3] = 0 then dir[3]:= -1;
+		rdm[4]:= random(2);
+			if  rdm[4] = 1 then dir[4]:= 1;
+			if  rdm[4] = 0 then dir[4]:= -1;
+		rdm[5]:= random(2);
+			if  rdm[5] = 1 then dir[5]:= 1;
+			if  rdm[5] = 0 then dir[5]:= -1;
+		rdm[6]:= random(2);
+			if  rdm[6] = 1 then dir[6]:= 1;
+			if  rdm[6] = 0 then dir[6]:= -1;
+		textcolor(5);
+	 gotoxy(1,1);writeln('======================================================================================================================== ');
+	 gotoxy(1,28);writeln('========================================================================================================================');
+	 gotoxy(43,3);writeln('//||=============================||\\ ');
+	 gotoxy(45,4);writeln ('Bienvenido a SPACE INVADERS A.A.S ');
+	 gotoxy(43,5);writeln('\\||=============================||//  ');
+	 writeln ('---------------------------------');
+	 writeln ('-Presione [enter] para continuar-');
+	 writeln ('---------------------------------');
+	 readln();
+	 clrscr;
+			repeat //repeat para regresar al menu principal luego de ver las instrucciones
+				repeat // repeat para elegir solo las opciones jugar, instrucciones o cerrar juego
+					 clrscr;
+					 gotoxy(1,28);writeln('========================================================================================================================');
+					 gotoxy(53,1);writeln('//====\\ ');
+					 gotoxy(54,2);writeln('=MENU=');
+					 gotoxy(53,3);writeln('\\====// ');
+					 writeln; 
+					 textcolor(15);
+					 gotoxy(53,22);writeln('<|A|>');
+					 textcolor(8);
+					 gotoxy(55,17);writeln('|');
+					 textcolor(3);
+					 gotoxy(51,15);writeln('[=I.<>.I=]');
+					 textcolor(5);
+					 gotoxy(40,5);writeln ('---------------------------------');
+					 gotoxy(50,6);writeln('1-JUGAR');
+					 gotoxy(40,7);writeln ('---------------------------------');
+					 gotoxy(50,8);writeln ('2-INTRUCCIONES');
+					 gotoxy(40,9);writeln ('---------------------------------');
+					 gotoxy(50,10); writeln('3-CERRAR JUEGO');
+					 gotoxy(40,11);writeln ('---------------------------------');
+					 readln (opciones);
+				until (opciones=1) or (opciones=2) or (opciones=3); //fin del repeat para elegir las opciones de jugar, instrucciones o cerrar juego
+	 case opciones of
 		1:
-			begin
-		clrscr;
-		
-		gotoxy(10,1);writeln('//========\\ ');
-		gotoxy(10,2);writeln('Alien basico');
-		gotoxy(10,3);writeln('//========\\ ');
-		gotoxy(10,5);writeln('I-/.-.\-I');
-		gotoxy(50,1);writeln('//==========\\ ');
-		gotoxy(50,2);writeln(' Alien Medio');
-		gotoxy(50,3);writeln('//==========\\ ');
-		gotoxy(50,5);writeln('[=I.<>.I=]');
-		gotoxy(90,1);writeln('//========\\ ');
-		gotoxy(91,2);writeln('Alien Boss');
-		gotoxy(90,3);writeln('//========\\ ');
-		gotoxy(87,5);writeln('--|=(+)|\|/|(+)=|--');	
-		writeln('');
-		Writeln('=============================================================================================================');
-		writeln ('presione la tecla [1] para regresar a las intrucciones');
-		readln();
-		end;// end de la opcion unoh
-		end; //end case aliensb
 		begin
-		writeln('CARGANDO...presione de nuevo para confirmar');
-		readln(repit);
-		end;
-		end;//end que engloba al repit
-		until (repit<>1); // final del repeat para volver a las instrucciones
-		clrscr;
-	end;// end del la segunda opcion  del primer case
-	
-	3: writeln ('hasta la proxima, vuelva pronto pronto para mas diversion!'); 
+			clrscr;
+			ppx := 40;
+			ppy := 24;
+			validacion;
+				repeat
+					gotoxy(1,28);writeln('========================================================================================================================');
+					gotoxy(19,5);write ('/////Ingrese su nombre de usuario, puede usar caracteres y numeros:');
+					readln (nickname);
+				until nickname <> ''; //este repeat es para evitar romper el programa con un espacio en blanco
+				
+			repeat //repeat para elegir algunas de las dificultades
+					begin
+						clrscr;
+						gotoxy(1,28);writeln('========================================================================================================================');
+						gotoxy(28,1);writeln('Bienvenido [',nickname, '] Eliga el nivel de dificultad para la partida: ');
+						gotoxy(8,3);writeln(' 1- Facil, esta es una dificultad sencila para jugadores nuevos');
+						gotoxy(10,5);writeln(' 2- Normal , este es un poco mas demandante para jugadores mas experimentados');
+						gotoxy(12,7);writeln(' 3- Dificil, alta dificultad para jugadores que buscan un reto');
+						readln (dificultades);
+							case dificultades of
+								1: 
+								// Durante el desarrollo de la logica se usara todo este case para hacer pruebas sobre el funcionamiento
+									begin 
+										clrscr;
+										AActivo := true;
+										apx[1] := 40; apy[1] := 2; aliens[1] := true;
+										apx[2] := 40; apy[2] := 9; aliens[2] := true;
+										apx[4] := 40; apy[4] := 18; aliens[4] := true;
+										gotoxy(35,1);writeln ('Usted ha elegido el nivel facil');
+										writeln ('///Presione [Enter] para empezar');
+										readln();
+										clrscr;
+										juego;
+										readln;				
+									end;
+							    2:
+								begin
+									writeln ('usted ha elegido el nivel normal');
+								end;
+							    
+							    3:	
+								begin 
+									writeln ('usted ha elegido el nivel de dificultad dificil');
+								end;
+						
+							end; //end del segundo case
+							
+				end; // end que engloba al repeat
+				
+			until (dificultades=1) or (dificultades=2) or (dificultades=3 )// final del repeat para elegir la dificultad
+			
+		end; //end de la primera opcion del primer case
+		
+		2: 
+		begin
+			repeat // repat para volver a las instrucciones
+				 begin
+					clrscr;
+						gotoxy(1,28);writeln('========================================================================================================================');
+						gotoxy(37,1);writeln ('-------------------------------------------------------');
+						gotoxy(38,2);writeln ('A continuacion se muestran las intrucciones del juego ');
+						gotoxy(37,3);writeln ('-------------------------------------------------------');
+						gotoxy(8,7);writeln ('/Su objetivo es eliminar oleadas de alienigenas con un canon laser y obtener la mayor cantidad de puntos posible');
+						gotoxy(8,8);writeln ('---------------------------------------------------------------------------------------------------------------');
+						gotoxy(8,9);writeln ('//Se utilizan las letras <== y ==> (izquierda y derecha) para mover la nave');
+						gotoxy(8,10);writeln ('---------------------------------------------------------------------------------------------------------------');
+						gotoxy(8,11);writeln ('///Se utiliza la barra espaciadora para disparar el canon laser');
+						gotoxy(8,12);writeln ('---------------------------------------------------------------------------------------------------------------');
+						gotoxy(8,13);writeln ('////Con la tecla [p] se pausa el juego');
+						gotoxy(8,14);writeln ('---------------------------------------------------------------------------------------------------------------');
+						gotoxy(1,15);writeln ('=======================================================================================================================');
+						gotoxy(5,16);writeln ('-------------------------------------------------------');
+						gotoxy(5,17);writeln('/Para saber sobre los aliens presione 1');
+						gotoxy(5,18);writeln ('-------------------------------------------------------');
+						gotoxy(5,19);writeln('//Para volver al menu presione 2');
+						gotoxy(5,20);writeln ('-------------------------------------------------------');
+						gotoxy(5,21);writeln('///Para cerrar el programa presione 3');
+						gotoxy(5,22);writeln ('-------------------------------------------------------');
+						readln(aliensb);
+					case aliensb of 
+						1:
+						begin
+							clrscr;
+							
+							gotoxy(10,1);writeln('//========\\ ');
+							gotoxy(10,2);writeln('Alien basico');
+							gotoxy(10,3);writeln('//========\\ ');
+							gotoxy(10,5);writeln('I-/.-.\-I');
+							gotoxy(50,1);writeln('//==========\\ ');
+							gotoxy(50,2);writeln(' Alien Medio');
+							gotoxy(50,3);writeln('//==========\\ ');
+							gotoxy(50,5);writeln('[=I.<>.I=]');
+							gotoxy(90,1);writeln('//========\\ ');
+							gotoxy(91,2);writeln('Alien Boss');
+							gotoxy(90,3);writeln('//========\\ ');
+							gotoxy(87,5);writeln('--|=(+)|\|/|(+)=|--');	
+							writeln('');
+							Writeln('=============================================================================================================');
+							writeln ('presione la tecla [1] para regresar a las intrucciones');
+							readln();
+						end;// end de la opcion unoh
+					end; //end case aliensb
+					
+					begin
+						writeln('CARGANDO...presione de nuevo para confirmar');
+						readln(repit);
+					end;
+					
+				end;//end que engloba al repit
+			until (repit<>1); // final del repeat para volver a las instrucciones
+			clrscr;
+		end;// end del la segunda opcion  del primer case
+		
+		3: writeln ('hasta la proxima, vuelva pronto pronto para mas diversion!'); 
 
- end; //end del primer case
+	 end; //end del primer case
 
-until aliensb <> 2; //final del repeat para volver al menu principal luego de ver las instrucciones
+		until aliensb <> 2; //final del repeat para volver al menu principal luego de ver las instrucciones
 
 END.//end final del cuerpo
