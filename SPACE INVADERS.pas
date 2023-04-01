@@ -442,6 +442,8 @@ repeat
 	end; //end de la primera opcion del primer case
 	2: 
 	begin
+	 repeat
+	 begin
 	clrscr;
 	gotoxy(1,28);writeln('========================================================================================================================');
 	    gotoxy(37,1);writeln ('-------------------------------------------------------');
@@ -481,14 +483,20 @@ repeat
 		gotoxy(91,2);writeln('Alien Boss');
 		gotoxy(90,3);writeln('//========\\ ');
 		gotoxy(87,5);writeln('--|=(+)|\|/|(+)=|--');	
-
+		writeln('');
+		Writeln('=============================================================================================================');
+		writeln ('presione la tecla [1] para regresar a las intrucciones');
 		end;// end de la opcion unoh
-		2:
-		begin
-		end; //end de l opcion doh
 		end; //end case aliensb
-		
+		begin
+		writeln('Cargando... presione de nuevo para confirmar');
+		read(repit);
+		end;
+		end;
+		until (repit<>1);
+		clrscr;
 	end;// end del la segunda opcion  del primer case
+	
 	3: writeln ('hasta la proxima, vuelva pronto pronto para mas diversion!');
 
  end; //end del primer case
