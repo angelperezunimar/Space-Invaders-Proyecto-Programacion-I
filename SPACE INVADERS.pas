@@ -93,26 +93,44 @@ end;
 
 //Procedimiento para el movimiento de la bala en pantalla
 procedure MBullet;
+var i: integer;
 begin
-
-while (BActivo and (by > 2)) do
-        begin
-        textcolor(8);
-		  delay(50);
-          gotoxy(bx, by);
-          writeln('   ');
-          by := by - 1;
-          gotoxy(bx, by);
-          writeln('  |');
-		  MPlayer; 		
-		
-        end; //end del while
-        BActivo := False;
-        if by = 2 then
-        begin
-        gotoxy(bx,by);
-		writeln('    ');
-		end;
+  while (BActivo and (by > 2)) do
+  begin
+    textcolor(8);
+    delay(50);
+    gotoxy(bx, by);
+    writeln('   ');
+    by := by - 1;
+    gotoxy(bx, by);
+    writeln('  |');
+    MPlayer;
+    for i := 1 to 6 do // verificación de impacto
+    begin
+      if (aliens[i] = true) and (bx = apx[i] + 5) and (by <= apy[i] + 2) and (by >= apy[i]) then
+      begin
+        aliens[i] := false;
+        gotoxy(apx[i], apy[i]);
+        write('             ');
+      end;
+    end;
+  end;
+  BActivo := False;
+  if by = 2 then
+  begin
+    gotoxy(bx,by);
+    writeln('    ');
+  end;
+  // actualización de aliens
+  for i := 1 to 6 do
+  begin
+    if (aliens[i] = true) and (bx = apx[i] + 5) and (by <= apy[i] + 2) and (by >= apy[i]) then
+    begin
+      aliens[i] := false;
+      gotoxy(apx[i], apy[i]);
+      write('             ');
+    end;
+  end;
 end; //end final del procedimiento
 
 //Procedimiento para el movimiento del jugador en pantalla 
