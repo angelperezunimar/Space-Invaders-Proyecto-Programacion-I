@@ -486,11 +486,12 @@ repeat
 		writeln('');
 		Writeln('=============================================================================================================');
 		writeln ('presione la tecla [1] para regresar a las intrucciones');
+		readln();
 		end;// end de la opcion unoh
 		end; //end case aliensb
 		begin
-		writeln('Cargando... presione de nuevo para confirmar');
-		read(repit);
+		writeln('CARGANDO...presione de nuevo para confirmar');
+		readln(repit);
 		end;
 		end;
 		until (repit<>1);
