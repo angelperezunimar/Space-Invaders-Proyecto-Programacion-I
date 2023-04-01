@@ -6,7 +6,7 @@
 
 program SpaceInvaders;
 
-uses CRT;       //Profe hoy nos reunimos, mi pc anda obstusa  <== Samuel
+uses CRT;       
 
 const
 APantalla = 24;
@@ -87,7 +87,7 @@ Begin
 		end;
 
 
-	end;
+	end; //end del bucle for
 
 end;
 
@@ -112,15 +112,15 @@ begin
         aliens[i] := false;
         gotoxy(apx[i], apy[i]);
         write('             ');
-      end;
-    end;
-  end;
+      end; //end del if
+    end;// end del bucle for
+  end; // end del bucle while
   BActivo := False;
   if by = 2 then
   begin
     gotoxy(bx,by);
     writeln('    ');
-  end;
+  end; //end del if
   // actualización de aliens
   for i := 1 to 6 do
   begin
@@ -129,8 +129,8 @@ begin
       aliens[i] := false;
       gotoxy(apx[i], apy[i]);
       write('             ');
-    end;
-  end;
+    end; // end del if
+  end; //end del bucle for
 end; //end final del procedimiento
 
 //Procedimiento para el movimiento del jugador en pantalla 
@@ -262,8 +262,6 @@ procedure validacion;
 var
 p1,p2:string;
 c1,c2,codigo1,codigo2:integer;
-const 
-selfiri = 13; //{profe me gusta usar constantes ;D} <== Ese fue Samuel profe 
 begin
 c1:=0;
 c2:=0;
@@ -271,16 +269,16 @@ repeat
 	repeat
 	gotoxy(15,1);write ('///introduzca su nombre:');
 	readln(p1);
-	until p1 <> '';
+	until p1 <> ''; //final del repeat interno (para no romper el juego colocando un espacio en blanco)
 	val (p1,c1,codigo1);
-until codigo1>0;
+until codigo1>0; // final del repat
 repeat
 	repeat
 	gotoxy(17,3);write('////introduzca su apellido:');
 	readln (p2);
-	until p2 <> '';
+	until p2 <> ''; //final del repeat interno
 	val(p2,c2,codigo2);
-until codigo2 > 0;
+until codigo2 > 0; //final del repeat
 writeln;
 end;//end final del procedimiento
 
@@ -366,8 +364,8 @@ randomize;
  writeln ('---------------------------------');
  readln();
  clrscr;
-repeat
- repeat
+repeat //repeat para regresar al menu principal luego de ver las instrucciones
+ repeat // repeat para elegir solo las opciones jugar, instrucciones o cerrar juego
  clrscr;
  gotoxy(1,28);writeln('========================================================================================================================');
  gotoxy(53,1);writeln('//====\\ ');
@@ -389,7 +387,7 @@ repeat
  gotoxy(50,10); writeln('3-CERRAR JUEGO');
  gotoxy(40,11);writeln ('---------------------------------');
  readln (opciones);
- until (opciones=1) or (opciones=2) or (opciones=3);
+ until (opciones=1) or (opciones=2) or (opciones=3); //fin del repeat para elegir las opciones de jugar, instrucciones o cerrar juego
  case opciones of
 	1:
 	begin
@@ -401,8 +399,8 @@ repeat
 		gotoxy(1,28);writeln('========================================================================================================================');
 		gotoxy(19,5);write ('/////Ingrese su nombre de usuario, puede usar caracteres y numeros:');
 		readln (nickname);
-		until nickname <> '';
-		repeat
+		until nickname <> ''; //este repeat es para evitar romper el programa con un espacio en blanco
+		repeat //repeat para elegir algunas de las dificultades
 		begin
 		clrscr;
 		gotoxy(1,28);writeln('========================================================================================================================');
@@ -436,13 +434,14 @@ repeat
 					begin 
 						writeln ('usted ha elegido el nivel de dificultad dificil');
 					end;
+				
 			end; //end del segundo case
-		end;
-		until (dificultades=1) or (dificultades=2) or (dificultades=3);
+		end; // end que engloba al repeat
+		until (dificultades=1) or (dificultades=2) or (dificultades=3 )// final del repeat para elegir la dificultad
 	end; //end de la primera opcion del primer case
 	2: 
 	begin
-	 repeat
+	 repeat // repat para volver a las instrucciones
 	 begin
 	clrscr;
 	gotoxy(1,28);writeln('========================================================================================================================');
@@ -493,15 +492,15 @@ repeat
 		writeln('CARGANDO...presione de nuevo para confirmar');
 		readln(repit);
 		end;
-		end;
-		until (repit<>1);
+		end;//end que engloba al repit
+		until (repit<>1); // final del repeat para volver a las instrucciones
 		clrscr;
 	end;// end del la segunda opcion  del primer case
 	
-	3: writeln ('hasta la proxima, vuelva pronto pronto para mas diversion!');
+	3: writeln ('hasta la proxima, vuelva pronto pronto para mas diversion!'); 
 
  end; //end del primer case
 
-until aliensb <> 2;
+until aliensb <> 2; //final del repeat para volver al menu principal luego de ver las instrucciones
 
 END.//end final del cuerpo
