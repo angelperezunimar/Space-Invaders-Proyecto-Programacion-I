@@ -13,7 +13,7 @@ APantalla = 24;
 LPantalla = 77;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
-scr, fnp, opciones, dificultades, bx, by, ppx, ppy, l, aliensb, repit,bxa:integer;
+scr, fnp, opciones, dificultades, bx, by, ppx, ppy, l, aliensb, repit,bxa,bya:integer;
 nickname:string;
 aliens: array[1..6] of boolean;
 BActivo,AActivo: boolean;
@@ -22,7 +22,6 @@ apx: array[1..6] of integer;
 rdm: array[1..6] of integer;
 dir: array[1..6] of integer;
 ABActivo: array[1..6] of boolean; // nuevo arreglo para representar el estado de la bala del alien
-bya: array[1..6] of integer; // nueva variable global para representar la posición vertical de la bala del alien
 
 //Procedimiento para mostrar al jugador en pantalla
 procedure DPlayer;
@@ -169,34 +168,21 @@ end;//end final del procedimiento
 procedure ADisparo;
 var
   i, r: integer;
+  aby: integer;
 begin
   r := random(6) + 1; //elegir un alien aleatorio para disparar
-  if (aliens[r] = true) and (apy[r] < APantalla - 1) then // solo puede disparar si el alien está vivo y debajo del jugador
+  if (aliens[r] = true) and (apy[r] > 0) then // comprobar que el alien está vivo y dentro de la pantalla
   begin
-    gotoxy(apx[r] + 2, apy[r] + 2); //posiciona el cursor del disparo en la posicion del alien
-    textcolor(14);
-    writeln('v');
-    delay(50);
-    if (bx = apx[r] + 2) and (by = apy[r] + 3) then // verificación de impacto
+    aby := apy[r] + 3; //posición inicial de la bala del alien
+    while (aby < APantalla) and (aliens[r] = true) do // mover la bala hacia abajo hasta que impacte en un jugador o llegue al borde inferior de la pantalla
     begin
-      aliens[r] := false;
-      gotoxy(apx[r], apy[r]);
-      textcolor(0);
-      write('              ');
-    end
-    else if (by > 2) then // si el jugador no ha destruido el alien, el disparo continúa moviéndose hacia abajo
-    begin
-      gotoxy(apx[r] + 2, apy[r] + 2);
-      textcolor(0);
+      delay(100);
+      gotoxy(apx[r] + 5, aby - 1); //borrar la posición anterior de la bala
       writeln(' ');
-      apy[r] := apy[r] + 1;
-      ADisparo;
-    end
-    else // si el disparo alcanza la parte inferior de la pantalla sin impactar al jugador, se elimina
-    begin
-      gotoxy(apx[r] + 2, apy[r] + 2);
-      textcolor(0);
-      writeln(' ');
+      aby := aby + 1; //actualizar la posición vertical de la bala
+      gotoxy(apx[r] + 5, aby); //dibujar la nueva posición de la bala
+      writeln('|');
+      MPlayer; // comprobar si la bala impacta en el jugador
     end;
   end;
 end;
@@ -304,6 +290,7 @@ delay(50);
 	DAliens;
 	BPlayer;
 	MPlayer;
+	ADisparo;
 	end;
 	
 end; //end del procedimiento
