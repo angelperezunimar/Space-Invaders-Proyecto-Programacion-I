@@ -168,22 +168,23 @@ end;//end final del procedimiento
 procedure ADisparo;
 var
   i, r: integer;
-  aby: integer;
 begin
   r := random(6) + 1; //elegir un alien aleatorio para disparar
   if (aliens[r] = true) and (apy[r] > 0) then // comprobar que el alien está vivo y dentro de la pantalla
   begin
-    aby := apy[r] + 3; //posición inicial de la bala del alien
-    while (aby < APantalla) and (aliens[r] = true) do // mover la bala hacia abajo hasta que impacte en un jugador o llegue al borde inferior de la pantalla
+    bya := apy[r] + 3; //posición inicial de la bala del alien
+    while (bya < APantalla) and (aliens[r] = true) do // mover la bala hacia abajo hasta que impacte en un jugador o llegue al borde inferior de la pantalla
     begin
       delay(100);
-      gotoxy(apx[r] + 5, aby - 1); //borrar la posición anterior de la bala
+      gotoxy(apx[r] + 5, bya); //borrar la posición anterior de la bala
       writeln(' ');
-      aby := aby + 1; //actualizar la posición vertical de la bala
-      gotoxy(apx[r] + 5, aby); //dibujar la nueva posición de la bala
+      bya := bya + 1; //actualizar la posición vertical de la bala
+      gotoxy(apx[r] + 5, bya); //dibujar la nueva posición de la bala
       writeln('|');
       MPlayer; // comprobar si la bala impacta en el jugador
     end;
+    gotoxy(apx[r] + 5, bya);
+    writeln(' ');
   end;
 end;
 
