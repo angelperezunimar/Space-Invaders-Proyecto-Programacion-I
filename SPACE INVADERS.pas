@@ -643,3 +643,15 @@ BEGIN
 		until (aliensb <> 'b'); //final del repeat para volver al menu principal luego de ver las instrucciones
 
 END.//end final del cuerpo
+
+//                     1
+//               *,,,,,*,,,,,*
+//               '0,,,,0,,,,0
+//              _||___||___||_
+//        '*,,{,,,,,,,,,,,,,,,,,,,},*'
+//        0,,{/\/\/\/\/\/\/\/\/\/},0'     
+//        _||_{________"________}_||_  
+//     {/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/}
+//     {,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,}
+//     {/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/}
+//     {_______________"_______________} ================>> Esta torta es para celebrar que falta poco profe, la compartimos con usted
