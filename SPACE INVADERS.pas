@@ -13,9 +13,9 @@ APantalla = 24;
 LPantalla = 77;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
-scr, fnp, dificultades,bx, by, ppx, ppy, l, bxa,bya, VJugador,RDisparo,RValor,x1,x2,cod1,cod2:integer;
+scr, fnp, bx, by, ppx, ppy, l, bxa,bya, VJugador,RDisparo,RValor,x1,x2,cod1,cod2:integer;
 
-nickname, opciones, repit, aliensb : string;
+nickname, opciones, repit, aliensb, dificultades : string;
 
 aliens: array[1..6] of boolean;
 aliensv:array[1..3] of integer;
@@ -25,6 +25,38 @@ apx: array[1..6] of integer;
 rdm: array[1..6] of integer;
 dir: array[1..6] of integer;
 ABActivo: array[1..6] of boolean; // nuevo arreglo para representar el estado de la bala del alien
+
+//Procedimiento para dibujar la pantalla principal
+procedure DPantalla;
+var i,j: integer;
+Begin
+textcolor(15);
+clrscr;
+
+for i:=1 to APantalla do
+begin
+gotoxy(1,i);
+writeln('|');
+gotoxy(LPantalla,i);
+writeln('|');
+end;
+
+for i:=1 to LPantalla do
+begin
+gotoxy(i,1);
+writeln('-');
+gotoxy(i,APantalla + 1);
+writeln('-');
+end;
+
+gotoxy(LPantalla+1,1);
+writeln('SPACE INVADERS');
+gotoxy(LPantalla+1,4);
+writeln('Vidas: ', VJugador);
+gotoxy(LPantalla+1,8);
+writeln('Nickname: ',nickname);
+
+end;
 
 //Procedimiento para mostrar al jugador en pantalla
 procedure DPlayer;
@@ -228,7 +260,11 @@ RDisparo:= random(RValor) + random(RValor);
       writeln('|');
       bxa:= apx[r] + 5;
       // comprobar colisión con el jugador
-		if ((bxa = ppx + 2) or (bxa = ppx + 3) or (bxa = ppx + 4)) and (bya = ppy) then VJugador:= VJugador - 1;
+		if ((bxa = ppx + 2) or (bxa = ppx + 3) or (bxa = ppx + 4)) and (bya = ppy) then 
+		begin
+		VJugador:= VJugador - 1;
+		DPantalla;
+		end;
       MPlayer; // comprobar si la bala impacta en el jugador
     end;
     gotoxy(apx[r] + 5, bya);
@@ -370,38 +406,6 @@ until codigo2 > 0; //final del repeat
 writeln;
 end;//end final del procedimiento
 
-//Procedimiento para dibujar la pantalla principal
-procedure DPantalla;
-var i,j: integer;
-Begin
-textcolor(15);
-clrscr;
-
-for i:=1 to APantalla do
-begin
-gotoxy(1,i);
-writeln('|');
-gotoxy(LPantalla,i);
-writeln('|');
-end;
-
-for i:=1 to LPantalla do
-begin
-gotoxy(i,1);
-writeln('-');
-gotoxy(i,APantalla + 1);
-writeln('-');
-end;
-
-gotoxy(LPantalla+1,1);
-writeln('SPACE INVADERS');
-gotoxy(LPantalla+1,4);
-writeln('Vidas: ', VJugador);
-gotoxy(LPantalla+1,8);
-writeln('Nickname: ',nickname);
-
-end;
-
 //Procedimiento para la ejecucion del juego completo estructurado
 procedure juego;
 
@@ -500,16 +504,16 @@ BEGIN
 						clrscr;
 						gotoxy(1,28);writeln('========================================================================================================================');
 						gotoxy(28,1);writeln('Bienvenido [',nickname, '] Eliga el nivel de dificultad para la partida: ');
-						gotoxy(8,3);writeln(' 1- Facil, esta es una dificultad sencila para jugadores nuevos');
-						gotoxy(10,5);writeln(' 2- Normal , este es un poco mas demandante para jugadores mas experimentados');
-						gotoxy(12,7);writeln(' 3- Dificil, alta dificultad para jugadores que buscan un reto');
+						gotoxy(8,3);writeln(' A- Facil, esta es una dificultad sencila para jugadores nuevos');
+						gotoxy(10,5);writeln(' B- Normal , este es un poco mas demandante para jugadores mas experimentados');
+						gotoxy(12,7);writeln(' C- Dificil, alta dificultad para jugadores que buscan un reto');
 							sound(70000);
 							delay(100);
 							nosound;
 							read;
 						readln (dificultades);
 							case dificultades of
-								1: 
+								'A': 
 								// Durante el desarrollo de la logica se usara todo este case para hacer pruebas sobre el funcionamiento
 									begin 
 										clrscr;
@@ -536,7 +540,7 @@ BEGIN
 										clrscr; 
 										readln;				
 									end;
-							    2:
+							    'B':
 								begin
 									clrscr;
 										AActivo := true;
@@ -564,7 +568,7 @@ BEGIN
 										readln;	
 								end;
 							    
-							    3:	
+							    'C':	
 								begin 
 									clrscr;
 										AActivo := true;
@@ -598,7 +602,7 @@ BEGIN
 							
 				end; // end que engloba al repeat
 				
-			until (dificultades=1) or (dificultades=2) or (dificultades=3 )// final del repeat para elegir la dificultad
+			until (dificultades='A') or (dificultades='B') or (dificultades='C' );// final del repeat para elegir la dificultad
 			
 		end; //end de la primera opcion del primer case
 		
