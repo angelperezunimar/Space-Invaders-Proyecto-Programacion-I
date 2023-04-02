@@ -18,6 +18,8 @@ ABullet: "AlienBullet" Comprueba si el alien debe disparar
 bya: Posicion y de la bala del alien
 bxa: Posicion x de la bala del alien
 ABActivo: "Alien Bullet Activo" arreglo boleano sobre las balas de los aliens
+VJugador: "VidaJugador" Cantidad de vida del jugador
+JActivo: "JugadorActivo" Valor que indica si el jugador esta vivo
 
 Constantes:
 APantalla: "AlturaPantalla" Alto de pantalla de Juego

@@ -13,10 +13,10 @@ APantalla = 24;
 LPantalla = 77;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
-scr, fnp, opciones, dificultades, bx, by, ppx, ppy, l, aliensb, repit,bxa,bya:integer;
+scr, fnp, opciones, dificultades, bx, by, ppx, ppy, l, aliensb, repit,bxa,bya, VJugador:integer;
 nickname:string;
 aliens: array[1..6] of boolean;
-BActivo,AActivo: boolean;
+BActivo,AActivo,JActivo: boolean;
 apy: array[1..6] of integer;
 apx: array[1..6] of integer;
 rdm: array[1..6] of integer;
@@ -26,9 +26,13 @@ ABActivo: array[1..6] of boolean; // nuevo arreglo para representar el estado de
 //Procedimiento para mostrar al jugador en pantalla
 procedure DPlayer;
 begin
+if VJugador = 0 then JActivo := false;
+if JActivo = true then
+begin
 gotoxy(ppx,ppy);
 textcolor(15);
 write('<|A|>');
+end;
 end; //end final del procedimiento
 
 //Procedimiento para el movimiento del jugador en pantalla 
@@ -181,6 +185,9 @@ begin
       bya := bya + 1; //actualizar la posición vertical de la bala
       gotoxy(apx[r] + 5, bya); //dibujar la nueva posición de la bala
       writeln('|');
+      bxa:= apx[r] + 5;
+      // comprobar colisión con el jugador
+		if ((bxa = ppx) or (bxa = ppx + 1) or (bxa = ppx + 2) or (bxa = ppx + 3)) and (bya = ppy) then VJugador:= VJugador - 1;
       MPlayer; // comprobar si la bala impacta en el jugador
     end;
     gotoxy(apx[r] + 5, bya);
@@ -347,7 +354,7 @@ end;
 gotoxy(LPantalla+1,1);
 writeln('SPACE INVADERS');
 gotoxy(LPantalla+1,3);
-writeln('Vidas: ',l);
+writeln('Vidas: ', VJugador);
 gotoxy(LPantalla+1,5);
 writeln('Nickname: ',nickname);
 
@@ -465,6 +472,8 @@ BEGIN
 									begin 
 										clrscr;
 										AActivo := true;
+										VJugador:= 1;
+										JActivo:= true;
 										apx[1] := 40; apy[1] := 2; aliens[1] := true;
 										apx[2] := 40; apy[2] := 9; aliens[2] := true;
 										apx[4] := 40; apy[4] := 18; aliens[4] := true;
