@@ -523,13 +523,14 @@ BEGIN
 							delay(100);
 							nosound;
 							read;
+							clrscr;
+							gotoxy(1,30);writeln('Cargando...');
+							delay(3000);
+							read;
 						end;// end de la opcion unoh
 					end; //end case aliensb
 					
-					begin
-						writeln('CARGANDO...presione de nuevo 1 para confirmar');
-						read(repit);
-					end;
+					
 					
 				end;//end que engloba al repit
 			until (repit<>1); // final del repeat para volver a las instrucciones
