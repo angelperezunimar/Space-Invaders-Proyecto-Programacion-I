@@ -13,8 +13,10 @@ APantalla = 24;
 LPantalla = 77;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
-scr, fnp, opciones, dificultades, bx, by, ppx, ppy, l, aliensb, repit,bxa,bya, VJugador,RDisparo,RValor:integer;
-nickname:string;
+scr, fnp, dificultades, bx, by, ppx, ppy, l, aliensb, repit,bxa,bya, VJugador,RDisparo,RValor:integer;
+
+nickname, opciones:string;
+
 aliens: array[1..6] of boolean;
 BActivo,AActivo,JActivo: boolean;
 apy: array[1..6] of integer;
@@ -459,20 +461,20 @@ BEGIN
 					 gotoxy(51,15);writeln('[=I.<>.I=]');
 					 textcolor(5);
 					 gotoxy(40,5);writeln ('---------------------------------');
-					 gotoxy(50,6);writeln('1-JUGAR');
+					 gotoxy(50,6);writeln('A-JUGAR');
 					 gotoxy(40,7);writeln ('---------------------------------');
-					 gotoxy(50,8);writeln ('2-INTRUCCIONES');
+					 gotoxy(50,8);writeln ('B-INTRUCCIONES');
 					 gotoxy(40,9);writeln ('---------------------------------');
-					 gotoxy(50,10); writeln('3-CERRAR JUEGO');
+					 gotoxy(50,10); writeln('C-CERRAR JUEGO');
 					 gotoxy(40,11);writeln ('---------------------------------');
 					 readln (opciones);
 					 sound(70000);
 							delay(100);
 							nosound;
 							read;
-				until (opciones=1) or (opciones=2) or (opciones=3); //fin del repeat para elegir las opciones de jugar, instrucciones o cerrar juego
+				until (opciones='A') or (opciones='B') or (opciones='C'); //fin del repeat para elegir las opciones de jugar, instrucciones o cerrar juego
 	 case opciones of
-		1:
+		'A':
 		begin
 			clrscr;
 			ppx := 40;
@@ -543,7 +545,7 @@ BEGIN
 			
 		end; //end de la primera opcion del primer case
 		
-		2: 
+		'B': 
 		begin
 			repeat // repat para volver a las instrucciones
 				 begin
@@ -593,26 +595,28 @@ BEGIN
 							writeln('');
 							Writeln('=============================================================================================================');
 							writeln ('presione la tecla [1] para regresar a las intrucciones');
-							readln(repit);
-							sound(70000);
-							delay(100);
-							nosound;
-							read;
-							clrscr;
-							gotoxy(1,30);writeln('Cargando...');
-							delay(3000);
-							read;
+							
+								
 						end;// end de la opcion unoh
 					end; //end case aliensb
-					
-					
+					begin
+						readln(repit);
+						sound(70000);
+						delay(100);
+						nosound;
+						read;
+						clrscr;
+						gotoxy(1,30);writeln('Cargando...');
+						delay(3000);
+						read;
+					end;
 					
 				end;//end que engloba al repit
 			until (repit<>1); // final del repeat para volver a las instrucciones
 			clrscr;
 		end;// end del la segunda opcion  del primer case
 		
-		3: writeln ('hasta la proxima, vuelva pronto pronto para mas diversion!'); 
+		'C': writeln ('hasta la proxima, vuelva pronto pronto para mas diversion!'); 
 
 	 end; //end del primer case
 
