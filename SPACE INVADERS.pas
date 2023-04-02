@@ -38,6 +38,10 @@ if keypressed then
       case readkey of
 		#75:
 			begin
+			sound(900000);
+	delay(50);
+	nosound;
+	read;
 				gotoxy(ppx,ppy);
 				writeln('      ');
 				ppx := ppx - 1;
@@ -48,6 +52,10 @@ if keypressed then
 			
 		#77:
 			begin
+			sound(900000);
+	delay(50);
+	nosound;
+	read;
 			gotoxy(ppx,ppy);
 				writeln('     ');
 				ppx := ppx + 1;
@@ -97,6 +105,7 @@ var i: integer;
 begin
   while (BActivo and (by > 2)) do
   begin
+ 
     textcolor(8);
     delay(50);
     gotoxy(bx, by);
@@ -141,6 +150,10 @@ if keypressed then
 begin
 	if readkey = #32 then // barra espaciadora
 	begin
+	sound(1200);
+	delay(150);
+	nosound;
+	read;
 		bx := ppx;
         by := ppy - 1;
         BActivo := True;
@@ -166,6 +179,10 @@ delay(50);
 	
 	if i = 1 then
 	begin
+	sound(7000);
+	delay(50);
+	nosound;
+	read;
 			gotoxy(apx[i],apy[i]);
 			write('                   ');
 			apx[i] := apx[i] + 1;
