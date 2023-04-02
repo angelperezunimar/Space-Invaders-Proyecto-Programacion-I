@@ -517,195 +517,195 @@ BEGIN
 								'A': 
 								// Durante el desarrollo de la logica se usara todo este case para hacer pruebas sobre el funcionamiento
 									begin 
-									repeat
-										clrscr;
-										textcolor(5);
-										AActivo := true;
-										VJugador:= 3;
-										JActivo:= true;
-										RValor:= 8;
-										apx[1] := 40; apy[1] := 2; aliens[1] := true; aliensv[1] := 3;
-										apx[3] := 40; apy[3] := 9; aliens[3] := true; aliensv[3] := 2;
-										apx[5] := 40; apy[5] := 15; aliens[5] := true;
-										gotoxy(35,1);writeln ('=Usted ha elegido el nivel facil=');
-										delay(200);
-										gotoxy(35,3);writeln ('Preparece para jugar en:');
-										delay(100);
-										gotoxy(35,5);writeln ('3');
-										delay(1000);
-										gotoxy(35,7);writeln ('2');
-										delay(1000);
-										gotoxy(35,9);writeln ('1');
-										delay(1000);
-										read();
-										clrscr;
-										juego;
-										clrscr;
-										if VJugador = 0 then writeln('Has perdido');
-										if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then writeln('Has ganado!');
-										writeln('Que desea hacer ahora?');
-										writeln('A- Volver a jugar [Facil]');
-										writeln('B- Volver al menu');
-										writeln('C- Cerrar el juego');
 										repeat
-											begin
-												repeat
-													begin
-														readln(OJuego);	
+											clrscr;
+											textcolor(5);
+											AActivo := true;
+											VJugador:= 3;
+											JActivo:= true;
+											RValor:= 8;
+											apx[1] := 40; apy[1] := 2; aliens[1] := true; aliensv[1] := 3;
+											apx[3] := 40; apy[3] := 9; aliens[3] := true; aliensv[3] := 2;
+											apx[5] := 40; apy[5] := 15; aliens[5] := true;
+											gotoxy(35,1);writeln ('=Usted ha elegido el nivel facil=');
+											delay(200);
+											gotoxy(35,3);writeln ('Preparece para jugar en:');
+											delay(100);
+											gotoxy(35,5);writeln ('3');
+											delay(1000);
+											gotoxy(35,7);writeln ('2');
+											delay(1000);
+											gotoxy(35,9);writeln ('1');
+											delay(1000);
+											read();
+											clrscr;
+											juego;
+											clrscr;
+											if VJugador = 0 then writeln('Has perdido');
+												if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then writeln('Has ganado!');
+													writeln('Que desea hacer ahora?');
+													writeln('A- Volver a jugar [Facil]');
+													writeln('B- Volver al menu');
+													writeln('C- Cerrar el juego');
+											repeat
+												begin
+													repeat
+														begin
+															readln(OJuego);	
+														end;
+													until (OJuego='A') or (Ojuego='B') or (OJuego='C');
+													val (OJuego,x3,cod3);	
+												end;
+											until cod3>0;
+											Case OJuego of
+												'A': begin
+													
 													end;
-												until (OJuego='A') or (Ojuego='B') or (OJuego='C');
-												val (OJuego,x3,cod3);	
-											end;
-										until cod3>0;
-										Case OJuego of
-										'A': begin
-											
-											end;
-										
-										'B': begin
-										OJuego:= 'B';
-										aliensb := 'b';
-										
-											end;
-										
-										'C': begin
-										OJuego:= 'B';
-										aliensb := 'a';
-										repit := 'b';
+												
+												'B': begin
+														OJuego:= 'B';
+														aliensb := 'b';
+												
+													end;
+												
+												'C': begin
+														OJuego:= 'B';
+														aliensb := 'a';
+														repit := 'b';
+													end;
+													
 											end;
 											
-										end;
-										
-										until (OJuego = 'B');
+											until (OJuego = 'B');
 									end;
 							    'B':
 								begin
-								repeat
-									clrscr;
-									textcolor(5);
-										AActivo := true;
-										VJugador:= 2;
-										JActivo:= true;
-										RValor:= 6;
-										apx[1] := 40; apy[1] := 2; aliens[1] := true; aliensv[1] := 3;
-										apx[2] := 40; apy[2] := 5; aliens[2] := true; aliensv[2] := 2;
-										apx[3] := 40; apy[3] := 9; aliens[3] := true; aliensv[3] := 2;
-										apx[4] := 40; apy[4] := 12; aliens[4]:= true;
-										gotoxy(35,1);writeln ('=Usted ha elegido el nivel normal=');
-										delay(200);
-										gotoxy(35,3);writeln ('Preparece para jugar en:');
-										delay(100);
-										gotoxy(35,5);writeln ('3');
-										delay(1000);
-										gotoxy(35,7);writeln ('2');
-										delay(1000);
-										gotoxy(35,9);writeln ('1');
-										delay(1000);
-										read();
+									repeat
 										clrscr;
-										juego;
-										clrscr; 
-										if VJugador = 0 then writeln('Has perdido');
-										if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then writeln('Has ganado!');
-										writeln('Que desea hacer ahora?');
-										writeln('A- Volver a jugar [Normal]');
-										writeln('B- Volver al menu');
-										writeln('C- Cerrar el juego');
-										repeat
-											begin
-												repeat
-													begin
-														readln(OJuego);	
+										textcolor(5);
+											AActivo := true;
+											VJugador:= 2;
+											JActivo:= true;
+											RValor:= 6;
+											apx[1] := 40; apy[1] := 2; aliens[1] := true; aliensv[1] := 3;
+											apx[2] := 40; apy[2] := 5; aliens[2] := true; aliensv[2] := 2;
+											apx[3] := 40; apy[3] := 9; aliens[3] := true; aliensv[3] := 2;
+											apx[4] := 40; apy[4] := 12; aliens[4]:= true;
+											gotoxy(35,1);writeln ('=Usted ha elegido el nivel normal=');
+											delay(200);
+											gotoxy(35,3);writeln ('Preparece para jugar en:');
+											delay(100);
+											gotoxy(35,5);writeln ('3');
+											delay(1000);
+											gotoxy(35,7);writeln ('2');
+											delay(1000);
+											gotoxy(35,9);writeln ('1');
+											delay(1000);
+											read();
+											clrscr;
+											juego;
+											clrscr; 
+											if VJugador = 0 then writeln('Has perdido');
+												if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then writeln('Has ganado!');
+													writeln('Que desea hacer ahora?');
+													writeln('A- Volver a jugar [Normal]');
+													writeln('B- Volver al menu');
+													writeln('C- Cerrar el juego');
+											repeat
+												begin
+													repeat
+														begin
+															readln(OJuego);	
+														end;
+													until (OJuego='A') or (Ojuego='B') or (OJuego='C');
+													val (OJuego,x3,cod3);	
+												end;
+											until cod3>0;	
+											Case OJuego of
+												'A': begin
+													
 													end;
-												until (OJuego='A') or (Ojuego='B') or (OJuego='C');
-												val (OJuego,x3,cod3);	
-											end;
-										until cod3>0;	
-										Case OJuego of
-										'A': begin
-											
-											end;
-										
-										'B': begin
-										OJuego:= 'B';
-										aliensb:='b';
-											end;
-										
-										'C': begin
-										OJuego:= 'B';
-										aliensb:='a';
-										repit:='b';
+												
+												'B': begin
+														OJuego:= 'B';
+														aliensb:='b';
+													end;
+												
+												'C': begin
+														OJuego:= 'B';
+														aliensb:='a';
+														repit:='b';
+													end;
+													
 											end;
 											
-										end;
-										
-										until (OJuego = 'B');
+											until (OJuego = 'B');
 								end;
 							    
 							    'C':	
 								begin 
-								repeat
-									clrscr;
-									textcolor(5);
-										AActivo := true;
-										VJugador:= 1;
-										JActivo:= true;
-										RValor:= 4;
-										apx[1] := 40; apy[1] := 2; aliens[1] := true; aliensv[1] := 3;
-										apx[2] := 40; apy[2] := 5; aliens[2] := true; aliensv[2] := 2;
-										apx[3] := 40; apy[3] := 9; aliens[3] := true; aliensv[3] := 2;
-										apx[4] := 40; apy[4] := 12; aliens[4]:= true; 
-										apx[5] := 40; apy[5] := 15; aliens[5] := true;
-										apx[6] := 40; apy[6] := 18; aliens[6] := true;
-										gotoxy(35,1);writeln ('=Usted ha elegido el nivel Dificil=');
-										delay(200);
-										gotoxy(35,3);writeln ('Preparece para jugar en:');
-										delay(100);
-										gotoxy(35,5);writeln ('3');
-										delay(1000);
-										gotoxy(35,7);writeln ('2');
-										delay(1000);
-										gotoxy(35,9);writeln ('1');
-										delay(1000);
-										read();
+									repeat
 										clrscr;
-										juego;
-										clrscr; 
-										if VJugador = 0 then writeln('Has perdido');
-										if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then writeln('Has ganado!');
-										writeln('Que desea hacer ahora?');
-										writeln('A- Volver a jugar [Dificil]');
-										writeln('B- Volver al menu');
-										writeln('C- Cerrar el juego');
-										repeat
-											begin
-												repeat
-													begin
-														readln(OJuego);	
+										textcolor(5);
+											AActivo := true;
+											VJugador:= 1;
+											JActivo:= true;
+											RValor:= 4;
+											apx[1] := 40; apy[1] := 2; aliens[1] := true; aliensv[1] := 3;
+											apx[2] := 40; apy[2] := 5; aliens[2] := true; aliensv[2] := 2;
+											apx[3] := 40; apy[3] := 9; aliens[3] := true; aliensv[3] := 2;
+											apx[4] := 40; apy[4] := 12; aliens[4]:= true; 
+											apx[5] := 40; apy[5] := 15; aliens[5] := true;
+											apx[6] := 40; apy[6] := 18; aliens[6] := true;
+											gotoxy(35,1);writeln ('=Usted ha elegido el nivel Dificil=');
+											delay(200);
+											gotoxy(35,3);writeln ('Preparece para jugar en:');
+											delay(100);
+											gotoxy(35,5);writeln ('3');
+											delay(1000);
+											gotoxy(35,7);writeln ('2');
+											delay(1000);
+											gotoxy(35,9);writeln ('1');
+											delay(1000);
+											read();
+											clrscr;
+											juego;
+											clrscr; 
+											if VJugador = 0 then writeln('Has perdido');
+												if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then writeln('Has ganado!');
+													writeln('Que desea hacer ahora?');
+													writeln('A- Volver a jugar [Dificil]');
+													writeln('B- Volver al menu');
+													writeln('C- Cerrar el juego');
+											repeat
+												begin
+													repeat
+														begin
+															readln(OJuego);	
+														end;
+													until (OJuego='A') or (OJuego='B') or (OJuego='C');
+													val (OJuego,x3,cod3);	
+												end;
+											until cod3>0;	
+											Case OJuego of
+												'A': begin
+													
 													end;
-												until (OJuego='A') or (OJuego='B') or (OJuego='C');
-												val (OJuego,x3,cod3);	
-											end;
-										until cod3>0;	
-										Case OJuego of
-										'A': begin
-											
-											end;
-										
-										'B': begin
-										OJuego:= 'B';
-										aliensb:='b';
-											end;
-										
-										'C': begin
-										OJuego:= 'B';
-										aliensb:='a';
-										repit:='b';
+												
+												'B': begin
+														OJuego:= 'B';
+														aliensb:='b';
+													end;
+												
+												'C': begin
+														OJuego:= 'B';
+														aliensb:='a';
+														repit:='b';
+													end;
+													
 											end;
 											
-										end;
-										
-										until (OJuego = 'B');
+											until (OJuego = 'B');
 								end;
 						
 							end; //end del segundo case
@@ -808,9 +808,9 @@ BEGIN
 		end;// end del la segunda opcion  del primer case
 		
 		'C':begin
-		 writeln ('hasta la proxima, vuelva pronto pronto para mas diversion!'); 
-		 	aliensb:='a';
-			repit:='b';
+				writeln ('hasta la proxima, vuelva pronto pronto para mas diversion!'); 
+				aliensb:='a';
+				repit:='b';
 		 end;
 
 	 end; //end del primer case
