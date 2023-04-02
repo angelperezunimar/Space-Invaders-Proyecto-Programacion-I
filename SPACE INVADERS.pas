@@ -179,10 +179,7 @@ delay(50);
 	
 	if i = 1 then
 	begin
-	sound(7000);
-	delay(50);
-	nosound;
-	read;
+	
 			gotoxy(apx[i],apy[i]);
 			write('                   ');
 			apx[i] := apx[i] + 1;
@@ -373,13 +370,15 @@ BEGIN
 		textcolor(5);
 	 gotoxy(1,1);writeln('======================================================================================================================== ');
 	 gotoxy(1,28);writeln('========================================================================================================================');
-	 gotoxy(43,3);writeln('//||=============================||\\ ');
-	 gotoxy(45,4);writeln ('Bienvenido a SPACE INVADERS A.A.S ');
-	 gotoxy(43,5);writeln('\\||=============================||//  ');
+	 gotoxy(43,11);writeln('//||=============================||\\ ');
+	 gotoxy(45,12);writeln ('Bienvenido a SPACE INVADERS A.A.S ');
+	 gotoxy(43,13);writeln('\\||=============================||//  ');
+	delay(3000);
+	read;
 	 writeln ('---------------------------------');
 	 writeln ('-Presione [enter] para continuar-');
 	 writeln ('---------------------------------');
-	 readln();
+	 read();
 	 clrscr;
 			repeat //repeat para regresar al menu principal luego de ver las instrucciones
 				repeat // repeat para elegir solo las opciones jugar, instrucciones o cerrar juego
@@ -404,6 +403,10 @@ BEGIN
 					 gotoxy(50,10); writeln('3-CERRAR JUEGO');
 					 gotoxy(40,11);writeln ('---------------------------------');
 					 readln (opciones);
+					 sound(70000);
+							delay(100);
+							nosound;
+							read;
 				until (opciones=1) or (opciones=2) or (opciones=3); //fin del repeat para elegir las opciones de jugar, instrucciones o cerrar juego
 	 case opciones of
 		1:
@@ -426,6 +429,10 @@ BEGIN
 						gotoxy(8,3);writeln(' 1- Facil, esta es una dificultad sencila para jugadores nuevos');
 						gotoxy(10,5);writeln(' 2- Normal , este es un poco mas demandante para jugadores mas experimentados');
 						gotoxy(12,7);writeln(' 3- Dificil, alta dificultad para jugadores que buscan un reto');
+							sound(70000);
+							delay(100);
+							nosound;
+							read;
 						readln (dificultades);
 							case dificultades of
 								1: 
@@ -487,6 +494,10 @@ BEGIN
 						gotoxy(5,21);writeln('///Para cerrar el programa presione 3');
 						gotoxy(5,22);writeln ('-------------------------------------------------------');
 						readln(aliensb);
+						sound(70000);
+							delay(100);
+							nosound;
+							read;
 					case aliensb of 
 						1:
 						begin
@@ -507,13 +518,17 @@ BEGIN
 							writeln('');
 							Writeln('=============================================================================================================');
 							writeln ('presione la tecla [1] para regresar a las intrucciones');
-							readln();
+							readln(repit);
+							sound(70000);
+							delay(100);
+							nosound;
+							read;
 						end;// end de la opcion unoh
 					end; //end case aliensb
 					
 					begin
-						writeln('CARGANDO...presione de nuevo para confirmar');
-						readln(repit);
+						writeln('CARGANDO...presione de nuevo 1 para confirmar');
+						read(repit);
 					end;
 					
 				end;//end que engloba al repit
