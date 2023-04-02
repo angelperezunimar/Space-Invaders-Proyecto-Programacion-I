@@ -13,7 +13,7 @@ APantalla = 24;
 LPantalla = 77;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
-scr, fnp, bx, by, ppx, ppy, l, bxa,bya, VJugador,RDisparo,RValor,x1,x2,cod1,cod2:integer;
+scr, fnp, bx, by, ppx, ppy, l, bxa,bya, VJugador,RDisparo,RValor,x1,x2,cod1,cod2, OJuego:integer;
 
 nickname, opciones, repit, aliensb, dificultades : string;
 
@@ -461,6 +461,7 @@ BEGIN
 			repeat //repeat para regresar al menu principal luego de ver las instrucciones
 				repeat // repeat para elegir solo las opciones jugar, instrucciones o cerrar juego
 					 clrscr;
+					 textcolor(5);
 					 gotoxy(1,28);writeln('========================================================================================================================');
 					 gotoxy(53,1);writeln('//====\\ ');
 					 gotoxy(54,2);writeln('=MENU=');
@@ -516,7 +517,9 @@ BEGIN
 								'A': 
 								// Durante el desarrollo de la logica se usara todo este case para hacer pruebas sobre el funcionamiento
 									begin 
+									repeat
 										clrscr;
+										textcolor(5);
 										AActivo := true;
 										VJugador:= 3;
 										JActivo:= true;
@@ -537,12 +540,36 @@ BEGIN
 										read();
 										clrscr;
 										juego;
-										clrscr; 
-										readln;				
+										clrscr;
+										if VJugador = 0 then writeln('Has perdido');
+										if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then writeln('Has ganado!');
+										writeln('Que desea hacer ahora?');
+										writeln('1- Volver a jugar');
+										writeln('2- Volver al menu');
+										writeln('3- Cerrar el juego');
+										readln(OJuego);		
+										Case OJuego of
+										1: begin
+											
+											end;
+										
+										2: begin
+										OJuego:= 2;
+											end;
+										
+										3: begin
+										OJuego:= 2;
+											end;
+											
+										end;
+										
+										until OJuego = 2;		
 									end;
 							    'B':
 								begin
+								repeat
 									clrscr;
+									textcolor(5);
 										AActivo := true;
 										VJugador:= 2;
 										JActivo:= true;
@@ -565,12 +592,36 @@ BEGIN
 										clrscr;
 										juego;
 										clrscr; 
-										readln;	
+										if VJugador = 0 then writeln('Has perdido');
+										if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then writeln('Has ganado!');
+										writeln('Que desea hacer ahora?');
+										writeln('1- Volver a jugar');
+										writeln('2- Volver al menu');
+										writeln('3- Cerrar el juego');
+										readln(OJuego);		
+										Case OJuego of
+										1: begin
+											
+											end;
+										
+										2: begin
+										OJuego:= 2;
+											end;
+										
+										3: begin
+										OJuego:= 2;
+											end;
+											
+										end;
+										
+										until OJuego = 2;	
 								end;
 							    
 							    'C':	
 								begin 
+								repeat
 									clrscr;
+									textcolor(5);
 										AActivo := true;
 										VJugador:= 1;
 										JActivo:= true;
@@ -595,7 +646,29 @@ BEGIN
 										clrscr;
 										juego;
 										clrscr; 
-										readln;	
+										if VJugador = 0 then writeln('Has perdido');
+										if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then writeln('Has ganado!');
+										writeln('Que desea hacer ahora?');
+										writeln('1- Volver a jugar');
+										writeln('2- Volver al menu');
+										writeln('3- Cerrar el juego');
+										readln(OJuego);		
+										Case OJuego of
+										1: begin
+											
+											end;
+										
+										2: begin
+										OJuego:= 2;
+											end;
+										
+										3: begin
+										OJuego:= 2;
+											end;
+											
+										end;
+										
+										until OJuego = 2;	
 								end;
 						
 							end; //end del segundo case
