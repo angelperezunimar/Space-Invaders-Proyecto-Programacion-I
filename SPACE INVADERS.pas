@@ -18,6 +18,7 @@ scr, fnp, dificultades,bx, by, ppx, ppy, l, bxa,bya, VJugador,RDisparo,RValor,x1
 nickname, opciones, repit, aliensb : string;
 
 aliens: array[1..6] of boolean;
+aliensv:array[1..3] of integer;
 BActivo,AActivo,JActivo: boolean;
 apy: array[1..6] of integer;
 apx: array[1..6] of integer;
@@ -127,19 +128,27 @@ begin
     begin
       if (aliens[i] = true) and ((bx = apx[i] + 1) or (bx = apx[i] + 2) or (bx = apx[i] + 3) or (bx = apx[i] + 4) or (bx = apx[i] + 5) or (bx = apx[i] + 6) or (bx = apx[i] + 7) or (bx = apx[i] + 8) or (bx = apx[i] + 9) or (bx = apx[i] + 10) or (bx = apx[i] + 11) or (bx = apx[i] + 12) or (bx = apx[i] + 13) or (bx = apx[i] + 14) or (bx = apx[i] + 15) or (bx = apx[i] + 16) or (bx = apx[i] + 17) or (bx = apx[i] + 18) or (bx = apx[i] + 19)) and (by = apy[i] + 2) then
       begin
+      aliensv[i] := aliensv[i] - 1;
+      if aliensv[i] = 0 then
+      begin
         aliens[i] := false;
         gotoxy(apx[i], apy[i]);
         write('             ');
+      end;
       end; //end del if
      end;
      if (i >= 2) and (i < 4) then
      begin
       if (aliens[i] = true) and ((bx = apx[i] + 1) or (bx = apx[i] + 2) or (bx = apx[i] + 3) or (bx = apx[i] + 4) or (bx = apx[i] + 5) or (bx = apx[i] + 6) or (bx = apx[i] + 7) or (bx = apx[i] + 8) or (bx = apx[i] + 9) or (bx = apx[i] + 10)) and (by = apy[i]) then
+       begin
+		aliensv[i] := aliensv[i] - 1;
+		if aliensv[i] = 0 then
       begin
         aliens[i] := false;
         gotoxy(apx[i], apy[i]);
         write('             ');
       end; //end del if
+     end;
      end;
      
      if (i >= 4) then
@@ -505,11 +514,11 @@ BEGIN
 									begin 
 										clrscr;
 										AActivo := true;
-										VJugador:= 1;
+										VJugador:= 3;
 										JActivo:= true;
 										RValor:= 8;
-										apx[1] := 40; apy[1] := 2; aliens[1] := true;
-										apx[3] := 40; apy[3] := 9; aliens[3] := true;
+										apx[1] := 40; apy[1] := 2; aliens[1] := true; aliensv[1] := 3;
+										apx[3] := 40; apy[3] := 9; aliens[3] := true; aliensv[3] := 2;
 										apx[5] := 40; apy[5] := 15; aliens[5] := true;
 										gotoxy(35,1);writeln ('=Usted ha elegido el nivel facil=');
 										delay(200);
@@ -531,12 +540,12 @@ BEGIN
 								begin
 									clrscr;
 										AActivo := true;
-										VJugador:= 1;
+										VJugador:= 2;
 										JActivo:= true;
 										RValor:= 6;
-										apx[1] := 40; apy[1] := 2; aliens[1] := true;
-										apx[2] := 40; apy[2] := 5; aliens[2] := true;
-										apx[3] := 40; apy[3] := 9; aliens[3] := true;
+										apx[1] := 40; apy[1] := 2; aliens[1] := true; aliensv[1] := 3;
+										apx[2] := 40; apy[2] := 5; aliens[2] := true; aliensv[2] := 2;
+										apx[3] := 40; apy[3] := 9; aliens[3] := true; aliensv[3] := 2;
 										apx[4] := 40; apy[4] := 12; aliens[4]:= true;
 										gotoxy(35,1);writeln ('=Usted ha elegido el nivel normal=');
 										delay(200);
@@ -562,10 +571,10 @@ BEGIN
 										VJugador:= 1;
 										JActivo:= true;
 										RValor:= 4;
-										apx[1] := 40; apy[1] := 2; aliens[1] := true;
-										apx[2] := 40; apy[2] := 5; aliens[2] := true;
-										apx[3] := 40; apy[3] := 9; aliens[3] := true;
-										apx[4] := 40; apy[4] := 12; aliens[4]:= true;
+										apx[1] := 40; apy[1] := 2; aliens[1] := true; aliensv[1] := 3;
+										apx[2] := 40; apy[2] := 5; aliens[2] := true; aliensv[2] := 2;
+										apx[3] := 40; apy[3] := 9; aliens[3] := true; aliensv[3] := 2;
+										apx[4] := 40; apy[4] := 12; aliens[4]:= true; 
 										apx[5] := 40; apy[5] := 15; aliens[5] := true;
 										apx[6] := 40; apy[6] := 18; aliens[6] := true;
 										gotoxy(35,1);writeln ('=Usted ha elegido el nivel Dificil=');

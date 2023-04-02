@@ -21,6 +21,7 @@ ABActivo: "Alien Bullet Activo" arreglo boleano sobre las balas de los aliens
 VJugador: "VidaJugador" Cantidad de vida del jugador
 JActivo: "JugadorActivo" Valor que indica si el jugador esta vivo
 RDisparo: "RandomDisparo" Valor para indicar cuando cual alien dispara
+aliensv: "AliensVida" Valor para indicar la vida de un alien determinado
 
 Constantes:
 APantalla: "AlturaPantalla" Alto de pantalla de Juego
