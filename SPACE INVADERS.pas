@@ -386,9 +386,9 @@ end;
 
 gotoxy(LPantalla+1,1);
 writeln('SPACE INVADERS');
-gotoxy(LPantalla+1,3);
+gotoxy(LPantalla+1,4);
 writeln('Vidas: ', VJugador);
-gotoxy(LPantalla+1,5);
+gotoxy(LPantalla+1,8);
 writeln('Nickname: ',nickname);
 
 end;
@@ -467,7 +467,7 @@ BEGIN
 					 gotoxy(40,9);writeln ('---------------------------------');
 					 gotoxy(50,10); writeln('C-CERRAR JUEGO');
 					 gotoxy(40,11);writeln ('---------------------------------');
-					 readln (opciones);
+					 readln(opciones);
 					 sound(70000);
 							delay(100);
 							nosound;
@@ -509,8 +509,8 @@ BEGIN
 										JActivo:= true;
 										RValor:= 8;
 										apx[1] := 40; apy[1] := 2; aliens[1] := true;
-										apx[2] := 40; apy[2] := 9; aliens[2] := true;
-										apx[4] := 40; apy[4] := 17; aliens[4] := true;
+										apx[3] := 40; apy[3] := 9; aliens[3] := true;
+										apx[5] := 40; apy[5] := 15; aliens[5] := true;
 										gotoxy(35,1);writeln ('=Usted ha elegido el nivel facil=');
 										delay(200);
 										gotoxy(35,3);writeln ('Preparece para jugar en:');
@@ -529,12 +529,60 @@ BEGIN
 									end;
 							    2:
 								begin
-									writeln ('usted ha elegido el nivel normal');
+									clrscr;
+										AActivo := true;
+										VJugador:= 1;
+										JActivo:= true;
+										RValor:= 6;
+										apx[1] := 40; apy[1] := 2; aliens[1] := true;
+										apx[2] := 40; apy[2] := 5; aliens[2] := true;
+										apx[3] := 40; apy[3] := 9; aliens[3] := true;
+										apx[4] := 40; apy[4] := 12; aliens[4]:= true;
+										gotoxy(35,1);writeln ('=Usted ha elegido el nivel normal=');
+										delay(200);
+										gotoxy(35,3);writeln ('Preparece para jugar en:');
+										delay(100);
+										gotoxy(35,5);writeln ('3');
+										delay(1000);
+										gotoxy(35,7);writeln ('2');
+										delay(1000);
+										gotoxy(35,9);writeln ('1');
+										delay(1000);
+										read();
+										clrscr;
+										juego;
+										clrscr; 
+										readln;	
 								end;
 							    
 							    3:	
 								begin 
-									writeln ('usted ha elegido el nivel de dificultad dificil');
+									clrscr;
+										AActivo := true;
+										VJugador:= 1;
+										JActivo:= true;
+										RValor:= 4;
+										apx[1] := 40; apy[1] := 2; aliens[1] := true;
+										apx[2] := 40; apy[2] := 5; aliens[2] := true;
+										apx[3] := 40; apy[3] := 9; aliens[3] := true;
+										apx[4] := 40; apy[4] := 12; aliens[4]:= true;
+										apx[5] := 40; apy[5] := 15; aliens[5] := true;
+										apx[6] := 40; apy[6] := 18; aliens[6] := true;
+										gotoxy(35,1);writeln ('=Usted ha elegido el nivel Dificil=');
+										delay(200);
+										gotoxy(35,3);writeln ('Preparece para jugar en:');
+										delay(100);
+										gotoxy(35,5);writeln ('3');
+										delay(1000);
+										gotoxy(35,7);writeln ('2');
+										delay(1000);
+										gotoxy(35,9);writeln ('1');
+										delay(1000);
+										read();
+										clrscr;
+										juego;
+										clrscr; 
+										readln;	
 								end;
 						
 							end; //end del segundo case
