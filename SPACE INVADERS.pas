@@ -13,9 +13,9 @@ APantalla = 24;
 LPantalla = 77;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
-scr, fnp, bx, by, ppx, ppy, l, bxa,bya, VJugador,RDisparo,RValor,x1,x2,cod1,cod2, OJuego:integer;
+scr, fnp, bx, by, ppx, ppy, l, bxa,bya, VJugador, RDisparo, RValor, x1, x2, x3, cod1, cod2, cod3 :integer;
 
-nickname, opciones, repit, aliensb, dificultades : string;
+nickname, opciones, repit, aliensb, dificultades, OJuego : string;
 
 aliens: array[1..6] of boolean;
 aliensv:array[1..3] of integer;
@@ -544,26 +544,39 @@ BEGIN
 										if VJugador = 0 then writeln('Has perdido');
 										if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then writeln('Has ganado!');
 										writeln('Que desea hacer ahora?');
-										writeln('1- Volver a jugar');
-										writeln('2- Volver al menu');
-										writeln('3- Cerrar el juego');
-										readln(OJuego);		
+										writeln('A- Volver a jugar [Facil]');
+										writeln('B- Volver al menu');
+										writeln('C- Cerrar el juego');
+										repeat
+											begin
+												repeat
+													begin
+														readln(OJuego);	
+													end;
+												until (OJuego='A') or (Ojuego='B') or (OJuego='C');
+												val (OJuego,x3,cod3);	
+											end;
+										until cod3>0;
 										Case OJuego of
-										1: begin
+										'A': begin
 											
 											end;
 										
-										2: begin
-										OJuego:= 2;
+										'B': begin
+										OJuego:= 'B';
+										aliensb := 'b';
+										
 											end;
 										
-										3: begin
-										OJuego:= 2;
+										'C': begin
+										OJuego:= 'B';
+										aliensb := 'a';
+										repit := 'b';
 											end;
 											
 										end;
 										
-										until OJuego = 2;		
+										until (OJuego = 'B');
 									end;
 							    'B':
 								begin
@@ -595,26 +608,38 @@ BEGIN
 										if VJugador = 0 then writeln('Has perdido');
 										if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then writeln('Has ganado!');
 										writeln('Que desea hacer ahora?');
-										writeln('1- Volver a jugar');
-										writeln('2- Volver al menu');
-										writeln('3- Cerrar el juego');
-										readln(OJuego);		
+										writeln('A- Volver a jugar [Normal]');
+										writeln('B- Volver al menu');
+										writeln('C- Cerrar el juego');
+										repeat
+											begin
+												repeat
+													begin
+														readln(OJuego);	
+													end;
+												until (OJuego='A') or (Ojuego='B') or (OJuego='C');
+												val (OJuego,x3,cod3);	
+											end;
+										until cod3>0;	
 										Case OJuego of
-										1: begin
+										'A': begin
 											
 											end;
 										
-										2: begin
-										OJuego:= 2;
+										'B': begin
+										OJuego:= 'B';
+										aliensb:='b';
 											end;
 										
-										3: begin
-										OJuego:= 2;
+										'C': begin
+										OJuego:= 'B';
+										aliensb:='a';
+										repit:='b';
 											end;
 											
 										end;
 										
-										until OJuego = 2;	
+										until (OJuego = 'B');
 								end;
 							    
 							    'C':	
@@ -649,26 +674,38 @@ BEGIN
 										if VJugador = 0 then writeln('Has perdido');
 										if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then writeln('Has ganado!');
 										writeln('Que desea hacer ahora?');
-										writeln('1- Volver a jugar');
-										writeln('2- Volver al menu');
-										writeln('3- Cerrar el juego');
-										readln(OJuego);		
+										writeln('A- Volver a jugar [Dificil]');
+										writeln('B- Volver al menu');
+										writeln('C- Cerrar el juego');
+										repeat
+											begin
+												repeat
+													begin
+														readln(OJuego);	
+													end;
+												until (OJuego='A') or (OJuego='B') or (OJuego='C');
+												val (OJuego,x3,cod3);	
+											end;
+										until cod3>0;	
 										Case OJuego of
-										1: begin
+										'A': begin
 											
 											end;
 										
-										2: begin
-										OJuego:= 2;
+										'B': begin
+										OJuego:= 'B';
+										aliensb:='b';
 											end;
 										
-										3: begin
-										OJuego:= 2;
+										'C': begin
+										OJuego:= 'B';
+										aliensb:='a';
+										repit:='b';
 											end;
 											
 										end;
 										
-										until OJuego = 2;	
+										until (OJuego = 'B');
 								end;
 						
 							end; //end del segundo case
@@ -770,7 +807,11 @@ BEGIN
 			clrscr;
 		end;// end del la segunda opcion  del primer case
 		
-		'C': writeln ('hasta la proxima, vuelva pronto pronto para mas diversion!'); 
+		'C':begin
+		 writeln ('hasta la proxima, vuelva pronto pronto para mas diversion!'); 
+		 	aliensb:='a';
+			repit:='b';
+		 end;
 
 	 end; //end del primer case
 
