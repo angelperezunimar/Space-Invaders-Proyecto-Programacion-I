@@ -108,7 +108,7 @@ end;
 procedure MBullet;
 var i: integer;
 begin
-  while (BActivo and (by > 2)) do
+  while ((BActivo = true) and (by > 2) and (JActivo = true))  do
   begin
  
     textcolor(8);
@@ -172,6 +172,8 @@ end;//end final del procedimiento
 procedure ADisparo;
 var
   i, r: integer;
+  begin
+  if (JActivo = true) then
 begin
   r := random(6) + 1; //elegir un alien aleatorio para disparar
   if (aliens[r] = true) and (apy[r] > 0) then // comprobar que el alien está vivo y dentro de la pantalla
@@ -193,6 +195,7 @@ begin
     gotoxy(apx[r] + 5, bya);
     writeln(' ');
   end;
+  end;
 end;
 
 //Procedimiento para mover aliens
@@ -200,7 +203,7 @@ procedure MAliens;
 var i:integer;
 begin
 
-while AActivo = true do
+while (AActivo = true) and (JActivo = true) do
 begin
 delay(50);
 	for i:= 1 to 6 do
@@ -372,7 +375,7 @@ MAliens;
 MPlayer;
 BPlayer;
 
-until false;
+until (JActivo = false) or ((aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false));
 end;//end final del procedimiento
 
 // Comienzo del cuerpo del programa
@@ -490,6 +493,7 @@ BEGIN
 										read();
 										clrscr;
 										juego;
+										clrscr;
 										readln;				
 									end;
 							    2:
