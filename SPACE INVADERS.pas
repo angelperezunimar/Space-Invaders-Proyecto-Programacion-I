@@ -13,7 +13,7 @@ APantalla = 24;
 LPantalla = 77;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
-scr, fnp, opciones, dificultades, bx, by, ppx, ppy, l, aliensb, repit,bxa,bya, VJugador:integer;
+scr, fnp, opciones, dificultades, bx, by, ppx, ppy, l, aliensb, repit,bxa,bya, VJugador,RDisparo,RValor:integer;
 nickname:string;
 aliens: array[1..6] of boolean;
 BActivo,AActivo,JActivo: boolean;
@@ -27,7 +27,7 @@ ABActivo: array[1..6] of boolean; // nuevo arreglo para representar el estado de
 procedure DPlayer;
 begin
 if VJugador = 0 then JActivo := false;
-if JActivo = true then
+if JActivo = true and ((aliens[1] = true) or (aliens[2] = true) or (aliens[3] = true) or (aliens[4] = true) or (aliens[5] = true) or (aliens[6] = true)) then
 begin
 gotoxy(ppx,ppy);
 textcolor(15);
@@ -108,7 +108,7 @@ end;
 procedure MBullet;
 var i: integer;
 begin
-  while ((BActivo = true) and (by > 2) and (JActivo = true))  do
+  while ((BActivo = true) and (by > 2) and (JActivo = true)) and ((aliens[1] = true) or (aliens[2] = true) or (aliens[3] = true) or (aliens[4] = true) or (aliens[5] = true) or (aliens[6] = true)) do
   begin
  
     textcolor(8);
@@ -140,9 +140,9 @@ begin
       end; //end del if
      end;
      
-     if (i > 4) then
+     if (i >= 4) then
      begin
-      if (aliens[i] = true) and ((bx = apx[i] + 1) or (bx = apx[i] + 2) or (bx = apx[i] + 3) or (bx = apx[i] + 4) or (bx = apx[i] + 5) or (bx = apx[i] + 6) or (bx = apx[i] + 7) or (bx = apx[i] + 8) or (bx = apx[i] + 9)) and (by = apy[i]) then
+      if (aliens[i] = true) and ((bx = apx[i]) or (bx = apx[i] + 1) or (bx = apx[i] + 2) or (bx = apx[i] + 3) or (bx = apx[i] + 4) or (bx = apx[i] + 5) or (bx = apx[i] + 6) or (bx = apx[i] + 7) or (bx = apx[i] + 8) or (bx = apx[i] + 9)) and (by = apy[i]) then
       begin
         aliens[i] := false;
         gotoxy(apx[i], apy[i]);
@@ -176,6 +176,8 @@ begin
 BActivo := False;
 if keypressed then
 begin
+if JActivo = true and ((aliens[1] = true) or (aliens[2] = true) or (aliens[3] = true) or (aliens[4] = true) or (aliens[5] = true) or (aliens[6] = true)) then
+begin
 	if readkey = #32 then // barra espaciadora
 	begin
 	sound(1200);
@@ -183,12 +185,13 @@ begin
 	nosound;
 	read;
 		bx := ppx;
-        by := ppy - 1;
+        by := ppy;
         BActivo := True;
         writeln('|');
         MBullet;
         
 	end;//end del if
+	end;
 	end;
 end;//end final del procedimiento
 
@@ -196,9 +199,11 @@ procedure ADisparo;
 var
   i, r: integer;
   begin
-  if (JActivo = true) then
+  if (JActivo = true) and ((aliens[1] = true) or (aliens[2] = true) or (aliens[3] = true) or (aliens[4] = true) or (aliens[5] = true) or (aliens[6] = true))then
 begin
-  r := random(6) + 1; //elegir un alien aleatorio para disparar
+randomize;
+RDisparo:= random(RValor) + random(RValor);
+  r := random(6) + RDisparo; //elegir un alien aleatorio para disparar
   if (aliens[r] = true) and (apy[r] > 0) then // comprobar que el alien está vivo y dentro de la pantalla
   begin
     bya := apy[r] + 3; //posición inicial de la bala del alien
@@ -212,7 +217,7 @@ begin
       writeln('|');
       bxa:= apx[r] + 5;
       // comprobar colisión con el jugador
-		if ((bxa = ppx) or (bxa = ppx + 1) or (bxa = ppx + 2) or (bxa = ppx + 3)) and (bya = ppy) then VJugador:= VJugador - 1;
+		if ((bxa = ppx + 2) or (bxa = ppx + 3) or (bxa = ppx + 4)) and (bya = ppy) then VJugador:= VJugador - 1;
       MPlayer; // comprobar si la bala impacta en el jugador
     end;
     gotoxy(apx[r] + 5, bya);
@@ -226,7 +231,7 @@ procedure MAliens;
 var i:integer;
 begin
 
-while (AActivo = true) and (JActivo = true) do
+while (AActivo = true) and (JActivo = true) and ((aliens[1] = true) or (aliens[2] = true) or (aliens[3] = true) or (aliens[4] = true) or (aliens[5] = true) or (aliens[6] = true)) do
 begin
 delay(50);
 	for i:= 1 to 6 do
@@ -500,9 +505,10 @@ BEGIN
 										AActivo := true;
 										VJugador:= 1;
 										JActivo:= true;
+										RValor:= 8;
 										apx[1] := 40; apy[1] := 2; aliens[1] := true;
 										apx[2] := 40; apy[2] := 9; aliens[2] := true;
-										apx[4] := 40; apy[4] := 18; aliens[4] := true;
+										apx[4] := 40; apy[4] := 17; aliens[4] := true;
 										gotoxy(35,1);writeln ('=Usted ha elegido el nivel facil=');
 										delay(200);
 										gotoxy(35,3);writeln ('Preparece para jugar en:');
