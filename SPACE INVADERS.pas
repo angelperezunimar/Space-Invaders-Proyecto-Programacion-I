@@ -13,7 +13,7 @@ APantalla = 24;
 LPantalla = 77;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
-scr, fnp, opciones, dificultades, bx, by, ppx, ppy, l, aliensb, repit:integer;
+scr, fnp, opciones, dificultades, bx, by, ppx, ppy, l, aliensb, repit,bxa:integer;
 nickname:string;
 aliens: array[1..6] of boolean;
 BActivo,AActivo: boolean;
@@ -21,6 +21,8 @@ apy: array[1..6] of integer;
 apx: array[1..6] of integer;
 rdm: array[1..6] of integer;
 dir: array[1..6] of integer;
+ABActivo: array[1..6] of boolean; // nuevo arreglo para representar el estado de la bala del alien
+bya: array[1..6] of integer; // nueva variable global para representar la posición vertical de la bala del alien
 
 //Procedimiento para mostrar al jugador en pantalla
 procedure DPlayer;
@@ -163,6 +165,41 @@ begin
 	end;//end del if
 	end;
 end;//end final del procedimiento
+
+procedure ADisparo;
+var
+  i, r: integer;
+begin
+  r := random(6) + 1; //elegir un alien aleatorio para disparar
+  if (aliens[r] = true) and (apy[r] < APantalla - 1) then // solo puede disparar si el alien está vivo y debajo del jugador
+  begin
+    gotoxy(apx[r] + 2, apy[r] + 2); //posiciona el cursor del disparo en la posicion del alien
+    textcolor(14);
+    writeln('v');
+    delay(50);
+    if (bx = apx[r] + 2) and (by = apy[r] + 3) then // verificación de impacto
+    begin
+      aliens[r] := false;
+      gotoxy(apx[r], apy[r]);
+      textcolor(0);
+      write('              ');
+    end
+    else if (by > 2) then // si el jugador no ha destruido el alien, el disparo continúa moviéndose hacia abajo
+    begin
+      gotoxy(apx[r] + 2, apy[r] + 2);
+      textcolor(0);
+      writeln(' ');
+      apy[r] := apy[r] + 1;
+      ADisparo;
+    end
+    else // si el disparo alcanza la parte inferior de la pantalla sin impactar al jugador, se elimina
+    begin
+      gotoxy(apx[r] + 2, apy[r] + 2);
+      textcolor(0);
+      writeln(' ');
+    end;
+  end;
+end;
 
 //Procedimiento para mover aliens
 procedure MAliens;
