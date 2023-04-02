@@ -13,9 +13,9 @@ APantalla = 24;
 LPantalla = 77;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
-scr, fnp, dificultades, bx, by, ppx, ppy, l, bxa,bya, VJugador,RDisparo,RValor:integer;
+scr, fnp, dificultades,bx, by, ppx, ppy, l, bxa,bya, VJugador,RDisparo,RValor,x1,x2,cod1,cod2:integer;
 
-nickname, opciones, aliensb, repit: string;
+nickname, opciones, repit, aliensb : string;
 
 aliens: array[1..6] of boolean;
 BActivo,AActivo,JActivo: boolean;
@@ -570,17 +570,24 @@ BEGIN
 						gotoxy(5,20);writeln ('-------------------------------------------------------');
 						gotoxy(5,21);writeln('///Para cerrar el programa presione [c]');
 						gotoxy(5,22);writeln ('-------------------------------------------------------');
-						
-						readln(aliensb);
+						repeat
+							begin
+								repeat
+									begin
+										readln(aliensb);
+									end;
+								until aliensb<>'';
+								val (aliensb,x1,cod1);
+							end;
+						until cod1>0;
 						sound(70000);
-							delay(100);
-							nosound;
-							read;
+						delay(100);
+						nosound;
+						read;
 					case aliensb of 
-						'a':
+					'a':
 						begin
 							clrscr;
-							
 							gotoxy(10,1);writeln('//========\\ ');
 							gotoxy(10,2);writeln('Alien basico');
 							gotoxy(10,3);writeln('//========\\ ');
@@ -603,8 +610,17 @@ BEGIN
 					end; //end case aliensb
 					begin
 						clrscr;
-						Writeln('[[presione la telca indicada]]');
-						readln(repit);
+						Writeln('[[presione una de las teclas indicadas para continuar]]');
+						repeat
+							begin
+								repeat
+									begin
+										readln(repit);
+									end;
+								until repit<> '';
+							val (repit, x2,cod2)
+							end;
+						until cod2>0;
 						sound(70000);
 						delay(100);
 						nosound;
@@ -616,7 +632,7 @@ BEGIN
 					end;
 					
 				end;//end que engloba al repit
-			until (repit<>'a'); // final del repeat para volver a las instrucciones
+			until	repit<>'a'; // final del repeat para volver a las instrucciones
 			clrscr;
 		end;// end del la segunda opcion  del primer case
 		
