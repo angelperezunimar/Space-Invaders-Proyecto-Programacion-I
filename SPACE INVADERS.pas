@@ -13,9 +13,9 @@ APantalla = 24;
 LPantalla = 77;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
-scr, fnp, dificultades, bx, by, ppx, ppy, l, aliensb, repit,bxa,bya, VJugador,RDisparo,RValor:integer;
+scr, fnp, dificultades, bx, by, ppx, ppy, l, bxa,bya, VJugador,RDisparo,RValor:integer;
 
-nickname, opciones:string;
+nickname, opciones, aliensb, repit: string;
 
 aliens: array[1..6] of boolean;
 BActivo,AActivo,JActivo: boolean;
@@ -564,19 +564,20 @@ BEGIN
 						gotoxy(8,14);writeln ('---------------------------------------------------------------------------------------------------------------');
 						gotoxy(1,15);writeln ('=======================================================================================================================');
 						gotoxy(5,16);writeln ('-------------------------------------------------------');
-						gotoxy(5,17);writeln('/Para saber sobre los aliens presione 1');
+						gotoxy(5,17);writeln('/Para saber sobre los aliens presione [a]');
 						gotoxy(5,18);writeln ('-------------------------------------------------------');
-						gotoxy(5,19);writeln('//Para volver al menu presione 2');
+						gotoxy(5,19);writeln('//Para volver al menu presione [b]');
 						gotoxy(5,20);writeln ('-------------------------------------------------------');
-						gotoxy(5,21);writeln('///Para cerrar el programa presione 3');
+						gotoxy(5,21);writeln('///Para cerrar el programa presione [c]');
 						gotoxy(5,22);writeln ('-------------------------------------------------------');
+						
 						readln(aliensb);
 						sound(70000);
 							delay(100);
 							nosound;
 							read;
 					case aliensb of 
-						1:
+						'a':
 						begin
 							clrscr;
 							
@@ -594,12 +595,15 @@ BEGIN
 							gotoxy(87,5);writeln('--|=(+)|\|/|(+)=|--');	
 							writeln('');
 							Writeln('=============================================================================================================');
-							writeln ('presione la tecla [1] para regresar a las intrucciones');
+							writeln ('presione la tecla [a] para regresar a las intrucciones');
+							readln();
 							
 								
 						end;// end de la opcion unoh
 					end; //end case aliensb
 					begin
+						clrscr;
+						Writeln('[[presione la telca indicada]]');
 						readln(repit);
 						sound(70000);
 						delay(100);
@@ -612,7 +616,7 @@ BEGIN
 					end;
 					
 				end;//end que engloba al repit
-			until (repit<>1); // final del repeat para volver a las instrucciones
+			until (repit<>'a'); // final del repeat para volver a las instrucciones
 			clrscr;
 		end;// end del la segunda opcion  del primer case
 		
@@ -620,6 +624,6 @@ BEGIN
 
 	 end; //end del primer case
 
-		until aliensb <> 2; //final del repeat para volver al menu principal luego de ver las instrucciones
+		until (aliensb <> 'b'); //final del repeat para volver al menu principal luego de ver las instrucciones
 
 END.//end final del cuerpo
