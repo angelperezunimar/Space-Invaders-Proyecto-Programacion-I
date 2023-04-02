@@ -121,12 +121,35 @@ begin
     MPlayer;
     for i := 1 to 6 do // verificación de impacto
     begin
-      if (aliens[i] = true) and (bx = apx[i] + 5) and (by <= apy[i] + 2) and (by >= apy[i]) then
+    if i = 1 then
+    begin
+      if (aliens[i] = true) and ((bx = apx[i] + 1) or (bx = apx[i] + 2) or (bx = apx[i] + 3) or (bx = apx[i] + 4) or (bx = apx[i] + 5) or (bx = apx[i] + 6) or (bx = apx[i] + 7) or (bx = apx[i] + 8) or (bx = apx[i] + 9) or (bx = apx[i] + 10) or (bx = apx[i] + 11) or (bx = apx[i] + 12) or (bx = apx[i] + 13) or (bx = apx[i] + 14) or (bx = apx[i] + 15) or (bx = apx[i] + 16) or (bx = apx[i] + 17) or (bx = apx[i] + 18) or (bx = apx[i] + 19)) and (by = apy[i] + 2) then
       begin
         aliens[i] := false;
         gotoxy(apx[i], apy[i]);
         write('             ');
       end; //end del if
+     end;
+     if (i >= 2) and (i < 4) then
+     begin
+      if (aliens[i] = true) and ((bx = apx[i] + 1) or (bx = apx[i] + 2) or (bx = apx[i] + 3) or (bx = apx[i] + 4) or (bx = apx[i] + 5) or (bx = apx[i] + 6) or (bx = apx[i] + 7) or (bx = apx[i] + 8) or (bx = apx[i] + 9) or (bx = apx[i] + 10)) and (by = apy[i]) then
+      begin
+        aliens[i] := false;
+        gotoxy(apx[i], apy[i]);
+        write('             ');
+      end; //end del if
+     end;
+     
+     if (i > 4) then
+     begin
+      if (aliens[i] = true) and ((bx = apx[i] + 1) or (bx = apx[i] + 2) or (bx = apx[i] + 3) or (bx = apx[i] + 4) or (bx = apx[i] + 5) or (bx = apx[i] + 6) or (bx = apx[i] + 7) or (bx = apx[i] + 8) or (bx = apx[i] + 9)) and (by = apy[i]) then
+      begin
+        aliens[i] := false;
+        gotoxy(apx[i], apy[i]);
+        write('             ');
+      end; //end del if
+      end;
+      
     end;// end del bucle for
   end; // end del bucle while
   BActivo := False;
@@ -493,7 +516,7 @@ BEGIN
 										read();
 										clrscr;
 										juego;
-										clrscr;
+										clrscr; 
 										readln;				
 									end;
 							    2:
