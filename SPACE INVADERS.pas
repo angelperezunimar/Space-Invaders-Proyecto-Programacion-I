@@ -6,7 +6,7 @@
 
 program SpaceInvaders;
 
-uses CRT;       
+uses CRT,MMSystem;       
 
 const
 APantalla = 24;
@@ -146,7 +146,6 @@ var i: integer;
 begin
   while ((BActivo = true) and (by > 2) and (JActivo = true)) and ((aliens[1] = true) or (aliens[2] = true) or (aliens[3] = true) or (aliens[4] = true) or (aliens[5] = true) or (aliens[6] = true)) do
   begin
- 
     textcolor(8);
     delay(50);
     gotoxy(bx, by);
@@ -726,8 +725,10 @@ BEGIN
 											gotoxy(35,9);writeln ('1');
 											delay(1000);
 											read();
-											clrscr;
+											clrscr;						
+											PlaySound('musica.wav', 0, SND_FILENAME or SND_ASYNC or SND_LOOP);
 											juego;
+											PlaySound(nil, 0, 0);
 											clrscr;
 											textcolor(5);
 											gotoxy(1,1);writeln('======================================================================================================================== ');
@@ -807,7 +808,9 @@ BEGIN
 											delay(1000);
 											read();
 											clrscr;
+											PlaySound('musica.wav', 0, SND_FILENAME or SND_ASYNC or SND_LOOP);
 											juego;
+											PlaySound(nil, 0, 0);
 											clrscr; 
 											textcolor(5);
 											gotoxy(1,1);writeln('======================================================================================================================== ');
@@ -887,7 +890,9 @@ BEGIN
 											delay(1000);
 											read();
 											clrscr;
+											PlaySound('musica.wav', 0, SND_FILENAME or SND_ASYNC or SND_LOOP);
 											juego;
+											PlaySound(nil, 0, 0);
 											clrscr; 
 											textcolor(5);
 											gotoxy(1,1);writeln('======================================================================================================================== ');
