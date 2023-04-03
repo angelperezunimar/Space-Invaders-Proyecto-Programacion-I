@@ -1045,7 +1045,7 @@ BEGIN
 
 		until (aliensb <> 'b'); //final del repeat para volver al menu principal luego de ver las instrucciones
 
-END.//end final del cuerpo
+END.//end final del cuerpo :D
 
 //                     1
 //               *,,,,,*,,,,,*
