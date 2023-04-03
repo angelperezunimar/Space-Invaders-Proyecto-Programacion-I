@@ -27,6 +27,8 @@ x1, x2, x3, cod1, cod2, cod3: variables que permiten almacenar el cambio realiza
 repit: para realizar un bucle
 aliensb: para ver mas informacion de los aliens, y condicionar bucles
 dificultades: para elegir las dificultades del juego
+bxac: "BulletXAlienComprobacion" Valor para la comprobacion de la posicion de la bala
+
 
 Constantes:
 APantalla: "AlturaPantalla" Alto de pantalla de Juego

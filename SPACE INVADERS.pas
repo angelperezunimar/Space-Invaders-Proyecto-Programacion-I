@@ -13,7 +13,7 @@ APantalla = 24;
 LPantalla = 77;
 
 var {Empieza la declaracion de variables, cada una tiene una funcion especifica para el juego y seran explicadas en un archivo de texto}
-scr, fnp, bx, by, ppx, ppy, l, bxa,bya, VJugador, RDisparo, RValor, x1, x2, x3, cod1, cod2, cod3 :integer;
+scr, fnp, bx, by, ppx, ppy, l, bxa,bya, VJugador, RDisparo, RValor, x1, x2, x3, cod1, cod2, cod3,bxac :integer;
 
 nickname, opciones, repit, aliensb, dificultades, OJuego : string;
 
@@ -70,10 +70,43 @@ write('<|A|>');
 end;
 end; //end final del procedimiento
 
+//Procedimiento para dibujar aliens
+procedure DAliens;
+var i: integer;
+Begin
+if JActivo = true then
+begin
+	for i:= 1 to 6 do
+	begin
+		
+		gotoxy(apx[i], apy[i]);
+		
+		if (aliens[i] = true) and (i = 1) then
+		begin textcolor(4);
+			writeln('--|=(+)|\|/|(+)=|--');
+		end;
+		
+		if (aliens[i] = true) and (i >= 2) and (i < 4) then
+		begin
+		textcolor(3);
+			write('[=I.<>.I=]');
+		end;
+		
+		if (aliens[i] = true) and (i >= 4) then
+		begin
+		textcolor(2);
+			write('I-/.-.\-I');
+		end;
+
+
+	end; //end del bucle for
+end;
+end;
+
 //Procedimiento para el movimiento del jugador en pantalla 
 procedure MPlayer;
 begin
-if keypressed then
+if keypressed and (JActivo = true) then
     begin
       case readkey of
 		#75:
@@ -106,38 +139,6 @@ if keypressed then
 		end;//end del case
 	end; //end del if
 end; //end final del procedimiento
-
-//Procedimiento para dibujar aliens
-procedure DAliens;
-var i: integer;
-Begin
-
-	for i:= 1 to 6 do
-	begin
-		
-		gotoxy(apx[i], apy[i]);
-		
-		if (aliens[i] = true) and (i = 1) then
-		begin textcolor(4);
-			writeln('--|=(+)|\|/|(+)=|--');
-		end;
-		
-		if (aliens[i] = true) and (i >= 2) and (i < 4) then
-		begin
-		textcolor(3);
-			write('[=I.<>.I=]');
-		end;
-		
-		if (aliens[i] = true) and (i >= 4) then
-		begin
-		textcolor(2);
-			write('I-/.-.\-I');
-		end;
-
-
-	end; //end del bucle for
-
-end;
 
 //Procedimiento para el movimiento de la bala en pantalla
 procedure MBullet;
@@ -194,6 +195,101 @@ begin
       end;
       
     end;// end del bucle for
+    
+    for i:= 1 to 6 do
+	begin
+	if dir[i] = 1 then
+	begin
+	
+	if i = 1 then
+	begin
+	
+			gotoxy(apx[i],apy[i]);
+			write('                   ');
+			apx[i] := apx[i] + 1;
+			if apx[i] > (LPantalla - 19) then
+			begin
+				  apx[i] := (LPantalla - 19);
+				  dir[i] := -1;
+				  apx[i] := apx[i];
+			end;	  	
+	end;
+	
+	if (i >= 2) and (i < 4) then
+	begin
+			gotoxy(apx[i],apy[i]);
+			write('                   ');
+			apx[i] := apx[i] + 1;
+			if apx[i] > (LPantalla - 10) then
+			begin
+				  apx[i] := (LPantalla - 10);
+				  dir[i] := -1;
+				  apx[i] := apx[i];
+			end;	  	
+	end;
+	
+	if i >= 4 then
+	begin
+	
+			gotoxy(apx[i],apy[i]);
+			write('                   ');
+			apx[i] := apx[i] + 1;
+			if apx[i] > (LPantalla - 10) then
+			begin
+				  apx[i] := (LPantalla - 9);
+				  dir[i] := -1;
+				  apx[i] := apx[i];
+			end;	  	
+	end;
+	end;
+	
+	if dir[i] = -1 then
+	begin
+	if i = 1 then
+	begin
+	
+			gotoxy(apx[i],apy[i]);
+			write('                   ');
+			apx[i] := apx[i] - 1;
+			if apx[i] < 2 then
+			begin
+				  apx[i] := 2;
+				  dir[i] := 1;
+				  apx[i] := apx[i];
+			end;	  	
+	end;
+	
+	if (i >= 2) and (i < 4) then
+	begin
+	
+			gotoxy(apx[i],apy[i]);
+			write('                   ');
+			apx[i] := apx[i] - 1;
+			if apx[i] < 2 then
+			begin
+				  apx[i] := 2;
+				  dir[i] := 1;
+				  apx[i] := apx[i];
+			end;	  	
+	end;
+	
+	if i >= 4 then
+	begin
+	
+			gotoxy(apx[i],apy[i]);
+			write('                   ');
+			apx[i] := apx[i] - 1;
+			if apx[i] < 2 then
+			begin
+				  apx[i] := 2;
+				  dir[i] := 1;
+				  apx[i] := apx[i];
+			end;	  	
+	end;
+	end;
+	end;
+    
+    DAliens;
   end; // end del bucle while
   BActivo := False;
   if by = 2 then
@@ -228,7 +324,7 @@ begin
 	nosound;
 	read;
 		bx := ppx;
-        by := ppy;
+        by := ppy - 1;
         BActivo := True;
         writeln('|');
         MBullet;
@@ -250,25 +346,123 @@ RDisparo:= random(RValor) + random(RValor);
   if (aliens[r] = true) and (apy[r] > 0) then // comprobar que el alien está vivo y dentro de la pantalla
   begin
     bya := apy[r] + 3; //posición inicial de la bala del alien
+    bxa := apx[r];
     while (bya < APantalla) and (aliens[r] = true) do // mover la bala hacia abajo hasta que impacte en un jugador o llegue al borde inferior de la pantalla
     begin
       delay(100);
-      gotoxy(apx[r] + 5, bya); //borrar la posición anterior de la bala
+      gotoxy(bxa + 5, bya); //borrar la posición anterior de la bala
       writeln(' ');
       bya := bya + 1; //actualizar la posición vertical de la bala
-      gotoxy(apx[r] + 5, bya); //dibujar la nueva posición de la bala
+      gotoxy(bxa + 5, bya); //dibujar la nueva posición de la bala
       writeln('|');
-      bxa:= apx[r] + 5;
+      bxac:= bxa + 5;
       // comprobar colisión con el jugador
-		if ((bxa = ppx + 2) or (bxa = ppx + 3) or (bxa = ppx + 4)) and (bya = ppy) then 
+		if ((bxac = ppx + 1) or (bxac = ppx + 2) or (bxac = ppx + 3)) and (bya = ppy) then 
 		begin
 		VJugador:= VJugador - 1;
 		DPantalla;
 		end;
       MPlayer; // comprobar si la bala impacta en el jugador
+      
+       for i:= 1 to 6 do
+	begin
+	if dir[i] = 1 then
+	begin
+	
+	if i = 1 then
+	begin
+	
+			gotoxy(apx[i],apy[i]);
+			write('                   ');
+			apx[i] := apx[i] + 1;
+			if apx[i] > (LPantalla - 19) then
+			begin
+				  apx[i] := (LPantalla - 19);
+				  dir[i] := -1;
+				  apx[i] := apx[i];
+			end;	  	
+	end;
+	
+	if (i >= 2) and (i < 4) then
+	begin
+			gotoxy(apx[i],apy[i]);
+			write('                   ');
+			apx[i] := apx[i] + 1;
+			if apx[i] > (LPantalla - 10) then
+			begin
+				  apx[i] := (LPantalla - 10);
+				  dir[i] := -1;
+				  apx[i] := apx[i];
+			end;	  	
+	end;
+	
+	if i >= 4 then
+	begin
+	
+			gotoxy(apx[i],apy[i]);
+			write('                   ');
+			apx[i] := apx[i] + 1;
+			if apx[i] > (LPantalla - 10) then
+			begin
+				  apx[i] := (LPantalla - 9);
+				  dir[i] := -1;
+				  apx[i] := apx[i];
+			end;	  	
+	end;
+	end;
+	
+	if dir[i] = -1 then
+	begin
+	if i = 1 then
+	begin
+	
+			gotoxy(apx[i],apy[i]);
+			write('                   ');
+			apx[i] := apx[i] - 1;
+			if apx[i] < 2 then
+			begin
+				  apx[i] := 2;
+				  dir[i] := 1;
+				  apx[i] := apx[i];
+			end;	  	
+	end;
+	
+	if (i >= 2) and (i < 4) then
+	begin
+	
+			gotoxy(apx[i],apy[i]);
+			write('                   ');
+			apx[i] := apx[i] - 1;
+			if apx[i] < 2 then
+			begin
+				  apx[i] := 2;
+				  dir[i] := 1;
+				  apx[i] := apx[i];
+			end;	  	
+	end;
+	
+	if i >= 4 then
+	begin
+	
+			gotoxy(apx[i],apy[i]);
+			write('                   ');
+			apx[i] := apx[i] - 1;
+			if apx[i] < 2 then
+			begin
+				  apx[i] := 2;
+				  dir[i] := 1;
+				  apx[i] := apx[i];
+			end;	  	
+	end;
+	end;
+	end;
+	
+	DAliens;
+      
     end;
-    gotoxy(apx[r] + 5, bya);
+    gotoxy(bxac, bya);
     writeln(' ');
+    
   end;
   end;
 end;
@@ -515,7 +709,6 @@ BEGIN
 						readln (dificultades);
 							case dificultades of
 								'A': 
-								// Durante el desarrollo de la logica se usara todo este case para hacer pruebas sobre el funcionamiento
 									begin 
 										repeat
 											clrscr;
@@ -541,8 +734,24 @@ BEGIN
 											clrscr;
 											juego;
 											clrscr;
-											if VJugador = 0 then writeln('Has perdido');
-												if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then writeln('Has ganado!');
+											textcolor(5);
+	 gotoxy(1,1);writeln('======================================================================================================================== ');
+	 gotoxy(1,28);writeln('========================================================================================================================');
+											if VJugador = 0 then 
+											begin
+											 gotoxy(45,12);writeln('//===========\\ ');
+											 gotoxy(46,13);writeln('=Has Perdido=');
+											 gotoxy(45,14);writeln('\\===========// ');
+											
+											end;
+												if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then 
+												begin
+											 gotoxy(45,12);writeln('//==========\\ ');
+											 gotoxy(46,13);writeln('=Has Ganado=');
+											 gotoxy(45,14);writeln('\\==========// ');
+												
+												end;
+												
 													writeln('Que desea hacer ahora?');
 													writeln('A- Volver a jugar [Facil]');
 													writeln('B- Volver al menu');
@@ -605,8 +814,23 @@ BEGIN
 											clrscr;
 											juego;
 											clrscr; 
-											if VJugador = 0 then writeln('Has perdido');
-												if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then writeln('Has ganado!');
+											textcolor(5);
+	 gotoxy(1,1);writeln('======================================================================================================================== ');
+	 gotoxy(1,28);writeln('========================================================================================================================');
+											if VJugador = 0 then 
+											begin
+											 gotoxy(45,12);writeln('//===========\\ ');
+											 gotoxy(46,13);writeln('=Has Perdido=');
+											 gotoxy(45,14);writeln('\\===========// ');
+											
+											end;
+												if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then 
+												begin
+											 gotoxy(45,12);writeln('//==========\\ ');
+											 gotoxy(46,13);writeln('=Has Ganado=');
+											 gotoxy(45,14);writeln('\\==========// ');
+												
+												end;
 													writeln('Que desea hacer ahora?');
 													writeln('A- Volver a jugar [Normal]');
 													writeln('B- Volver al menu');
@@ -671,8 +895,23 @@ BEGIN
 											clrscr;
 											juego;
 											clrscr; 
-											if VJugador = 0 then writeln('Has perdido');
-												if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then writeln('Has ganado!');
+											textcolor(5);
+	 gotoxy(1,1);writeln('======================================================================================================================== ');
+	 gotoxy(1,28);writeln('========================================================================================================================');
+											if VJugador = 0 then 
+											begin
+											 gotoxy(45,12);writeln('//===========\\ ');
+											 gotoxy(46,13);writeln('=Has Perdido=');
+											 gotoxy(45,14);writeln('\\===========// ');
+											
+											end;
+												if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then 
+												begin
+											 gotoxy(45,12);writeln('//==========\\ ');
+											 gotoxy(46,13);writeln('=Has Ganado=');
+											 gotoxy(45,14);writeln('\\==========// ');
+												
+												end;
 													writeln('Que desea hacer ahora?');
 													writeln('A- Volver a jugar [Dificil]');
 													writeln('B- Volver al menu');
