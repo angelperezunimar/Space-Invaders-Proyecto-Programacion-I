@@ -639,18 +639,13 @@ BEGIN
 		rdm[6]:= random(2);
 			if  rdm[6] = 1 then dir[6]:= 1;
 			if  rdm[6] = 0 then dir[6]:= -1;
-		textcolor(5);
+	 textcolor(5);
 	 gotoxy(1,1);writeln('======================================================================================================================== ');
 	 gotoxy(1,28);writeln('========================================================================================================================');
 	 gotoxy(43,11);writeln('//||=============================||\\ ');
 	 gotoxy(45,12);writeln ('Bienvenido a SPACE INVADERS A.A.S ');
 	 gotoxy(43,13);writeln('\\||=============================||//  ');
-	delay(3000);
-	read;
-	 writeln ('---------------------------------');
-	 writeln ('-Presione [enter] para continuar-');
-	 writeln ('---------------------------------');
-	 read();
+	 delay(3000);
 	 clrscr;
 			repeat //repeat para regresar al menu principal luego de ver las instrucciones
 				repeat // repeat para elegir solo las opciones jugar, instrucciones o cerrar juego
@@ -677,9 +672,9 @@ BEGIN
 					 gotoxy(40,11);writeln ('---------------------------------');
 					 readln(opciones);
 					 sound(70000);
-							delay(100);
-							nosound;
-							read;
+					 delay(100);
+					 nosound;
+					 read;
 				until (opciones='A') or (opciones='B') or (opciones='C'); //fin del repeat para elegir las opciones de jugar, instrucciones o cerrar juego
 	 case opciones of
 		'A':
@@ -702,10 +697,10 @@ BEGIN
 						gotoxy(8,3);writeln(' A- Facil, esta es una dificultad sencila para jugadores nuevos');
 						gotoxy(10,5);writeln(' B- Normal , este es un poco mas demandante para jugadores mas experimentados');
 						gotoxy(12,7);writeln(' C- Dificil, alta dificultad para jugadores que buscan un reto');
-							sound(70000);
-							delay(100);
-							nosound;
-							read;
+						sound(70000);
+						delay(100);
+						nosound;
+						read;
 						readln (dificultades);
 							case dificultades of
 								'A': 
@@ -735,22 +730,22 @@ BEGIN
 											juego;
 											clrscr;
 											textcolor(5);
-	 gotoxy(1,1);writeln('======================================================================================================================== ');
-	 gotoxy(1,28);writeln('========================================================================================================================');
+											gotoxy(1,1);writeln('======================================================================================================================== ');
+											gotoxy(1,28);writeln('========================================================================================================================');
 											if VJugador = 0 then 
 											begin
-											 gotoxy(45,12);writeln('//===========\\ ');
-											 gotoxy(46,13);writeln('=Has Perdido=');
-											 gotoxy(45,14);writeln('\\===========// ');
-											
+												gotoxy(45,12);writeln('//===========\\ ');
+												gotoxy(46,13);writeln('=Has Perdido=');
+												gotoxy(45,14);writeln('\\===========// ');
+												
 											end;
 												if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then 
-												begin
-											 gotoxy(45,12);writeln('//==========\\ ');
-											 gotoxy(46,13);writeln('=Has Ganado=');
-											 gotoxy(45,14);writeln('\\==========// ');
-												
-												end;
+													begin
+														gotoxy(45,12);writeln('//==========\\ ');
+														gotoxy(46,13);writeln('=Has Ganado=');
+														gotoxy(45,14);writeln('\\==========// ');
+													
+													end;
 												
 													writeln('Que desea hacer ahora?');
 													writeln('A- Volver a jugar [Facil]');
@@ -815,22 +810,21 @@ BEGIN
 											juego;
 											clrscr; 
 											textcolor(5);
-	 gotoxy(1,1);writeln('======================================================================================================================== ');
-	 gotoxy(1,28);writeln('========================================================================================================================');
+											gotoxy(1,1);writeln('======================================================================================================================== ');
+											gotoxy(1,28);writeln('========================================================================================================================');
 											if VJugador = 0 then 
-											begin
-											 gotoxy(45,12);writeln('//===========\\ ');
-											 gotoxy(46,13);writeln('=Has Perdido=');
-											 gotoxy(45,14);writeln('\\===========// ');
-											
-											end;
-												if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then 
 												begin
-											 gotoxy(45,12);writeln('//==========\\ ');
-											 gotoxy(46,13);writeln('=Has Ganado=');
-											 gotoxy(45,14);writeln('\\==========// ');
-												
+													 gotoxy(45,12);writeln('//===========\\ ');
+													 gotoxy(46,13);writeln('=Has Perdido=');
+													 gotoxy(45,14);writeln('\\===========// ');
 												end;
+												if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then 
+													begin
+														 gotoxy(45,12);writeln('//==========\\ ');
+														 gotoxy(46,13);writeln('=Has Ganado=');
+														 gotoxy(45,14);writeln('\\==========// ');
+													
+													end;
 													writeln('Que desea hacer ahora?');
 													writeln('A- Volver a jugar [Normal]');
 													writeln('B- Volver al menu');
@@ -896,21 +890,19 @@ BEGIN
 											juego;
 											clrscr; 
 											textcolor(5);
-	 gotoxy(1,1);writeln('======================================================================================================================== ');
-	 gotoxy(1,28);writeln('========================================================================================================================');
+											gotoxy(1,1);writeln('======================================================================================================================== ');
+											gotoxy(1,28);writeln('========================================================================================================================');
 											if VJugador = 0 then 
-											begin
-											 gotoxy(45,12);writeln('//===========\\ ');
-											 gotoxy(46,13);writeln('=Has Perdido=');
-											 gotoxy(45,14);writeln('\\===========// ');
-											
-											end;
-												if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then 
 												begin
-											 gotoxy(45,12);writeln('//==========\\ ');
-											 gotoxy(46,13);writeln('=Has Ganado=');
-											 gotoxy(45,14);writeln('\\==========// ');
-												
+													 gotoxy(45,12);writeln('//===========\\ ');
+													 gotoxy(46,13);writeln('=Has Perdido=');
+													 gotoxy(45,14);writeln('\\===========// ');
+												end;
+											if (aliens[1] = false) and (aliens[2] = false) and (aliens[3] = false) and (aliens[4] = false) and (aliens[5] = false) and (aliens[6] = false) then 
+												begin
+													gotoxy(45,12);writeln('//==========\\ ');
+													gotoxy(46,13);writeln('=Has Ganado=');
+													gotoxy(45,14);writeln('\\==========// ');	
 												end;
 													writeln('Que desea hacer ahora?');
 													writeln('A- Volver a jugar [Dificil]');
@@ -969,9 +961,6 @@ BEGIN
 						gotoxy(8,9);writeln ('//Se utilizan las letras <== y ==> (izquierda y derecha) para mover la nave');
 						gotoxy(8,10);writeln ('---------------------------------------------------------------------------------------------------------------');
 						gotoxy(8,11);writeln ('///Se utiliza la barra espaciadora para disparar el canon laser');
-						gotoxy(8,12);writeln ('---------------------------------------------------------------------------------------------------------------');
-						gotoxy(8,13);writeln ('////Con la tecla [p] se pausa el juego');
-						gotoxy(8,14);writeln ('---------------------------------------------------------------------------------------------------------------');
 						gotoxy(1,15);writeln ('=======================================================================================================================');
 						gotoxy(5,16);writeln ('-------------------------------------------------------');
 						gotoxy(5,17);writeln('/Para saber sobre los aliens presione [a]');
@@ -995,25 +984,25 @@ BEGIN
 						nosound;
 						read;
 					case aliensb of 
-					'a':
-						begin
-							clrscr;
-							gotoxy(10,1);writeln('//========\\ ');
-							gotoxy(10,2);writeln('Alien basico');
-							gotoxy(10,3);writeln('//========\\ ');
-							gotoxy(10,5);writeln('I-/.-.\-I');
-							gotoxy(50,1);writeln('//==========\\ ');
-							gotoxy(50,2);writeln(' Alien Medio');
-							gotoxy(50,3);writeln('//==========\\ ');
-							gotoxy(50,5);writeln('[=I.<>.I=]');
-							gotoxy(90,1);writeln('//========\\ ');
-							gotoxy(91,2);writeln('Alien Boss');
-							gotoxy(90,3);writeln('//========\\ ');
-							gotoxy(87,5);writeln('--|=(+)|\|/|(+)=|--');	
-							writeln('');
-							Writeln('=============================================================================================================');
-							writeln ('presione la tecla [a] para regresar a las intrucciones');
-							readln();
+						'a':
+							begin
+								clrscr;
+								gotoxy(10,1);writeln('//========\\ ');
+								gotoxy(10,2);writeln('Alien basico');
+								gotoxy(10,3);writeln('//========\\ ');
+								gotoxy(10,5);writeln('I-/.-.\-I');
+								gotoxy(50,1);writeln('//==========\\ ');
+								gotoxy(50,2);writeln(' Alien Medio');
+								gotoxy(50,3);writeln('//==========\\ ');
+								gotoxy(50,5);writeln('[=I.<>.I=]');
+								gotoxy(90,1);writeln('//========\\ ');
+								gotoxy(91,2);writeln('Alien Boss');
+								gotoxy(90,3);writeln('//========\\ ');
+								gotoxy(87,5);writeln('--|=(+)|\|/|(+)=|--');	
+								writeln('');
+								Writeln('=============================================================================================================');
+								writeln ('presione la tecla [a] para regresar a las intrucciones');
+								readln();
 							
 								
 						end;// end de la opcion unoh
@@ -1068,4 +1057,4 @@ END.//end final del cuerpo
 //     {/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/}
 //     {,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,}
 //     {/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/}
-//     {_______________"_______________} ================>> Esta torta es para celebrar que falta poco profe, la compartimos con usted
+//     {_______________"_______________} ================>> Profe ya terminamos, ahora la torta es para celebrar eso
